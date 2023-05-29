@@ -1,0 +1,11 @@
+framework module FunnyDBDebugTools {
+  umbrella header "FunnyDBDebugTools.h"
+
+  export *
+  module * { export * }
+}
+
+module FunnyDBDebugTools.Swift {
+    header "FunnyDBDebugTools-Swift.h"
+    requires objc
+}
