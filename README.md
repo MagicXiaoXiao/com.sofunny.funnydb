@@ -27,11 +27,7 @@ FunnyDB 数据采集 Unity 引擎插件包，提供各项功能服务支持。
 - 手动集成形式
   1. 下载 [Releases](https://git.sofunny.io/data-analysis/com.sofunny.funnydb/-/releases) 下的包，将其内容解压至 Unity 项目中的 Packages 目录下即可。
 
-     注：解压后 com.sofunny.funnydb 文件夹带有版本号可更具需要移除掉版本号。(如下图示例)
-
-     ![手动集成步骤1](Imgs~/upm_step3.png)
-
-
+     注：解压后 com.sofunny.funnydb 文件夹带有版本号可根据需要移除。
 
 ## 使用
 
