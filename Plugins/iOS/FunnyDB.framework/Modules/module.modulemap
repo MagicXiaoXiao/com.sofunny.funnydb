@@ -1,0 +1,11 @@
+framework module FunnyDB {
+  umbrella header "FunnyDB.h"
+
+  export *
+  module * { export * }
+}
+
+module FunnyDB.Swift {
+    header "FunnyDB-Swift.h"
+    requires objc
+}
