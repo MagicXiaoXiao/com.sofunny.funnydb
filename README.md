@@ -6,7 +6,7 @@ FunnyDB 数据采集 Unity 引擎插件包，提供各项功能服务支持。
 ## 安装
 - 使用 Unity Package Manager 面板形式
 
-  1. 复制仓库地址以及相应 Tag 标签连接，如：https://git.sofunny.io/platform/com.sofunny.funnydb.git#0.46.0
+  1. 复制仓库地址以及相应 Tag 标签连接，如：https://git.sofunny.io/data-analysis/com.sofunny.funnydb.git#0.8.0
 
   2. 打开 Unity 项目的 Unity Package Manager 面板。
 
@@ -25,9 +25,9 @@ FunnyDB 数据采集 Unity 引擎插件包，提供各项功能服务支持。
      ![手动步骤1](Imgs~/upm_step2-1.png)
 
 - 手动集成形式
-  1. 下载 [Releases](https://git.sofunny.io/platform/com.sofunny.funnydb/-/releases) 下的包，将其内容解压至 Unity 项目中的 Packages 目录下即可。
+  1. 下载 [Releases](https://git.sofunny.io/data-analysis/com.sofunny.funnydb/-/releases) 下的包，将其内容解压至 Unity 项目中的 Packages 目录下即可。
 
-     注：如解压后 com.sofunny.funnydb 文件夹带有版本号则需移除掉版本号。(如下图示例)
+     注：解压后 com.sofunny.funnydb 文件夹带有版本号可更具需要移除掉版本号。(如下图示例)
 
      ![手动集成步骤1](Imgs~/upm_step3.png)
 
