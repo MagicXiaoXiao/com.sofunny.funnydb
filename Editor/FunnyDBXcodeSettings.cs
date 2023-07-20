@@ -1,4 +1,5 @@
-#if UNITY_IOS && UNITY_EDITOR
+#if UNITY_IOS //&& !UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,19 +10,23 @@ using UnityEditor.Callbacks;
 using System.IO;
 using System.Linq;
 
-namespace SoFunny.FunnyDB {
+namespace SoFunny.FunnyDB.Editor
+{
 
-    public static class FunnyDBXcodeSettings {
+    public static class FunnyDBXcodeSettings
+    {
 
-        private const string FRAMEWORK_ORIGIN_PATH = "Assets/SoFunnySDK/FunnyDB/Editor/iOSDynamicSDK";
+        private const string FRAMEWORK_ORIGIN_PATH = "Packages/com.sofunny.funnydb/Editor/iOSDynamicSDK";
 
         private const string FRAMEWORK_TARGET_PATH = "FunnyDBFrameworks";
 
-        private static string[] SDKNames = new string[] {"FunnyDBDebugTools.framework"};
+        private static string[] SDKNames = new string[] { "FunnyDBDebugTools.framework" };
 
         [PostProcessBuild(999)]
-        public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject) {
-            if (target != BuildTarget.iOS) {
+        public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
+        {
+            if (target != BuildTarget.iOS)
+            {
                 return;
             }
 
@@ -49,7 +54,7 @@ namespace SoFunny.FunnyDB {
             //    proj.SetBuildProperty(projectTargetGUID, "OTHER_LDFLAGS", "-ObjC");
             //}
 
-            if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSXcodeBuildConfig == XcodeBuildConfig.Debug)
+            if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSBuildConfigType == iOSBuildType.Debug)
             {
                 proj.AddBuildProperty(projectTargetGUID, "FRAMEWORK_SEARCH_PATHS", $"$(PROJECT_DIR)/{FRAMEWORK_TARGET_PATH}");
 
@@ -77,14 +82,17 @@ namespace SoFunny.FunnyDB {
         /// </summary>
         /// <param name="source"></param>
         /// <param name="destination"></param>
-        private static void Copy(string source, string destination) {
+        private static void Copy(string source, string destination)
+        {
             // Clean up any existing unity plugins or old from previous build...
             var dirPath = Path.GetDirectoryName(destination);
-            if (!Directory.Exists(dirPath)) {
+            if (!Directory.Exists(dirPath))
+            {
                 Directory.CreateDirectory(dirPath);
             }
 
-            if (Directory.Exists(destination)) {
+            if (Directory.Exists(destination))
+            {
                 Directory.Delete(destination, true);
             }
 
@@ -98,20 +106,24 @@ namespace SoFunny.FunnyDB {
         /// <summary>
         /// Private recursive method to remove .meta files from a directory and all of it's sub directories.
         /// </summary>
-        private static void RecursiveCleanupMetaFiles(DirectoryInfo directory) {
+        private static void RecursiveCleanupMetaFiles(DirectoryInfo directory)
+        {
 
             var directories = directory.GetDirectories();
             var files = directory.GetFiles();
 
-            foreach (var file in files) {
+            foreach (var file in files)
+            {
                 // File is a Unity meta file, clean it up...
-                if (file.Extension == ".meta") {
+                if (file.Extension == ".meta")
+                {
                     FileUtil.DeleteFileOrDirectory(file.FullName);
                 }
             }
 
             // Recurse...
-            foreach (var subdirectory in directories) {
+            foreach (var subdirectory in directories)
+            {
                 RecursiveCleanupMetaFiles(subdirectory);
             }
         }
@@ -119,7 +131,5 @@ namespace SoFunny.FunnyDB {
     }
 
 }
-
-
 
 #endif

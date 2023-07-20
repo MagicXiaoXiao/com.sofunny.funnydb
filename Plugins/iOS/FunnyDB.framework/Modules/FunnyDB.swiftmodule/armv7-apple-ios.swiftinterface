@@ -1423,6 +1423,9 @@ extension FunnyDB.Collation : Swift.CustomStringConvertible {
     get
   }
 }
+public protocol EventBehaviourProtocol {
+  func track(_ type: FunnyDB.EventType)
+}
 public enum FunnyDBReportType {
   case now
   case delay
@@ -1471,13 +1474,6 @@ public enum FunnyDBStatus {
   public static func clearUserID()
   public static func setChannel(_ value: Swift.String)
   @objc deinit
-}
-public enum FunnyDBManager {
-  public static var isSetupFinished: Swift.Bool {
-    get
-  }
-  public static func initializeSDK(accessKeyID: Swift.String, accessKeySecret: Swift.String, endPoint: Swift.String? = nil)
-  public static func testInit()
 }
 @_hasMissingDesignatedInitializers public class FunnyDBConfig {
   final public let accessKeyID: Swift.String
@@ -1693,6 +1689,10 @@ public struct Event {
   public static func track(_ type: FunnyDB.EventType)
   public static func flush()
 }
+public protocol ILogExternalProtocal {
+  var flag: Swift.String { get }
+  func tryConnectServer(handler: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
+}
 extension FunnyDB.ExpressionType where Self.UnderlyingType : FunnyDB.Value {
   public var distinct: FunnyDB.Expression<Self.UnderlyingType> {
     get
@@ -1748,6 +1748,22 @@ extension FunnyDB.ExpressionType where Self.UnderlyingType : FunnyDB._OptionalTy
   }
 }
 public func count(_ star: (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> FunnyDB.Expression<Swift.Int>
+public protocol InternalLogConfig {
+  var keyID: Swift.String { get }
+  var keySecret: Swift.String { get }
+  var serverURL: Swift.String { get }
+  var userID: Swift.String { get }
+  var deviceID: Swift.String { get }
+  var deviceModel: Swift.String { get }
+  var sdkVersion: Swift.String { get }
+  var osPlatform: Swift.String { get }
+  var osVersion: Swift.String { get }
+  var screenWidth: Swift.String { get }
+  var screenHeight: Swift.String { get }
+  var networkType: Swift.String { get }
+  var carrier: Swift.String { get }
+  var manufacturer: Swift.String { get }
+}
 public protocol QueryType : FunnyDB.Expressible {
   var clauses: FunnyDB.QueryClauses { get set }
   init(_ name: Swift.String, database: Swift.String?)
@@ -1922,10 +1938,10 @@ public enum OnConflict : Swift.String {
 public struct QueryClauses {
 }
 public protocol InternalMessageLogProtocol {
-  func dbDidInit(_ config: FunnyDB.FunnyDBConfig)
+  func dbSetup(service: FunnyDB.ILogExternalProtocal & FunnyDB.InternalLogConfig)
   func beginReport(req: FunnyDB.IFDBRequest)
-  func endReport(id: Swift.String, error: Swift.String)
-  func endReport(id: Swift.String, response: Foundation.HTTPURLResponse, body: Swift.String?)
+  func endReport(logID: Swift.String, error: Swift.String)
+  func endReport(logID: Swift.String, response: Foundation.HTTPURLResponse, body: Swift.String?)
 }
 public struct Blob {
   public let bytes: [Swift.UInt8]
@@ -1945,6 +1961,12 @@ extension FunnyDB.Connection {
   final public func createAggregation<T>(_ functionName: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, step: @escaping ([FunnyDB.Binding?], Swift.UnsafeMutablePointer<T>) -> Swift.Void, final: @escaping (Swift.UnsafeMutablePointer<T>) -> FunnyDB.Binding?, state: @escaping () -> Swift.UnsafeMutablePointer<T>)
   final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [FunnyDB.Binding?]) -> T, result: @escaping (T) -> FunnyDB.Binding?) where T : AnyObject
   final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [FunnyDB.Binding?]) -> T, result: @escaping (T) -> FunnyDB.Binding?)
+}
+@_hasMissingDesignatedInitializers public class EventCore {
+  @objc deinit
+}
+extension FunnyDB.EventCore : FunnyDB.EventBehaviourProtocol {
+  public func track(_ type: FunnyDB.EventType)
 }
 extension FunnyDB.ExpressionType where Self.UnderlyingType : FunnyDB.Number {
   public var absoluteValue: FunnyDB.Expression<Self.UnderlyingType> {
@@ -2135,6 +2157,12 @@ public enum QueryError : Swift.Error, Swift.CustomStringConvertible {
     get
   }
 }
+public enum FDBService {
+  public static var isSetupFinished: Swift.Bool {
+    get
+  }
+  public static func initializeSDK(accessKeyID: Swift.String, accessKeySecret: Swift.String, endPoint: Swift.String? = nil)
+}
 extension Foundation.Data : FunnyDB.Value {
   public static var declaredDatatype: Swift.String {
     get
@@ -2199,15 +2227,19 @@ public struct TimeStorage {
   public init(storagePolicy: FunnyDB.TimeStoragePolicy)
 }
 @_hasMissingDesignatedInitializers public class LogRequest : FunnyDB.IFDBRequest {
+  final public let keyID: Swift.String
   final public let startDate: Foundation.Date
   final public let request: Foundation.URLRequest
+  public var response: Foundation.HTTPURLResponse?
   final public let bodyString: Swift.String
+  final public let isTimer: Swift.Bool
   @objc deinit
 }
 public protocol IFDBRequest {
   var startDate: Foundation.Date { get }
   var request: Foundation.URLRequest { get }
   var bodyString: Swift.String { get }
+  var isTimer: Swift.Bool { get }
 }
 extension FunnyDB.IFDBRequest {
   public var id: Swift.String? {
