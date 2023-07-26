@@ -6,6 +6,6 @@ framework module FunnyDB {
 }
 
 module FunnyDB.Swift {
-    header "FunnyDB-Swift.h"
-    requires objc
+  header "FunnyDB-Swift.h"
+  requires objc
 }
