@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FunnyDB
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import CommonCrypto
 import CoreTelephony
 import Dispatch
@@ -13,6 +14,7 @@ import Swift
 import SystemConfiguration
 import UIKit
 import _Concurrency
+import _StringProcessing
 @_hasMissingDesignatedInitializers public class DateFunctions {
   public static func date(_ timestring: Swift.String, _ modifiers: Swift.String...) -> FunnyDB.Expression<Foundation.Date?>
   public static func time(_ timestring: Swift.String, _ modifiers: Swift.String...) -> FunnyDB.Expression<Foundation.Date?>
@@ -52,8 +54,8 @@ extension FunnyDB.Expression where Datatype == Foundation.Date {
 public protocol ExpressionType : FunnyDB.Expressible {
   associatedtype UnderlyingType = Swift.Void
   var template: Swift.String { get }
-  var bindings: [FunnyDB.Binding?] { get }
-  init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  var bindings: [(any FunnyDB.Binding)?] { get }
+  init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
 }
 extension FunnyDB.ExpressionType {
   public init(literal: Swift.String)
@@ -63,8 +65,8 @@ extension FunnyDB.ExpressionType {
 public struct Expression<Datatype> : FunnyDB.ExpressionType {
   public typealias UnderlyingType = Datatype
   public var template: Swift.String
-  public var bindings: [FunnyDB.Binding?]
-  public init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  public var bindings: [(any FunnyDB.Binding)?]
+  public init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
 }
 public protocol Expressible {
   var expression: FunnyDB.Expression<Swift.Void> { get }
@@ -76,10 +78,10 @@ extension FunnyDB.ExpressionType {
   public var expression: FunnyDB.Expression<Swift.Void> {
     get
   }
-  public var asc: FunnyDB.Expressible {
+  public var asc: any FunnyDB.Expressible {
     get
   }
-  public var desc: FunnyDB.Expressible {
+  public var desc: any FunnyDB.Expressible {
     get
   }
 }
@@ -114,18 +116,18 @@ public func cast<T, U>(_ expression: FunnyDB.Expression<T?>) -> FunnyDB.Expressi
     get
     set
   }
-  final public func bind(_ values: FunnyDB.Binding?...) -> FunnyDB.Statement
-  final public func bind(_ values: [FunnyDB.Binding?]) -> FunnyDB.Statement
-  final public func bind(_ values: [Swift.String : FunnyDB.Binding?]) -> FunnyDB.Statement
+  final public func bind(_ values: (any FunnyDB.Binding)?...) -> FunnyDB.Statement
+  final public func bind(_ values: [(any FunnyDB.Binding)?]) -> FunnyDB.Statement
+  final public func bind(_ values: [Swift.String : (any FunnyDB.Binding)?]) -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ bindings: FunnyDB.Binding?...) throws -> FunnyDB.Statement
+  final public func run(_ bindings: (any FunnyDB.Binding)?...) throws -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ bindings: [FunnyDB.Binding?]) throws -> FunnyDB.Statement
+  final public func run(_ bindings: [(any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ bindings: [Swift.String : FunnyDB.Binding?]) throws -> FunnyDB.Statement
-  final public func scalar(_ bindings: FunnyDB.Binding?...) throws -> FunnyDB.Binding?
-  final public func scalar(_ bindings: [FunnyDB.Binding?]) throws -> FunnyDB.Binding?
-  final public func scalar(_ bindings: [Swift.String : FunnyDB.Binding?]) throws -> FunnyDB.Binding?
+  final public func run(_ bindings: [Swift.String : (any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
+  final public func scalar(_ bindings: (any FunnyDB.Binding)?...) throws -> (any FunnyDB.Binding)?
+  final public func scalar(_ bindings: [(any FunnyDB.Binding)?]) throws -> (any FunnyDB.Binding)?
+  final public func scalar(_ bindings: [Swift.String : (any FunnyDB.Binding)?]) throws -> (any FunnyDB.Binding)?
   final public func step() throws -> Swift.Bool
 }
 extension FunnyDB.Statement : Swift.Sequence {
@@ -142,8 +144,8 @@ extension Swift.Array {
   public init<I>(_ failableIterator: I) throws where Element == I.Element, I : FunnyDB.FailableIterator
 }
 extension FunnyDB.Statement : FunnyDB.FailableIterator {
-  public typealias Element = [FunnyDB.Binding?]
-  final public func failableNext() throws -> [FunnyDB.Binding?]?
+  public typealias Element = [(any FunnyDB.Binding)?]
+  final public func failableNext() throws -> [(any FunnyDB.Binding)?]?
 }
 extension FunnyDB.Statement {
   final public func prepareRowIterator() -> FunnyDB.RowIterator
@@ -174,12 +176,12 @@ public struct Cursor {
   }
 }
 extension FunnyDB.Cursor : Swift.Sequence {
-  public subscript(idx: Swift.Int) -> FunnyDB.Binding? {
+  public subscript(idx: Swift.Int) -> (any FunnyDB.Binding)? {
     get
   }
-  public func makeIterator() -> Swift.AnyIterator<FunnyDB.Binding?>
-  public typealias Element = FunnyDB.Binding?
-  public typealias Iterator = Swift.AnyIterator<FunnyDB.Binding?>
+  public func makeIterator() -> Swift.AnyIterator<(any FunnyDB.Binding)?>
+  public typealias Element = (any FunnyDB.Binding)?
+  public typealias Iterator = Swift.AnyIterator<(any FunnyDB.Binding)?>
 }
 @propertyWrapper public struct MinAndMax<T> where T : Swift.Comparable {
   public var wrappedValue: T {
@@ -201,25 +203,25 @@ extension FunnyDB.SchemaType {
 }
 extension FunnyDB.Table {
   public func create(temporary: Swift.Bool = false, ifNotExists: Swift.Bool = false, withoutRowid: Swift.Bool = false, block: (FunnyDB.TableBuilder) -> Swift.Void) -> Swift.String
-  public func create(_ query: FunnyDB.QueryType, temporary: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
+  public func create(_ query: any FunnyDB.QueryType, temporary: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
   public func addColumn<V>(_ name: FunnyDB.Expression<V>, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: V) -> Swift.String where V : FunnyDB.Value
   public func addColumn<V>(_ name: FunnyDB.Expression<V>, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: V) -> Swift.String where V : FunnyDB.Value
   public func addColumn<V>(_ name: FunnyDB.Expression<V?>, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: V? = nil) -> Swift.String where V : FunnyDB.Value
   public func addColumn<V>(_ name: FunnyDB.Expression<V?>, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: V? = nil) -> Swift.String where V : FunnyDB.Value
-  public func addColumn<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  public func addColumn<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  public func addColumn<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  public func addColumn<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  public func addColumn<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  public func addColumn<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  public func addColumn<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  public func addColumn<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.Int64
   public func addColumn<V>(_ name: FunnyDB.Expression<V>, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: V, collate: FunnyDB.Collation) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.String
   public func addColumn<V>(_ name: FunnyDB.Expression<V>, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: V, collate: FunnyDB.Collation) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.String
   public func addColumn<V>(_ name: FunnyDB.Expression<V?>, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: V? = nil, collate: FunnyDB.Collation) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.String
   public func addColumn<V>(_ name: FunnyDB.Expression<V?>, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: V? = nil, collate: FunnyDB.Collation) -> Swift.String where V : FunnyDB.Value, V.Datatype == Swift.String
   public func rename(_ to: FunnyDB.Table) -> Swift.String
-  public func createIndex(_ columns: FunnyDB.Expressible..., unique: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
-  public func dropIndex(_ columns: FunnyDB.Expressible..., ifExists: Swift.Bool = false) -> Swift.String
+  public func createIndex(_ columns: any FunnyDB.Expressible..., unique: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
+  public func dropIndex(_ columns: any FunnyDB.Expressible..., ifExists: Swift.Bool = false) -> Swift.String
 }
 extension FunnyDB.View {
-  public func create(_ query: FunnyDB.QueryType, temporary: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
+  public func create(_ query: any FunnyDB.QueryType, temporary: Swift.Bool = false, ifNotExists: Swift.Bool = false) -> Swift.String
   public func drop(ifExists: Swift.Bool = false) -> Swift.String
 }
 extension FunnyDB.VirtualTable {
@@ -241,14 +243,14 @@ extension FunnyDB.VirtualTable {
   final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: FunnyDB.Expression<V>? = nil) where V : FunnyDB.Value
   final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: FunnyDB.PrimaryKey, check: FunnyDB.Expression<Swift.Bool>? = nil) where V : FunnyDB.Value, V.Datatype == Swift.Int64
   final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: FunnyDB.PrimaryKey, check: FunnyDB.Expression<Swift.Bool?>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V?>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
-  final public func column<V>(_ name: FunnyDB.Expression<V?>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V?>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V?>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool>? = nil, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
+  final public func column<V>(_ name: FunnyDB.Expression<V?>, primaryKey: Swift.Bool, check: FunnyDB.Expression<Swift.Bool?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<V>) where V : FunnyDB.Value, V.Datatype == Swift.Int64
   final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: FunnyDB.Expression<V>? = nil, collate: FunnyDB.Collation) where V : FunnyDB.Value, V.Datatype == Swift.String
   final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool>? = nil, defaultValue: V, collate: FunnyDB.Collation) where V : FunnyDB.Value, V.Datatype == Swift.String
   final public func column<V>(_ name: FunnyDB.Expression<V>, unique: Swift.Bool = false, check: FunnyDB.Expression<Swift.Bool?>, defaultValue: FunnyDB.Expression<V>? = nil, collate: FunnyDB.Collation) where V : FunnyDB.Value, V.Datatype == Swift.String
@@ -263,8 +265,8 @@ extension FunnyDB.VirtualTable {
   final public func primaryKey<T, U>(_ compositeA: FunnyDB.Expression<T>, _ expr: FunnyDB.Expression<U>) where T : FunnyDB.Value, U : FunnyDB.Value
   final public func primaryKey<T, U, V>(_ compositeA: FunnyDB.Expression<T>, _ expr1: FunnyDB.Expression<U>, _ expr2: FunnyDB.Expression<V>) where T : FunnyDB.Value, U : FunnyDB.Value, V : FunnyDB.Value
   final public func primaryKey<T, U, V, W>(_ compositeA: FunnyDB.Expression<T>, _ expr1: FunnyDB.Expression<U>, _ expr2: FunnyDB.Expression<V>, _ expr3: FunnyDB.Expression<W>) where T : FunnyDB.Value, U : FunnyDB.Value, V : FunnyDB.Value, W : FunnyDB.Value
-  final public func unique(_ columns: FunnyDB.Expressible...)
-  final public func unique(_ columns: [FunnyDB.Expressible])
+  final public func unique(_ columns: any FunnyDB.Expressible...)
+  final public func unique(_ columns: [any FunnyDB.Expressible])
   final public func check(_ condition: FunnyDB.Expression<Swift.Bool>)
   final public func check(_ condition: FunnyDB.Expression<Swift.Bool?>)
   public enum Dependency : Swift.String {
@@ -279,10 +281,10 @@ extension FunnyDB.VirtualTable {
       get
     }
   }
-  final public func foreignKey<T>(_ column: FunnyDB.Expression<T>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<T>, update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value
-  final public func foreignKey<T>(_ column: FunnyDB.Expression<T?>, references table: FunnyDB.QueryType, _ other: FunnyDB.Expression<T>, update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value
-  final public func foreignKey<T, U>(_ composite: (FunnyDB.Expression<T>, FunnyDB.Expression<U>), references table: FunnyDB.QueryType, _ other: (FunnyDB.Expression<T>, FunnyDB.Expression<U>), update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value, U : FunnyDB.Value
-  final public func foreignKey<T, U, V>(_ composite: (FunnyDB.Expression<T>, FunnyDB.Expression<U>, FunnyDB.Expression<V>), references table: FunnyDB.QueryType, _ other: (FunnyDB.Expression<T>, FunnyDB.Expression<U>, FunnyDB.Expression<V>), update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value, U : FunnyDB.Value, V : FunnyDB.Value
+  final public func foreignKey<T>(_ column: FunnyDB.Expression<T>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<T>, update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value
+  final public func foreignKey<T>(_ column: FunnyDB.Expression<T?>, references table: any FunnyDB.QueryType, _ other: FunnyDB.Expression<T>, update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value
+  final public func foreignKey<T, U>(_ composite: (FunnyDB.Expression<T>, FunnyDB.Expression<U>), references table: any FunnyDB.QueryType, _ other: (FunnyDB.Expression<T>, FunnyDB.Expression<U>), update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value, U : FunnyDB.Value
+  final public func foreignKey<T, U, V>(_ composite: (FunnyDB.Expression<T>, FunnyDB.Expression<U>, FunnyDB.Expression<V>), references table: any FunnyDB.QueryType, _ other: (FunnyDB.Expression<T>, FunnyDB.Expression<U>, FunnyDB.Expression<V>), update: FunnyDB.TableBuilder.Dependency? = nil, delete: FunnyDB.TableBuilder.Dependency? = nil) where T : FunnyDB.Value, U : FunnyDB.Value, V : FunnyDB.Value
   @objc deinit
 }
 public enum PrimaryKey {
@@ -295,7 +297,7 @@ public enum PrimaryKey {
   }
 }
 public struct Module {
-  public init(_ name: Swift.String, _ arguments: [FunnyDB.Expressible])
+  public init(_ name: Swift.String, _ arguments: [any FunnyDB.Expressible])
 }
 extension FunnyDB.Module : FunnyDB.Expressible {
   public var expression: FunnyDB.Expression<Swift.Void> {
@@ -341,20 +343,20 @@ final public class Connection {
     set
   }
   final public func execute(_ SQL: Swift.String) throws
-  final public func prepare(_ statement: Swift.String, _ bindings: FunnyDB.Binding?...) throws -> FunnyDB.Statement
-  final public func prepare(_ statement: Swift.String, _ bindings: [FunnyDB.Binding?]) throws -> FunnyDB.Statement
-  final public func prepare(_ statement: Swift.String, _ bindings: [Swift.String : FunnyDB.Binding?]) throws -> FunnyDB.Statement
+  final public func prepare(_ statement: Swift.String, _ bindings: (any FunnyDB.Binding)?...) throws -> FunnyDB.Statement
+  final public func prepare(_ statement: Swift.String, _ bindings: [(any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
+  final public func prepare(_ statement: Swift.String, _ bindings: [Swift.String : (any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ statement: Swift.String, _ bindings: FunnyDB.Binding?...) throws -> FunnyDB.Statement
+  final public func run(_ statement: Swift.String, _ bindings: (any FunnyDB.Binding)?...) throws -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ statement: Swift.String, _ bindings: [FunnyDB.Binding?]) throws -> FunnyDB.Statement
+  final public func run(_ statement: Swift.String, _ bindings: [(any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
   @discardableResult
-  final public func run(_ statement: Swift.String, _ bindings: [Swift.String : FunnyDB.Binding?]) throws -> FunnyDB.Statement
+  final public func run(_ statement: Swift.String, _ bindings: [Swift.String : (any FunnyDB.Binding)?]) throws -> FunnyDB.Statement
   @discardableResult
   final public func vacuum() throws -> FunnyDB.Statement
-  final public func scalar(_ statement: Swift.String, _ bindings: FunnyDB.Binding?...) throws -> FunnyDB.Binding?
-  final public func scalar(_ statement: Swift.String, _ bindings: [FunnyDB.Binding?]) throws -> FunnyDB.Binding?
-  final public func scalar(_ statement: Swift.String, _ bindings: [Swift.String : FunnyDB.Binding?]) throws -> FunnyDB.Binding?
+  final public func scalar(_ statement: Swift.String, _ bindings: (any FunnyDB.Binding)?...) throws -> (any FunnyDB.Binding)?
+  final public func scalar(_ statement: Swift.String, _ bindings: [(any FunnyDB.Binding)?]) throws -> (any FunnyDB.Binding)?
+  final public func scalar(_ statement: Swift.String, _ bindings: [Swift.String : (any FunnyDB.Binding)?]) throws -> (any FunnyDB.Binding)?
   public enum TransactionMode : Swift.String {
     case deferred
     case immediate
@@ -377,7 +379,7 @@ final public class Connection {
   final public func updateHook(_ callback: ((_ operation: FunnyDB.Connection.Operation, _ db: Swift.String, _ table: Swift.String, _ rowid: Swift.Int64) -> Swift.Void)?)
   final public func commitHook(_ callback: (() throws -> Swift.Void)?)
   final public func rollbackHook(_ callback: (() -> Swift.Void)?)
-  final public func createFunction(_ functionName: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, _ block: @escaping (_ args: [FunnyDB.Binding?]) -> FunnyDB.Binding?)
+  final public func createFunction(_ functionName: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, _ block: @escaping (_ args: [(any FunnyDB.Binding)?]) -> (any FunnyDB.Binding)?)
   final public func createCollation(_ collation: Swift.String, _ block: @escaping (_ lhs: Swift.String, _ rhs: Swift.String) -> Foundation.ComparisonResult) throws
   final public func backup(databaseName: FunnyDB.Backup.DatabaseName = .main, usingConnection targetConnection: FunnyDB.Connection, andDatabaseName targetDatabaseName: FunnyDB.Backup.DatabaseName = .main) throws -> FunnyDB.Backup
 }
@@ -909,19 +911,19 @@ public struct Attributes {
   final public class func allItems(_ itemClass: FunnyDB.ItemClass) -> [[Swift.String : Any]]
   final public func allItems() -> [[Swift.String : Any]]
   @available(iOS 8.0, *)
-  final public func getSharedPassword(_ completion: @escaping (_ account: Swift.String?, _ password: Swift.String?, _ error: Swift.Error?) -> () = { account, password, error -> () in })
+  final public func getSharedPassword(_ completion: @escaping (_ account: Swift.String?, _ password: Swift.String?, _ error: (any Swift.Error)?) -> () = { account, password, error -> () in })
   @available(iOS 8.0, *)
-  final public func getSharedPassword(_ account: Swift.String, completion: @escaping (_ password: Swift.String?, _ error: Swift.Error?) -> () = { password, error -> () in })
+  final public func getSharedPassword(_ account: Swift.String, completion: @escaping (_ password: Swift.String?, _ error: (any Swift.Error)?) -> () = { password, error -> () in })
   @available(iOS 8.0, *)
-  final public func setSharedPassword(_ password: Swift.String, account: Swift.String, completion: @escaping (_ error: Swift.Error?) -> () = { e -> () in })
+  final public func setSharedPassword(_ password: Swift.String, account: Swift.String, completion: @escaping (_ error: (any Swift.Error)?) -> () = { e -> () in })
   @available(iOS 8.0, *)
-  final public func removeSharedPassword(_ account: Swift.String, completion: @escaping (_ error: Swift.Error?) -> () = { e -> () in })
+  final public func removeSharedPassword(_ account: Swift.String, completion: @escaping (_ error: (any Swift.Error)?) -> () = { e -> () in })
   @available(iOS 8.0, *)
-  final public class func requestSharedWebCredential(_ completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: Swift.Error?) -> () = { credentials, error -> () in })
+  final public class func requestSharedWebCredential(_ completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: (any Swift.Error)?) -> () = { credentials, error -> () in })
   @available(iOS 8.0, *)
-  final public class func requestSharedWebCredential(domain: Swift.String, completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: Swift.Error?) -> () = { credentials, error -> () in })
+  final public class func requestSharedWebCredential(domain: Swift.String, completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: (any Swift.Error)?) -> () = { credentials, error -> () in })
   @available(iOS 8.0, *)
-  final public class func requestSharedWebCredential(domain: Swift.String, account: Swift.String, completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: Swift.Error?) -> () = { credentials, error -> () in })
+  final public class func requestSharedWebCredential(domain: Swift.String, account: Swift.String, completion: @escaping (_ credentials: [[Swift.String : Swift.String]], _ error: (any Swift.Error)?) -> () = { credentials, error -> () in })
   @available(iOS 8.0, *)
   final public class func generatePassword() -> Swift.String
   @objc deinit
@@ -1512,15 +1514,15 @@ extension FunnyDB.FunnyDBConfig {
   public func makeLinkStatusRequest() -> Foundation.URLRequest
 }
 extension FunnyDB.QueryType {
-  public func insert(_ encodable: Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
-  public func insert(or onConflict: FunnyDB.OnConflict, encodable: Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
-  public func insertMany(_ encodables: [Swift.Encodable], userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
-  public func upsert(_ encodable: Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = [], onConflictOf conflicting: FunnyDB.Expressible) throws -> FunnyDB.Insert
-  public func update(_ encodable: Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Update
+  public func insert(_ encodable: any Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
+  public func insert(or onConflict: FunnyDB.OnConflict, encodable: any Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
+  public func insertMany(_ encodables: [any Swift.Encodable], userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Insert
+  public func upsert(_ encodable: any Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = [], onConflictOf conflicting: any FunnyDB.Expressible) throws -> FunnyDB.Insert
+  public func update(_ encodable: any Swift.Encodable, userInfo: [Swift.CodingUserInfoKey : Any] = [:], otherSetters: [FunnyDB.Setter] = []) throws -> FunnyDB.Update
 }
 extension FunnyDB.Row {
   public func decode<V>(userInfo: [Swift.CodingUserInfoKey : Any] = [:]) throws -> V where V : Swift.Decodable
-  public func decoder(userInfo: [Swift.CodingUserInfoKey : Any] = [:]) -> Swift.Decoder
+  public func decoder(userInfo: [Swift.CodingUserInfoKey : Any] = [:]) -> any Swift.Decoder
 }
 public struct Constant {
   public static let SDKVersion: Swift.String
@@ -1667,8 +1669,8 @@ extension Swift.Int : FunnyDB.Number, FunnyDB.Value {
   public typealias Datatype = Swift.Int64
   public typealias ValueType = Swift.Int
 }
-public typealias Star = (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>
-public func * (_: FunnyDB.Expression<FunnyDB.Binding>?, _: FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>
+public typealias Star = (FunnyDB.Expression<any FunnyDB.Binding>?, FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>
+public func * (_: FunnyDB.Expression<any FunnyDB.Binding>?, _: FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>
 public protocol _OptionalType {
   associatedtype WrappedType
 }
@@ -1691,7 +1693,7 @@ public struct Event {
 }
 public protocol ILogExternalProtocal {
   var flag: Swift.String { get }
-  func tryConnectServer(handler: ((Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void)?)
+  func tryConnectServer(handler: ((Foundation.Data?, Foundation.URLResponse?, (any Swift.Error)?) -> Swift.Void)?)
 }
 extension FunnyDB.ExpressionType where Self.UnderlyingType : FunnyDB.Value {
   public var distinct: FunnyDB.Expression<Self.UnderlyingType> {
@@ -1747,7 +1749,7 @@ extension FunnyDB.ExpressionType where Self.UnderlyingType : FunnyDB._OptionalTy
     get
   }
 }
-public func count(_ star: (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> FunnyDB.Expression<Swift.Int>
+public func count(_ star: (FunnyDB.Expression<any FunnyDB.Binding>?, FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> FunnyDB.Expression<Swift.Int>
 public protocol InternalLogConfig {
   var keyID: Swift.String { get }
   var keySecret: Swift.String { get }
@@ -1772,12 +1774,12 @@ public protocol SchemaType : FunnyDB.QueryType {
   static var identifier: Swift.String { get }
 }
 extension FunnyDB.SchemaType {
-  public func select(_ column1: FunnyDB.Expressible, _ more: FunnyDB.Expressible...) -> Self
-  public func select(distinct column1: FunnyDB.Expressible, _ more: FunnyDB.Expressible...) -> Self
-  public func select(_ all: [FunnyDB.Expressible]) -> Self
-  public func select(distinct columns: [FunnyDB.Expressible]) -> Self
-  public func select(_ star: (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> Self
-  public func select(distinct star: (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> Self
+  public func select(_ column1: any FunnyDB.Expressible, _ more: any FunnyDB.Expressible...) -> Self
+  public func select(distinct column1: any FunnyDB.Expressible, _ more: any FunnyDB.Expressible...) -> Self
+  public func select(_ all: [any FunnyDB.Expressible]) -> Self
+  public func select(distinct columns: [any FunnyDB.Expressible]) -> Self
+  public func select(_ star: (FunnyDB.Expression<any FunnyDB.Binding>?, FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> Self
+  public func select(distinct star: (FunnyDB.Expression<any FunnyDB.Binding>?, FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> Self
   public func select<V>(_ column: FunnyDB.Expression<V>) -> FunnyDB.ScalarQuery<V> where V : FunnyDB.Value
   public func select<V>(_ column: FunnyDB.Expression<V?>) -> FunnyDB.ScalarQuery<V?> where V : FunnyDB.Value
   public func select<V>(distinct column: FunnyDB.Expression<V>) -> FunnyDB.ScalarQuery<V> where V : FunnyDB.Value
@@ -1787,23 +1789,23 @@ extension FunnyDB.SchemaType {
   }
 }
 extension FunnyDB.QueryType {
-  public func union(_ table: FunnyDB.QueryType) -> Self
-  public func join(_ table: FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool>) -> Self
-  public func join(_ table: FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool?>) -> Self
-  public func join(_ type: FunnyDB.JoinType, _ table: FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool>) -> Self
-  public func join(_ type: FunnyDB.JoinType, _ table: FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool?>) -> Self
+  public func union(_ table: any FunnyDB.QueryType) -> Self
+  public func join(_ table: any FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool>) -> Self
+  public func join(_ table: any FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool?>) -> Self
+  public func join(_ type: FunnyDB.JoinType, _ table: any FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool>) -> Self
+  public func join(_ type: FunnyDB.JoinType, _ table: any FunnyDB.QueryType, on condition: FunnyDB.Expression<Swift.Bool?>) -> Self
   public func filter(_ predicate: FunnyDB.Expression<Swift.Bool>) -> Self
   public func filter(_ predicate: FunnyDB.Expression<Swift.Bool?>) -> Self
   public func `where`(_ predicate: FunnyDB.Expression<Swift.Bool>) -> Self
   public func `where`(_ predicate: FunnyDB.Expression<Swift.Bool?>) -> Self
-  public func group(_ by: FunnyDB.Expressible...) -> Self
-  public func group(_ by: [FunnyDB.Expressible]) -> Self
-  public func group(_ by: FunnyDB.Expressible, having: FunnyDB.Expression<Swift.Bool>) -> Self
-  public func group(_ by: FunnyDB.Expressible, having: FunnyDB.Expression<Swift.Bool?>) -> Self
-  public func group(_ by: [FunnyDB.Expressible], having: FunnyDB.Expression<Swift.Bool>) -> Self
-  public func group(_ by: [FunnyDB.Expressible], having: FunnyDB.Expression<Swift.Bool?>) -> Self
-  public func order(_ by: FunnyDB.Expressible...) -> Self
-  public func order(_ by: [FunnyDB.Expressible]) -> Self
+  public func group(_ by: any FunnyDB.Expressible...) -> Self
+  public func group(_ by: [any FunnyDB.Expressible]) -> Self
+  public func group(_ by: any FunnyDB.Expressible, having: FunnyDB.Expression<Swift.Bool>) -> Self
+  public func group(_ by: any FunnyDB.Expressible, having: FunnyDB.Expression<Swift.Bool?>) -> Self
+  public func group(_ by: [any FunnyDB.Expressible], having: FunnyDB.Expression<Swift.Bool>) -> Self
+  public func group(_ by: [any FunnyDB.Expressible], having: FunnyDB.Expression<Swift.Bool?>) -> Self
+  public func order(_ by: any FunnyDB.Expressible...) -> Self
+  public func order(_ by: [any FunnyDB.Expressible]) -> Self
   public func limit(_ length: Swift.Int?) -> Self
   public func limit(_ length: Swift.Int, offset: Swift.Int) -> Self
   public func alias(_ aliasName: Swift.String) -> Self
@@ -1815,11 +1817,11 @@ extension FunnyDB.QueryType {
   public func insertMany(or onConflict: FunnyDB.OnConflict, _ values: [[FunnyDB.Setter]]) -> FunnyDB.Insert
   public func insertMany(or onConflict: FunnyDB.OnConflict, _ values: [FunnyDB.Setter]...) -> FunnyDB.Insert
   public func insert() -> FunnyDB.Insert
-  public func insert(_ query: FunnyDB.QueryType) -> FunnyDB.Update
-  public func upsert(_ insertValues: FunnyDB.Setter..., onConflictOf conflicting: FunnyDB.Expressible) -> FunnyDB.Insert
-  public func upsert(_ insertValues: [FunnyDB.Setter], onConflictOf conflicting: FunnyDB.Expressible) -> FunnyDB.Insert
-  public func upsert(_ insertValues: FunnyDB.Setter..., onConflictOf conflicting: FunnyDB.Expressible, set setValues: [FunnyDB.Setter]) -> FunnyDB.Insert
-  public func upsert(_ insertValues: [FunnyDB.Setter], onConflictOf conflicting: FunnyDB.Expressible, set setValues: [FunnyDB.Setter]) -> FunnyDB.Insert
+  public func insert(_ query: any FunnyDB.QueryType) -> FunnyDB.Update
+  public func upsert(_ insertValues: FunnyDB.Setter..., onConflictOf conflicting: any FunnyDB.Expressible) -> FunnyDB.Insert
+  public func upsert(_ insertValues: [FunnyDB.Setter], onConflictOf conflicting: any FunnyDB.Expressible) -> FunnyDB.Insert
+  public func upsert(_ insertValues: FunnyDB.Setter..., onConflictOf conflicting: any FunnyDB.Expressible, set setValues: [FunnyDB.Setter]) -> FunnyDB.Insert
+  public func upsert(_ insertValues: [FunnyDB.Setter], onConflictOf conflicting: any FunnyDB.Expressible, set setValues: [FunnyDB.Setter]) -> FunnyDB.Insert
   public func update(_ values: FunnyDB.Setter...) -> FunnyDB.Update
   public func update(_ values: [FunnyDB.Setter]) -> FunnyDB.Update
   public func delete() -> FunnyDB.Delete
@@ -1833,7 +1835,7 @@ extension FunnyDB.QueryType {
   public subscript<T>(column: FunnyDB.Expression<T?>) -> FunnyDB.Expression<T?> {
     get
   }
-  public subscript(star: (FunnyDB.Expression<FunnyDB.Binding>?, FunnyDB.Expression<FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> FunnyDB.Expression<Swift.Void> {
+  public subscript(star: (FunnyDB.Expression<any FunnyDB.Binding>?, FunnyDB.Expression<any FunnyDB.Binding>?) -> FunnyDB.Expression<Swift.Void>) -> FunnyDB.Expression<Swift.Void> {
     get
   }
   public var expression: FunnyDB.Expression<Swift.Void> {
@@ -1861,26 +1863,26 @@ public struct ScalarQuery<V> : FunnyDB.QueryType {
 }
 public struct Select<T> : FunnyDB.ExpressionType {
   public var template: Swift.String
-  public var bindings: [FunnyDB.Binding?]
-  public init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  public var bindings: [(any FunnyDB.Binding)?]
+  public init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
   public typealias UnderlyingType = Swift.Void
 }
 public struct Insert : FunnyDB.ExpressionType {
   public var template: Swift.String
-  public var bindings: [FunnyDB.Binding?]
-  public init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  public var bindings: [(any FunnyDB.Binding)?]
+  public init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
   public typealias UnderlyingType = Swift.Void
 }
 public struct Update : FunnyDB.ExpressionType {
   public var template: Swift.String
-  public var bindings: [FunnyDB.Binding?]
-  public init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  public var bindings: [(any FunnyDB.Binding)?]
+  public init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
   public typealias UnderlyingType = Swift.Void
 }
 public struct Delete : FunnyDB.ExpressionType {
   public var template: Swift.String
-  public var bindings: [FunnyDB.Binding?]
-  public init(_ template: Swift.String, _ bindings: [FunnyDB.Binding?])
+  public var bindings: [(any FunnyDB.Binding)?]
+  public init(_ template: Swift.String, _ bindings: [(any FunnyDB.Binding)?])
   public typealias UnderlyingType = Swift.Void
 }
 public struct RowIterator : FunnyDB.FailableIterator {
@@ -1889,13 +1891,13 @@ public struct RowIterator : FunnyDB.FailableIterator {
   public func map<T>(_ transform: (FunnyDB.RowIterator.Element) throws -> T) throws -> [T]
 }
 extension FunnyDB.Connection {
-  final public func prepare(_ query: FunnyDB.QueryType) throws -> Swift.AnySequence<FunnyDB.Row>
-  final public func prepareRowIterator(_ query: FunnyDB.QueryType) throws -> FunnyDB.RowIterator
+  final public func prepare(_ query: any FunnyDB.QueryType) throws -> Swift.AnySequence<FunnyDB.Row>
+  final public func prepareRowIterator(_ query: any FunnyDB.QueryType) throws -> FunnyDB.RowIterator
   final public func scalar<V>(_ query: FunnyDB.ScalarQuery<V>) throws -> V where V : FunnyDB.Value
   final public func scalar<V>(_ query: FunnyDB.ScalarQuery<V?>) throws -> V.ValueType? where V : FunnyDB.Value
   final public func scalar<V>(_ query: FunnyDB.Select<V>) throws -> V where V : FunnyDB.Value
   final public func scalar<V>(_ query: FunnyDB.Select<V?>) throws -> V.ValueType? where V : FunnyDB.Value
-  final public func pluck(_ query: FunnyDB.QueryType) throws -> FunnyDB.Row?
+  final public func pluck(_ query: any FunnyDB.QueryType) throws -> FunnyDB.Row?
   @discardableResult
   final public func run(_ query: FunnyDB.Insert) throws -> Swift.Int64
   @discardableResult
@@ -1938,8 +1940,8 @@ public enum OnConflict : Swift.String {
 public struct QueryClauses {
 }
 public protocol InternalMessageLogProtocol {
-  func dbSetup(service: FunnyDB.ILogExternalProtocal & FunnyDB.InternalLogConfig)
-  func beginReport(req: FunnyDB.IFDBRequest)
+  func dbSetup(service: any FunnyDB.ILogExternalProtocal & FunnyDB.InternalLogConfig)
+  func beginReport(req: any FunnyDB.IFDBRequest)
   func endReport(logID: Swift.String, error: Swift.String)
   func endReport(logID: Swift.String, response: Foundation.HTTPURLResponse, body: Swift.String?)
 }
@@ -1958,9 +1960,9 @@ extension FunnyDB.Blob : Swift.Equatable {
 }
 public func == (lhs: FunnyDB.Blob, rhs: FunnyDB.Blob) -> Swift.Bool
 extension FunnyDB.Connection {
-  final public func createAggregation<T>(_ functionName: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, step: @escaping ([FunnyDB.Binding?], Swift.UnsafeMutablePointer<T>) -> Swift.Void, final: @escaping (Swift.UnsafeMutablePointer<T>) -> FunnyDB.Binding?, state: @escaping () -> Swift.UnsafeMutablePointer<T>)
-  final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [FunnyDB.Binding?]) -> T, result: @escaping (T) -> FunnyDB.Binding?) where T : AnyObject
-  final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [FunnyDB.Binding?]) -> T, result: @escaping (T) -> FunnyDB.Binding?)
+  final public func createAggregation<T>(_ functionName: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, step: @escaping ([(any FunnyDB.Binding)?], Swift.UnsafeMutablePointer<T>) -> Swift.Void, final: @escaping (Swift.UnsafeMutablePointer<T>) -> (any FunnyDB.Binding)?, state: @escaping () -> Swift.UnsafeMutablePointer<T>)
+  final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [(any FunnyDB.Binding)?]) -> T, result: @escaping (T) -> (any FunnyDB.Binding)?) where T : AnyObject
+  final public func createAggregation<T>(_ aggregate: Swift.String, argumentCount: Swift.UInt? = nil, deterministic: Swift.Bool = false, initialValue: T, reduce: @escaping (T, [(any FunnyDB.Binding)?]) -> T, result: @escaping (T) -> (any FunnyDB.Binding)?)
 }
 @_hasMissingDesignatedInitializers public class EventCore {
   @objc deinit
