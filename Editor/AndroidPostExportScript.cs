@@ -14,7 +14,7 @@ namespace SoFunny.FunnyDB.Editor {
     partial class AndroidGradleProcess : IPostGenerateGradleAndroidProject
     {
 
-        private const string AAR_ORIGIN_PATH = "Assets/SoFunnySDK/FunnyDB/Editor/Android";
+        private const string AAR_ORIGIN_PATH = "Packages/com.sofunny.funnydb/Editor/Android";
 
         private const string AAR_TARGET_PATH = "libs";
 
