@@ -1493,9 +1493,6 @@ public enum FunnyDBStatus {
   }
   final public let screenHeight: Swift.Float
   final public let screenWidth: Swift.Float
-  public var os: Swift.String {
-    get
-  }
   public var osPlatform: Swift.String? {
     get
   }
