@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using SoFunny.FunnyDB;
 
-
 public enum FDBExampleReportType {
     Event,
 
@@ -24,6 +23,8 @@ public class ReportUICell : MonoBehaviour
 
     public InputField nameLabel;
     public InputField contentLabel;
+    public InputField reportCntInputField;
+    private int repeatCnt = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -45,47 +46,57 @@ public class ReportUICell : MonoBehaviour
             default:
                 break;
         }
+        reportCntInputField?.onValueChanged.AddListener((v) =>
+        {
+            int.TryParse(v, out repeatCnt);
+        });
     }
 
     public void ReportEvent() {
-        try {
-            Hashtable hashtable = (Hashtable)MiniJSON.jsonDecode(contentLabel.text);
-            if (hashtable == null) {
-                hashtable = new Hashtable();
-            }
-            switch (type) {
-                case FDBExampleReportType.Event:
-                    FDBEvent.ReportEvent(nameLabel.text, hashtable);
-                    break;
-                case FDBExampleReportType.AddUser:
-                    FDBEvent.ReportAddUser(hashtable);
-                    break;
-                case FDBExampleReportType.AddDevice:
-                    FDBEvent.ReportAddDevice(hashtable);
-                    break;
-                case FDBExampleReportType.SetUser:
-                    FDBEvent.ReportSetUser(hashtable);
-                    break;
-                case FDBExampleReportType.SetDevice:
-                    FDBEvent.ReportSetDevice(hashtable);
-                    break;
-                case FDBExampleReportType.SetOnceUser:
-                    FDBEvent.ReportSetOnceUser(hashtable);
-                    break;
-                case FDBExampleReportType.SetOnceDevice:
-                    FDBEvent.ReportSetOnceDevice(hashtable);
-                    break;
-                default:
-                    break;
-            }
+        for (int i = 0; i < repeatCnt; i++)
+        {
+            try
+            {
+                Hashtable hashtable = (Hashtable)MiniJSON.jsonDecode(contentLabel.text);
+                if (hashtable == null)
+                {
+                    hashtable = new Hashtable();
+                }
+                switch (type)
+                {
+                    case FDBExampleReportType.Event:
+                        FDBEvent.ReportEvent(nameLabel.text, hashtable);
+                        break;
+                    case FDBExampleReportType.AddUser:
+                        FDBEvent.ReportAddUser(hashtable);
+                        break;
+                    case FDBExampleReportType.AddDevice:
+                        FDBEvent.ReportAddDevice(hashtable);
+                        break;
+                    case FDBExampleReportType.SetUser:
+                        FDBEvent.ReportSetUser(hashtable);
+                        break;
+                    case FDBExampleReportType.SetDevice:
+                        FDBEvent.ReportSetDevice(hashtable);
+                        break;
+                    case FDBExampleReportType.SetOnceUser:
+                        FDBEvent.ReportSetOnceUser(hashtable);
+                        break;
+                    case FDBExampleReportType.SetOnceDevice:
+                        FDBEvent.ReportSetOnceDevice(hashtable);
+                        break;
+                    default:
+                        break;
+                }
 
-            FunnyDBSDK.ShowFDBToast($"已发起上报 - {type}");
+                //FunnyDBSDK.ShowFDBToast($"已发起上报 - {type}");
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError(ex.Message);
+                FunnyDBSDK.ShowFDBToast($"上报出错- {ex.Message}");
+            }
         }
-        catch (System.Exception ex) {
-            Debug.LogError(ex.Message);
-            FunnyDBSDK.ShowFDBToast($"上报出错- {ex.Message}");
-        }
-
     }
 
 }
