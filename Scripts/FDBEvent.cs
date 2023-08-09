@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 
 
@@ -15,7 +16,7 @@ namespace SoFunny.FunnyDB {
             if (null == customTable) {
                 return;
             }
-            string userCustom = MiniJSON.jsonEncode(customTable);
+            string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.SET, userCustom);
         }
 
@@ -27,7 +28,7 @@ namespace SoFunny.FunnyDB {
             if (customTable == null) {
                 return;
             }
-            string userCustom = MiniJSON.jsonEncode(customTable);
+            string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.SET_ONCE, userCustom);
         }
 
@@ -39,7 +40,7 @@ namespace SoFunny.FunnyDB {
             if (null == customTable) {
                 return;
             }
-            string userCustom = MiniJSON.jsonEncode(customTable);
+            string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.ADD, userCustom);
         }
 
@@ -51,7 +52,7 @@ namespace SoFunny.FunnyDB {
             if (null == customTable) {
                 return;
             }
-            string deviceCustom = MiniJSON.jsonEncode(customTable);
+            string deviceCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.SET, deviceCustom);
         }
 
@@ -63,7 +64,7 @@ namespace SoFunny.FunnyDB {
             if (customTable == null) {
                 return;
             }
-            string userCustom = MiniJSON.jsonEncode(customTable);
+            string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.SET_ONCE, userCustom);
         }
 
@@ -75,7 +76,7 @@ namespace SoFunny.FunnyDB {
             if (null == customTable) {
                 return;
             }
-            string deviceCustom = MiniJSON.jsonEncode(customTable);
+            string deviceCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.ADD, deviceCustom);
         }
 
@@ -87,7 +88,7 @@ namespace SoFunny.FunnyDB {
         public static void ReportEvent(string eventName, Hashtable customTable) {
             string custom = string.Empty;
             if (null != customTable) {
-                custom = MiniJSON.jsonEncode(customTable);
+                custom = JsonConvert.SerializeObject(customTable);
             }
             FunnyDBAgent.ReportEvent(eventName, custom);
         }

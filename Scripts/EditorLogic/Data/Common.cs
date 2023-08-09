@@ -23,7 +23,7 @@ namespace SoFunny.FunnyDB {
             AccessKeySecret = accessKeySecret;
             if (string.IsNullOrEmpty(endPoint)) {
                 // default
-                Endpoint = "http://ingest.funnydb-staging.data-test.sofunny.io";
+                Endpoint = "http://ingest.funnydb-stage.funnydata.net";
             }
             else {
                 Endpoint = endPoint;

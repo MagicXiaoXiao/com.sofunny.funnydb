@@ -1,6 +1,6 @@
 using System;
-using System.Runtime.InteropServices;
-using UnityEngine;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
 
 /// <summary>
 /// FunnyDB Agent
@@ -28,7 +28,7 @@ namespace SoFunny.FunnyDB {
                 mIsInit = true;
             }
             else {
-                FunnyLogError("can't initialize more than once");
+                Logger.LogError("can't initialize more than once");
             }
 
         }
@@ -136,14 +136,6 @@ namespace SoFunny.FunnyDB {
 
         internal static void EnableDebug() {
             _enableDebug();
-        }
-
-        internal static void FunnyLog(String msg) {
-            Debug.Log(string.Format("[{0}]:{1}", mLogTag, msg));
-        }
-
-        internal static void FunnyLogError(String msg) {
-            Debug.LogWarning(string.Format("[{0}]:{1}", mLogTag, msg));
         }
 
         internal static void SetOAIDFileData(string data) {

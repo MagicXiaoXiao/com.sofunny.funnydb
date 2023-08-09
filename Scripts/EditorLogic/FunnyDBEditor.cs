@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine;
 /// <summary>
 /// Unity Editor Logic(Simple)
@@ -43,11 +44,11 @@ namespace SoFunny.FunnyDB {
             if (!mIsOpen) {
                 return;
             }
-            FunnyDBAgent.FunnyLog(string.Format("SetUserId: {0}", userId));
+            Logger.Log(string.Format("SetUserId: {0}", userId));
             DevicesInfo.UserId = userId;
             // auto setUser
             Hashtable properties = new Hashtable();
-            string userCustom = MiniJSON.jsonEncode(properties);
+            string userCustom = JsonConvert.SerializeObject(properties);
             ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.SET, userCustom);
         }
 
@@ -55,7 +56,7 @@ namespace SoFunny.FunnyDB {
             if (!mIsOpen) {
                 return;
             }
-            FunnyDBAgent.FunnyLog(string.Format("SetChannel: {0}", channel));
+            Logger.Log(string.Format("SetChannel: {0}", channel));
             DevicesInfo.Channel = channel;
         }
 
@@ -64,11 +65,11 @@ namespace SoFunny.FunnyDB {
             if (string.IsNullOrEmpty(deviceId)) { return; }
 
 
-            FunnyDBAgent.FunnyLog(string.Format("SetDeviceId: {0}", deviceId));
+            Logger.Log(string.Format("SetDeviceId: {0}", deviceId));
             DevicesInfo.DeviceId = deviceId;
             // auto setDevice
             //Hashtable properties = new Hashtable();
-            //string deviceCustom = MiniJSON.jsonEncode(properties);
+            //string deviceCustom = JsonConvert.SerializeObject(properties);
             //ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.SET, deviceCustom);
         }
 
@@ -93,7 +94,7 @@ namespace SoFunny.FunnyDB {
             if (!mIsOpen) {
                 return;
             }
-            FunnyDBAgent.FunnyLog(string.Format("ReportEvent eventName: {0} customProperty: {1}", eventName, customProperty));
+            Logger.Log(string.Format("ReportEvent eventName: {0} customProperty: {1}", eventName, customProperty));
             try {
                 Hashtable eventObj = new Hashtable();
                 eventObj.Add(Constants.KEY_TIME, GetTimeStamp());
@@ -112,7 +113,7 @@ namespace SoFunny.FunnyDB {
 
                 if (!string.IsNullOrEmpty(customProperty)) {
                     try {
-                        Hashtable customeObj = (Hashtable)MiniJSON.jsonDecode(customProperty);
+                        Hashtable customeObj = JsonConvert.DeserializeObject<Hashtable>(customProperty);
                         IDictionaryEnumerator enumerator = customeObj.GetEnumerator();
                         while (enumerator.MoveNext()) {
                             eventObj.Add(enumerator.Key, enumerator.Value);
@@ -120,7 +121,7 @@ namespace SoFunny.FunnyDB {
 
                     }
                     catch (Exception e) {
-                        FunnyDBAgent.FunnyLogError(string.Format("ReportEvent customProperty error: {0}", e.Message));
+                        Logger.LogError(string.Format("ReportEvent customProperty error: {0}", e.Message));
                     }
                 }
                 
@@ -145,7 +146,7 @@ namespace SoFunny.FunnyDB {
                 mEvent.Add(Constants.KEY_DATA, eventObj);
                 Report(mEvent);
             } catch (Exception e) {
-                FunnyDBAgent.FunnyLogError(string.Format("ReportEvent error: {0}", e.Message));
+                Logger.LogError(string.Format("ReportEvent error: {0}", e.Message));
             }
         }
 
@@ -156,7 +157,7 @@ namespace SoFunny.FunnyDB {
             if (!mIsOpen) {
                 return;
             }
-            FunnyDBAgent.FunnyLog(string.Format("ReportCustom customType: {0} customStr: {1}", customType, customStr));
+            Logger.Log(string.Format("ReportCustom customType: {0} customStr: {1}", customType, customStr));
             try {
                 Hashtable customeObj = new Hashtable();
                 switch (operateType) {
@@ -170,7 +171,7 @@ namespace SoFunny.FunnyDB {
                         customeObj.Add(Constants.KEY_OPERATE, Constants.VALUE_SET_ONCE);
                         break;
                 }
-                customeObj.Add(Constants.KEY_PROPERTY, (Hashtable)MiniJSON.jsonDecode(customStr));
+                customeObj.Add(Constants.KEY_PROPERTY, JsonConvert.DeserializeObject<Hashtable>(customStr));
                 customeObj.Add(Constants.KEY_TIME, GetTimeStamp());
                 customeObj.Add(Constants.KEY_LOG_ID, random.Next() + "");
                 Hashtable mUserCustom = new Hashtable();
@@ -195,7 +196,7 @@ namespace SoFunny.FunnyDB {
                 mUserCustom.Add(Constants.KEY_DATA, customeObj);
                 Report(mUserCustom);
             } catch (Exception e) {
-                FunnyDBAgent.FunnyLogError(string.Format("ReportCustom error: {0}", e.Message));
+                Logger.LogError(string.Format("ReportCustom error: {0}", e.Message));
             }
         }
 
@@ -215,9 +216,9 @@ namespace SoFunny.FunnyDB {
                 messageArr.Add(evenObj);
                 Hashtable sendObj = new Hashtable();
                 sendObj.Add(Constants.KEY_MESSAGES, messageArr);
-                string sendData = MiniJSON.jsonEncode(sendObj);
-
-                FunnyDBAgent.FunnyLog(string.Format("sendData: {0}", sendData));
+                string sendData = JsonConvert.SerializeObject(sendObj);
+                
+                Logger.Log(string.Format("sendData: {0}", sendData));
 
                 IngestSignature ingestSignature = new IngestSignature(Common.AccessKeyId);
                 ingestSignature.Nonce = random.Next() + "";
@@ -226,7 +227,7 @@ namespace SoFunny.FunnyDB {
                 string sign = EncryptUtils.GetEncryptSign(Common.AccessKeySecret, ingestSignature.getToEncryptContent());
                 EventUpload.PostIngest(ingestSignature, sendData, sign);
             } catch (Exception e) {
-                FunnyDBAgent.FunnyLogError(string.Format("Report error: {0}", e.Message));
+                Logger.LogError(string.Format("Report error: {0}", e.Message));
             }
         }
 

@@ -33,14 +33,14 @@ namespace SoFunny.FunnyDB {
                     if (res.StatusCode == HttpStatusCode.OK) {
                         var myStreamReader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
                         var retString = myStreamReader.ReadToEnd();
-                        FunnyDBAgent.FunnyLog("now responseStr: " + retString);
-                        FunnyDBAgent.FunnyLog("send success");
+                        Logger.Log("now responseStr: " + retString);
+                        Logger.Log("send success");
                     } else {
-                        FunnyDBAgent.FunnyLogError("send fail: " + res.StatusCode);
+                        Logger.LogError("send fail: " + res.StatusCode);
                     }
                     res.Close();
                 } catch (Exception e) {
-                    FunnyDBAgent.FunnyLogError("PostIngest exception: " + e.Message);
+                    Logger.LogError("PostIngest exception: " + e.Message);
                 }
             }));
         }
