@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -93,6 +94,14 @@ namespace SoFunny.FunnyDB {
             FunnyDBAgent.ReportEvent(eventName, custom);
         }
 
+        public static void ReportEvent(string eventName, Dictionary<string, object> properties)
+        {
+            if (properties == null)
+            {
+                Logger.LogWarning("properties is null");
+            }
+            FunnyDBAgent.ReportEvent(eventName, JsonConvert.SerializeObject(properties));
+        }
     }
 
 }

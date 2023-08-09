@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SoFunny.FunnyDB;
+using Newtonsoft.Json;
+using System;
 
 public enum FDBExampleReportType {
     Event,
@@ -57,7 +59,7 @@ public class ReportUICell : MonoBehaviour
         {
             try
             {
-                Hashtable hashtable = (Hashtable)MiniJSON.jsonDecode(contentLabel.text);
+                Hashtable hashtable = JsonConvert.DeserializeObject<Hashtable>(contentLabel.text);
                 if (hashtable == null)
                 {
                     hashtable = new Hashtable();
@@ -97,6 +99,22 @@ public class ReportUICell : MonoBehaviour
                 FunnyDBSDK.ShowFDBToast($"上报出错- {ex.Message}");
             }
         }
+    }
+
+    public void ReportWithManyTypes()
+    {
+        Dictionary<string, object> properties = new Dictionary<string, object>();
+        properties["channel"] = "ta";//string
+        properties["age"] = 1;//number - int
+        properties["weight"] = 5.46;//number - float
+        properties["balance"] = -0.4;//number - negative
+        properties["isVip"] = true;//bool
+        properties["birthday"] = new DateTime(2022, 01, 01);//date
+        properties["object"] = new Dictionary<string, object>() { { "key", "value" } };//object
+        properties["object_arr"] = new List<object>() { new Dictionary<string, object>() { { "key", "value" } } };//object array
+        properties["arr"] = new List<object>() { "value" };//array
+
+        FDBEvent.ReportEvent("many_types_event", properties);
     }
 
 }
