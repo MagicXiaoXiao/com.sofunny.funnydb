@@ -95275,14 +95275,28 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/ObjcLoadClass.swift",
       "kind": "StringLiteral",
-      "offset": 1451,
+      "offset": 1304,
+      "length": 10,
+      "value": "\"#app_end\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/ObjcLoadClass.swift",
+      "kind": "StringLiteral",
+      "offset": 1323,
+      "length": 11,
+      "value": "\"#duration\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/ObjcLoadClass.swift",
+      "kind": "StringLiteral",
+      "offset": 1432,
       "length": 26,
       "value": "\"funnydb.app.start.reason\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/ObjcLoadClass.swift",
       "kind": "StringLiteral",
-      "offset": 1523,
+      "offset": 1504,
       "length": 17,
       "value": "\"funnydb.app.end\""
     },
@@ -98802,113 +98816,162 @@
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5438,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5597,
+      "offset": 5569,
+      "length": 16,
+      "value": "\"DeviceMutation\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5637,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 5764,
+      "length": 14,
+      "value": "\"UserMutation\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5830,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5957,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 6196,
       "length": 38,
       "value": "\"事件名称为空，不处理上报\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5746,
+      "offset": 6345,
       "length": 8,
       "value": "\"#event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6066,
+      "offset": 6665,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6074,
+      "offset": 6673,
       "length": 7,
       "value": "\"Event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6099,
-      "length": 6,
-      "value": "\"data\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 6600,
-      "length": 6,
-      "value": "\"type\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "Dictionary",
-      "offset": 6694,
-      "length": 3,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 6791,
-      "length": 10,
-      "value": "\"#operate\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 6805,
-      "length": 5,
-      "value": "\"add\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 6970,
-      "length": 10,
-      "value": "\"#operate\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 6984,
-      "length": 5,
-      "value": "\"set\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 7153,
-      "length": 10,
-      "value": "\"#operate\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 7167,
-      "length": 9,
-      "value": "\"setOnce\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 7297,
-      "length": 12,
-      "value": "\"properties\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "StringLiteral",
-      "offset": 7346,
+      "offset": 6698,
       "length": 6,
       "value": "\"data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 7665,
+      "offset": 7229,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7404,
+      "length": 6,
+      "value": "\"type\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "Dictionary",
+      "offset": 7498,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7595,
+      "length": 10,
+      "value": "\"#operate\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7609,
+      "length": 5,
+      "value": "\"add\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7774,
+      "length": 10,
+      "value": "\"#operate\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7788,
+      "length": 5,
+      "value": "\"set\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7957,
+      "length": 10,
+      "value": "\"#operate\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 7971,
+      "length": 9,
+      "value": "\"setOnce\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 8101,
+      "length": 12,
+      "value": "\"properties\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "StringLiteral",
+      "offset": 8150,
+      "length": 6,
+      "value": "\"data\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8645,
       "length": 4,
       "value": "true"
     },
