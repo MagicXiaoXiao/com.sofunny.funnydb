@@ -1425,6 +1425,27 @@ extension FunnyDB.Collation : Swift.CustomStringConvertible {
     get
   }
 }
+@_hasMissingDesignatedInitializers public class DefaultsKey {
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Key<ValueType> : FunnyDB.DefaultsKey where ValueType : Swift.Decodable, ValueType : Swift.Encodable {
+  public init(_ key: Swift.String)
+  @objc deinit
+}
+final public class Defaults {
+  public static let shared: FunnyDB.Defaults
+  public init(userDefaults: Foundation.UserDefaults = UserDefaults.standard)
+  final public func clear<ValueType>(_ key: FunnyDB.Key<ValueType>) where ValueType : Swift.Decodable, ValueType : Swift.Encodable
+  final public func has<ValueType>(_ key: FunnyDB.Key<ValueType>) -> Swift.Bool where ValueType : Swift.Decodable, ValueType : Swift.Encodable
+  final public func get<ValueType>(for key: FunnyDB.Key<ValueType>) -> ValueType? where ValueType : Swift.Decodable, ValueType : Swift.Encodable
+  final public func set<ValueType>(_ value: ValueType, for key: FunnyDB.Key<ValueType>) where ValueType : Swift.Decodable, ValueType : Swift.Encodable
+  final public func removeAll(bundle: Foundation.Bundle = Bundle.main)
+  @objc deinit
+}
+extension FunnyDB.Defaults {
+  final public func get<ValueType>(for key: FunnyDB.Key<ValueType>) -> ValueType? where ValueType : Swift.Decodable, ValueType : Swift.Encodable, ValueType : Swift.RawRepresentable, ValueType.RawValue : Swift.Decodable, ValueType.RawValue : Swift.Encodable
+  final public func set<ValueType>(_ value: ValueType, for key: FunnyDB.Key<ValueType>) where ValueType : Swift.Decodable, ValueType : Swift.Encodable, ValueType : Swift.RawRepresentable, ValueType.RawValue : Swift.Decodable, ValueType.RawValue : Swift.Encodable
+}
 public protocol EventBehaviourProtocol {
   func track(_ type: FunnyDB.EventType)
 }
@@ -1475,6 +1496,11 @@ public enum FunnyDBStatus {
   public static func getUserID() -> Swift.String?
   public static func clearUserID()
   public static func setChannel(_ value: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class ObjcLoadClass : ObjectiveC.NSObject {
+  @objc public static func swiftLoad()
+  @objc override dynamic public init()
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class FunnyDBConfig {
