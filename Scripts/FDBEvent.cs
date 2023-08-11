@@ -1,22 +1,23 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Newtonsoft.Json;
-using UnityEngine;
 
 
 namespace SoFunny.FunnyDB {
 
-    public class FDBEvent {
+    public class FDBEvent
+    {
 
         /// <summary>
         /// 设置用户属性值
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportSetUser(Hashtable customTable) {
-            if (null == customTable) {
+        public static void ReportSetUser(Hashtable customTable)
+        {
+            if (null == customTable)
+            {
                 return;
             }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.SET, userCustom);
         }
@@ -25,10 +26,13 @@ namespace SoFunny.FunnyDB {
         /// 设置唯一用户属性 <br/> (对应参数只允许设置一次)
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportSetOnceUser(Hashtable customTable) {
-            if (customTable == null) {
+        public static void ReportSetOnceUser(Hashtable customTable)
+        {
+            if (customTable == null)
+            {
                 return;
             }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.USER, (int)DBSDK_OPERATE_TYPE_ENUM.SET_ONCE, userCustom);
         }
@@ -37,8 +41,10 @@ namespace SoFunny.FunnyDB {
         /// 添加用户属性值
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportAddUser(Hashtable customTable) {
-            if (null == customTable) {
+        public static void ReportAddUser(Hashtable customTable)
+        {
+            if (null == customTable)
+            {
                 return;
             }
             string userCustom = JsonConvert.SerializeObject(customTable);
@@ -49,10 +55,13 @@ namespace SoFunny.FunnyDB {
         /// 设置设备属性值
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportSetDevice(Hashtable customTable) {
-            if (null == customTable) {
+        public static void ReportSetDevice(Hashtable customTable)
+        {
+            if (null == customTable)
+            {
                 return;
             }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string deviceCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.SET, deviceCustom);
         }
@@ -61,10 +70,13 @@ namespace SoFunny.FunnyDB {
         /// 设置唯一设备属性 <br/> (对应参数只允许设置一次)
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportSetOnceDevice(Hashtable customTable) {
-            if (customTable == null) {
+        public static void ReportSetOnceDevice(Hashtable customTable)
+        {
+            if (customTable == null)
+            {
                 return;
             }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string userCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.SET_ONCE, userCustom);
         }
@@ -73,10 +85,13 @@ namespace SoFunny.FunnyDB {
         /// 添加设备属性值
         /// </summary>
         /// <param name="customTable"></param>
-        public static void ReportAddDevice(Hashtable customTable) {
-            if (null == customTable) {
+        public static void ReportAddDevice(Hashtable customTable)
+        {
+            if (null == customTable)
+            {
                 return;
             }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string deviceCustom = JsonConvert.SerializeObject(customTable);
             FunnyDBAgent.ReportCustom((int)DBSDK_CUSTOM_TYPE_ENUM.DEVICE, (int)DBSDK_OPERATE_TYPE_ENUM.ADD, deviceCustom);
         }
@@ -86,23 +101,20 @@ namespace SoFunny.FunnyDB {
         /// </summary>
         /// <param name="eventName">事件名称</param>
         /// <param name="customTable">参数表</param>
-        public static void ReportEvent(string eventName, Hashtable customTable) {
+        public static void ReportEvent(string eventName, Hashtable customTable)
+        {
+            if(!FunnyReportVerifyUtils.VerifyEventName(eventName))
+            {
+                return;
+            }
+            FunnyReportVerifyUtils.VerifyHashTableValue(customTable);
             string custom = string.Empty;
-            if (null != customTable) {
+            if (null != customTable)
+            {
                 custom = JsonConvert.SerializeObject(customTable);
             }
             FunnyDBAgent.ReportEvent(eventName, custom);
         }
-
-        public static void ReportEvent(string eventName, Dictionary<string, object> properties)
-        {
-            if (properties == null)
-            {
-                Logger.LogWarning("properties is null");
-            }
-            FunnyDBAgent.ReportEvent(eventName, JsonConvert.SerializeObject(properties));
-        }
     }
-
 }
 

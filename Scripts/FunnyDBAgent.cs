@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics;
-using Debug = UnityEngine.Debug;
+using UnityEngine;
 
 /// <summary>
 /// FunnyDB Agent
@@ -163,11 +163,11 @@ namespace SoFunny.FunnyDB {
     }
 
     private static void setOAIDCertInfo(string data) {
-        Debug.Log("Editor 不支持该方法");
+        Logger.Log("Editor 不支持该方法");
     }
 
     private static void setOAIDCertAssetName(string name) {
-        Debug.Log("Editor 不支持该方法");
+        Logger.Log("Editor 不支持该方法");
     }
 
     private static void _setSDKStatus(int status) {
@@ -219,7 +219,7 @@ namespace SoFunny.FunnyDB {
     }
 
     private static void showToast(string msg) {
-        Debug.Log($"Toast Message - {msg}");
+        Logger.Log($"Toast Message - {msg}");
     }
 #elif UNITY_ANDROID
     // Get FunnyBridge
@@ -269,7 +269,7 @@ namespace SoFunny.FunnyDB {
             flag = FunnyInstance.Call<int>("initialize", UnityActivity, accessKeyId, accessKeySecret, endPoint);
         } catch (Exception e) {
             flag = -1;
-            FunnyLogError("called initialize error: " + e);
+            Logger.LogError("called initialize error: " + e);
         }
         return flag;
     }
@@ -278,7 +278,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setSDKStatus", status);
         } catch (Exception e) {
-            FunnyLogError("called setSDKStatus error: " + e);
+             Logger.LogError("called setSDKStatus error: " + e);
         }
     }
 
@@ -286,7 +286,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setSDKSendType", sendType);
         } catch (Exception e) {
-            FunnyLogError("called setSDKSendType error: " + e);
+             Logger.LogError("called setSDKSendType error: " + e);
         }
     }
 
@@ -294,7 +294,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setUserId", userId);
         } catch (Exception e) {
-            FunnyLogError("called setUserId error: " + e);
+             Logger.LogError("called setUserId error: " + e);
         }
     }
 
@@ -302,7 +302,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setChannel", channel);
         } catch (Exception e) {
-            FunnyLogError("called setChannel error: " + e);
+            Logger.LogError("called setChannel error: " + e);
         }
     }
 
@@ -310,7 +310,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setDeviceId", UnityActivity, deviceId);
         } catch (Exception e) {
-            FunnyLogError("called setDeviceId error: " + e);
+            Logger.LogError("called setDeviceId error: " + e);
         }
     }
 
@@ -318,7 +318,7 @@ namespace SoFunny.FunnyDB {
         try {
             return FunnyInstance.Call<string>("getDeviceId", UnityActivity);
         } catch (Exception e) {
-            FunnyLogError("called setDeviceId error: " + e);
+            Logger.LogError("called setDeviceId error: " + e);
             return string.Empty;
         }
     }
@@ -327,7 +327,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("reportEvent", eventName, customProperty);
         } catch (Exception e) {
-            FunnyLogError("called reportEvent error: " + e);
+            Logger.LogError("called reportEvent error: " + e);
         }
     }
 
@@ -335,7 +335,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setReportInterval", interval);
         } catch (Exception e) {
-            FunnyLogError("called setReportInterval error: " + e);
+            Logger.LogError("called setReportInterval error: " + e);
         }
     }
 
@@ -343,7 +343,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("setReportLimit", limit);
         } catch (Exception e) {
-            FunnyLogError("called setReportLimit error: " + e);
+            Logger.LogError("called setReportLimit error: " + e);
         }
     }
 
@@ -351,7 +351,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("flush");
         } catch (Exception e) {
-            FunnyLogError("called report error: " + e);
+            Logger.LogError("called report error: " + e);
         }
     }
 
@@ -359,7 +359,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("reportCustom", customType, operateType, jsonStr);
         } catch (Exception e) {
-            FunnyLogError("called reportCustom error: " + e);
+            Logger.LogError("called reportCustom error: " + e);
         }
     }
 
@@ -367,7 +367,7 @@ namespace SoFunny.FunnyDB {
         try {
             FunnyInstance.Call("enableDebug");
         } catch (Exception e) {
-            FunnyLogError("called enableDebug error: " + e);
+            Logger.LogError("called enableDebug error: " + e);
         }
     }
 
