@@ -43,7 +43,7 @@ namespace SoFunny.FunnyDB
                 if (!VerifyEventName(key))
                 {
                     Debug.LogWarning("key is null,please check !");
-                    hashtable.Remove(key);
+                    //hashtable.Remove(key);
                     ret = false;
                 }
                 var curValue = hashtable[key];
@@ -59,7 +59,7 @@ namespace SoFunny.FunnyDB
             if (!VerifySupportTypes(curValue))
             {
                 Debug.LogWarning("value must be one of that: numeric、bool、string、list、hashtable,please check !");
-                originHashTable.Remove(key);
+                //originHashTable.Remove(key);
                 ret = false;
             }
             return ret;

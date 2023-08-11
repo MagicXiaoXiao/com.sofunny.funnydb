@@ -87,8 +87,8 @@ namespace SoFunny.FunnyDB {
 
 #if ENABLE_FUNNYDB_DEBUG
             EnableDebug();
+            Debug.Log("EnableDebug");
 #endif
-
             // 调用初始化方法
             FunnyDBAgent.Initialize(config.keyID, config.keySecret, config.endPoint);
         }
