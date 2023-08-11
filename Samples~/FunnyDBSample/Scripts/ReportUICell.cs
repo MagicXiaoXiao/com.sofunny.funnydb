@@ -103,16 +103,21 @@ public class ReportUICell : MonoBehaviour
 
     public void ReportWithManyTypes()
     {
-        Dictionary<string, object> properties = new Dictionary<string, object>();
-        properties["channel"] = "ta";//string
-        properties["age"] = 1;//number - int
-        properties["weight"] = 5.46;//number - float
-        properties["balance"] = -0.4;//number - negative
-        properties["isVip"] = true;//bool
-        properties["birthday"] = new DateTime(2022, 01, 01);//date
-        properties["object"] = new Dictionary<string, object>() { { "key", "value" } };//object
-        properties["object_arr"] = new List<object>() { new Dictionary<string, object>() { { "key", "value" } } };//object array
-        properties["arr"] = new List<object>() { "value" };//array
+        Hashtable properties = new Hashtable();
+        // string
+        properties["channel"] = "FunnySample";
+        // 数字 int
+        properties["count"] = 10;
+        // 数字 float
+        properties["floatValue"] = 3.14159;
+        // bool
+        properties["boolValue"] = false;
+        // Object
+        properties["Object"] = new Dictionary<string, object>() { { "flower", "red" } };
+        //object for array
+        properties["obj_arr"] = new List<object>() { new Dictionary<string, object>() { { "flower", "blue" } } };
+        // string list 字符列表
+        properties["arr"] = new List<object>() { "value" };
 
         FDBEvent.ReportEvent("many_types_event", properties);
     }

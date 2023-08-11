@@ -38,6 +38,7 @@ public class ExampleMain : MonoBehaviour {
         FunnyDBSDK.EnableDebug();
         PlayerPrefs.DeleteAll();
         var config = new FunnyDBConfig("demo", "secret");
+        config.SetEndPoint("http://ingest.funnydb-stage.funnydata.net");
         if (!string.IsNullOrEmpty(dIDInput.text)) {
             config.SetDeviceID(dIDInput.text);
         }
