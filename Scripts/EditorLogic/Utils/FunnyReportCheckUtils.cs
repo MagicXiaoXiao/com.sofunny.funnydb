@@ -58,7 +58,7 @@ namespace SoFunny.FunnyDB
 
             if (!VerifySupportTypes(curValue))
             {
-                Debug.LogWarning("value must be one of that: numeric、bool、string、list、hashtable,please check !");
+                Debug.LogWarning("value must be one of that: numeric、bool、string、list、dictionary、hashtable,please check !");
                 //originHashTable.Remove(key);
                 ret = false;
             }
