@@ -85,6 +85,10 @@ namespace SoFunny.FunnyDB {
                 }
             }
 
+#if ENABLE_FUNNYDB_DEBUG
+            FunnyDBAgent.EnableDebug();
+            Debug.Log("EnableDebug");
+#endif
             // 调用初始化方法
             FunnyDBAgent.Initialize(config.keyID, config.keySecret, config.endPoint);
         }
@@ -191,6 +195,7 @@ namespace SoFunny.FunnyDB {
         /// <summary>
         /// 开启调试阶段相关功能，如辅助日志等（线上需关闭，减少无关消耗）（可任意阶段调用）
         /// </summary>
+        [Obsolete("请改用加自定义宏 ENABLE_FUNNYDB_DEBUG 方式开启 Debug", true)]
         public static void EnableDebug() {
             FunnyDBAgent.EnableDebug();
         }

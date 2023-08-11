@@ -2,9 +2,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using SoFunny.FunnyDB;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using System.Reflection;
+using System.Threading.Tasks;
+using SoFunny.FunnyDB;
+using System.Threading;
 
 /// <summary>
 /// FunnySDK Access Guide
@@ -17,12 +20,9 @@ public class ExampleMain : MonoBehaviour {
     public InputField endPonitInput;
 
     public Text deviceIDText;
+    public Button backSettingBtn;
 
     private bool isInit = false;
-
-    private void Awake() {
-
-    }
 
     void Start() {
         eventPanel.SetActive(false);
@@ -36,9 +36,9 @@ public class ExampleMain : MonoBehaviour {
 
     public void InitSDK() {
         FunnyDBSDK.EnableDebug();
-
+        PlayerPrefs.DeleteAll();
         var config = new FunnyDBConfig("demo", "secret");
-
+        config.SetEndPoint("http://ingest.funnydb-stage.funnydata.net");
         if (!string.IsNullOrEmpty(dIDInput.text)) {
             config.SetDeviceID(dIDInput.text);
         }
@@ -46,11 +46,30 @@ public class ExampleMain : MonoBehaviour {
         if (!string.IsNullOrEmpty(endPonitInput.text)) {
             config.SetEndPoint(endPonitInput.text);
         }
-
         FunnyDBSDK.Initialize(config);
+        //FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.NOW);
+        //FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.DELAY);
+
+        //FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.DEFAULT);
+        //FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.ONLY_COLLECT);
+        //FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.STOP_COLLECT);
+
         isInit = true;
 
         FunnyDBSDK.ShowFDBToast("SDK 初始化完毕");
+    }
+
+    //public void DoRepeatReport()
+    //{
+    //    for(int i = 0; i < 100; i++)
+    //    {
+    //        FDBEvent.ReportEvent("auto_Test", null);
+    //    }
+    //}
+
+    public void Flush()
+    {
+        FunnyDBSDK.Flush();
     }
 
     public void gotoReportView() {
@@ -96,4 +115,34 @@ public class ExampleMain : MonoBehaviour {
         endPonitInput.text = "";
     }
 
+    public void SetSendTypeNow()
+    {
+        FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.NOW);
+    }
+
+    public void SetSendTypeDelay()
+    {
+        FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.DELAY);
+    }
+
+    public void SetSDKStatusDefault()
+    {
+        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.DEFAULT);
+    }
+
+    public void SetSDKStatusStopCollect()
+    {
+        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.STOP_COLLECT);
+    }
+
+    public void SetSDKStatusOnlyCollect()
+    {
+        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.ONLY_COLLECT);
+    }
+
+    public void BackSettings()
+    {
+        eventPanel.SetActive(false);
+        initPanel.SetActive(true);
+    }
 }
