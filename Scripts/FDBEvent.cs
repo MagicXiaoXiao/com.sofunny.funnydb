@@ -115,6 +115,20 @@ namespace SoFunny.FunnyDB {
             }
             FunnyDBAgent.ReportEvent(eventName, custom);
         }
+
+        /// <summary>
+        /// 上报自定义事件，字符串形式
+        /// </summary>
+        /// <param name="eventName"></param>
+        /// <param name="jsonString"></param>
+        public static void ReportEvent(string eventName, string jsonString = "")
+        {
+            if (!FunnyReportVerifyUtils.VerifyEventName(eventName))
+            {
+                return;
+            }
+            FunnyDBAgent.ReportEvent(eventName, jsonString);
+        }
     }
 }
 
