@@ -1,4 +1,4 @@
-#if UNITY_IOS //&& !UNITY_EDITOR
+#if UNITY_IOS
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,8 +15,8 @@ namespace SoFunny.FunnyDB.Editor
 
     public static class FunnyDBXcodeSettings
     {
-
-        private const string FRAMEWORK_ORIGIN_PATH = "Packages/com.sofunny.funnydb/Editor/iOSDynamicSDK";
+        
+        private const string FRAMEWORK_ORIGIN_PATH = "Packages/com.sofunny.funnydb/Plugins/iOS/iOSDynamicSDK";
 
         private const string FRAMEWORK_TARGET_PATH = "FunnyDBFrameworks";
 
@@ -54,7 +54,7 @@ namespace SoFunny.FunnyDB.Editor
             //    proj.SetBuildProperty(projectTargetGUID, "OTHER_LDFLAGS", "-ObjC");
             //}
 
-            if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSBuildConfigType == iOSBuildType.Debug)
+            if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSXcodeBuildConfig == XcodeBuildConfig.Debug)
             {
                 proj.AddBuildProperty(projectTargetGUID, "FRAMEWORK_SEARCH_PATHS", $"$(PROJECT_DIR)/{FRAMEWORK_TARGET_PATH}");
 

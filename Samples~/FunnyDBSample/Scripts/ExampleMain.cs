@@ -8,6 +8,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using SoFunny.FunnyDB;
 using System.Threading;
+using System.Diagnostics;
+using Debug = UnityEngine.Debug;
+using SoFunny.FunnyDB.PC;
 
 /// <summary>
 /// FunnySDK Access Guide
@@ -19,12 +22,72 @@ public class ExampleMain : MonoBehaviour {
     public InputField dIDInput;
     public InputField endPonitInput;
 
+    public InputField sendIntervalTimeInput;
+    public InputField sendMaxCntInput;
+
+
     public Text deviceIDText;
     public Button backSettingBtn;
 
     private bool isInit = false;
 
+
+    private void Awake()
+    {
+        #region 反射获取 FunnyDB 实例
+        string SpaceName = "SoFunny.FunnyDB";
+        string className = "FunnyDBSDK";
+        Assembly assembly = Assembly.Load("SoFunny.FunnyDB");
+        Type type = assembly.GetType(SpaceName + "." + className);
+        if (type != null)
+        {
+            // 获取静态方法
+            MethodInfo methodInfo = type.GetMethod("getIntValue", BindingFlags.Static | BindingFlags.Public);
+
+            if (methodInfo != null)
+            {
+                // 调用静态方法
+                int plusInfo = (int)methodInfo.Invoke(null, new object[] { 3 });
+                Debug.Log("plus value: " + plusInfo);
+            }
+            else
+            {
+                Console.WriteLine("静态方法未找到！");
+            }
+        }
+        else
+        {
+            Console.WriteLine("类型未找到！");
+        }
+
+        #endregion
+    }
+
     void Start() {
+        sendIntervalTimeInput.onValueChanged.AddListener((v) =>
+        {
+            int intervalTime = int.Parse(v);
+            if (intervalTime < 1000)
+            {
+                sendIntervalTimeInput.text = 1000.ToString();
+                Debug.LogWarning("值需大于 1000");
+                return;
+            }
+            FunnyDBSDK.SetReportInterval(intervalTime);
+        });
+
+        sendMaxCntInput.onValueChanged.AddListener((v) =>
+        {
+            int maxCnt = int.Parse(v);
+            if (maxCnt < 1 || maxCnt > 50)
+            {
+                sendMaxCntInput.text = maxCnt < 1 ? 1.ToString() : 50.ToString();
+                Debug.LogWarning("值需大于 1 小于 50");
+                return;
+            }
+            FunnyDBSDK.SetReportLimit(maxCnt);
+        });
+
         eventPanel.SetActive(false);
         initPanel.SetActive(true);
         var endPoint = PlayerPrefs.GetString("fdb.end.point");
@@ -35,8 +98,7 @@ public class ExampleMain : MonoBehaviour {
 
 
     public void InitSDK() {
-        FunnyDBSDK.EnableDebug();
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
         var config = new FunnyDBConfig("demo", "secret");
         config.SetEndPoint("http://ingest.funnydb-stage.funnydata.net");
         if (!string.IsNullOrEmpty(dIDInput.text)) {
@@ -117,27 +179,27 @@ public class ExampleMain : MonoBehaviour {
 
     public void SetSendTypeNow()
     {
-        FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.NOW);
+        FunnyDBSDK.SetSDKSendType(EnumConstants.DBSDK_SEND_TYPE_ENUM.NOW);
     }
 
     public void SetSendTypeDelay()
     {
-        FunnyDBSDK.SetSDKSendType(DBSDK_SEND_TYPE_ENUM.DELAY);
+        FunnyDBSDK.SetSDKSendType(EnumConstants.DBSDK_SEND_TYPE_ENUM.DELAY);
     }
 
     public void SetSDKStatusDefault()
     {
-        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.DEFAULT);
+        FunnyDBSDK.SetSDKStatus(EnumConstants.DBSDK_STATUS_ENUM.DEFAULT);
     }
 
     public void SetSDKStatusStopCollect()
     {
-        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.STOP_COLLECT);
+        FunnyDBSDK.SetSDKStatus(EnumConstants.DBSDK_STATUS_ENUM.STOP_COLLECT);
     }
 
     public void SetSDKStatusOnlyCollect()
     {
-        FunnyDBSDK.SetSDKStatus(DBSDK_STATUS_ENUM.ONLY_COLLECT);
+        FunnyDBSDK.SetSDKStatus(EnumConstants.DBSDK_STATUS_ENUM.ONLY_COLLECT);
     }
 
     public void BackSettings()
@@ -145,4 +207,20 @@ public class ExampleMain : MonoBehaviour {
         eventPanel.SetActive(false);
         initPanel.SetActive(true);
     }
+
+    public void ClearCache()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.Log("缓存已经清空，注意内存未清空");
+    }
+
+    public void MockCrash()
+    {
+        string SpaceName = "SoFunny.FunnyDB";
+        string className = "FunnyDBSDKss";
+        Assembly assembly = Assembly.Load("SoFunny.FunnyDB");
+        Type type = assembly.GetType(SpaceName + "." + className);
+        type.GetArrayRank();
+    }
+
 }
