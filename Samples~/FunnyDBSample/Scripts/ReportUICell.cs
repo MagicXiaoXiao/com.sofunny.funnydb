@@ -59,33 +59,34 @@ public class ReportUICell : MonoBehaviour
         {
             try
             {
-                Hashtable hashtable = JsonConvert.DeserializeObject<Hashtable>(contentLabel.text);
-                if (hashtable == null)
+                Dictionary<string, object> customProperties = JsonConvert.DeserializeObject<Dictionary<string, object>>(contentLabel.text);
+                if (customProperties == null)
                 {
-                    hashtable = new Hashtable();
+                    customProperties = new Dictionary<string, object>();
                 }
                 switch (type)
                 {
                     case FDBExampleReportType.Event:
-                        FDBEvent.ReportEvent(nameLabel.text, hashtable);
+                        //FDBEvent.ReportEvent(nameLabel.text, contentLabel.text);
+                        FDBEvent.ReportEvent(nameLabel.text, customProperties);
                         break;
                     case FDBExampleReportType.AddUser:
-                        FDBEvent.ReportAddUser(hashtable);
+                        FDBEvent.ReportAddUser(customProperties);
                         break;
                     case FDBExampleReportType.AddDevice:
-                        FDBEvent.ReportAddDevice(hashtable);
+                        FDBEvent.ReportAddDevice(customProperties);
                         break;
                     case FDBExampleReportType.SetUser:
-                        FDBEvent.ReportSetUser(hashtable);
+                        FDBEvent.ReportSetUser(customProperties);
                         break;
                     case FDBExampleReportType.SetDevice:
-                        FDBEvent.ReportSetDevice(hashtable);
+                        FDBEvent.ReportSetDevice(customProperties);
                         break;
                     case FDBExampleReportType.SetOnceUser:
-                        FDBEvent.ReportSetOnceUser(hashtable);
+                        FDBEvent.ReportSetOnceUser(customProperties);
                         break;
                     case FDBExampleReportType.SetOnceDevice:
-                        FDBEvent.ReportSetOnceDevice(hashtable);
+                        FDBEvent.ReportSetOnceDevice(customProperties);
                         break;
                     default:
                         break;
@@ -103,7 +104,7 @@ public class ReportUICell : MonoBehaviour
 
     public void ReportWithManyTypes()
     {
-        Hashtable properties = new Hashtable();
+        Dictionary<string,object> properties = new Dictionary<string, object>();
         // string
         properties["channel"] = "FunnySample";
         // 数字 int
@@ -113,13 +114,13 @@ public class ReportUICell : MonoBehaviour
         // bool
         properties["boolValue"] = false;
         // Object
-        properties["Object"] = new Dictionary<string, object>() { { "flower", "red" } };
+        properties["Object"] = new Hashtable() { { "flower", "red" } };
         //object for array
-        properties["obj_arr"] = new List<object>() { new Dictionary<string, object>() { { "flower", "blue" } } };
+        properties["obj_arr"] = new List<object>() { new Hashtable() { { "flower", "blue" } } };
         // string list 字符列表
         properties["arr"] = new List<object>() { "value" };
-
-        FDBEvent.ReportEvent("many_types_event", properties);
+        string reportStr = JsonConvert.SerializeObject(properties);
+        FDBEvent.ReportEvent("many_types_event", reportStr);
     }
 
 }
