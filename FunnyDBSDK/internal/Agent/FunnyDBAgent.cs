@@ -12,9 +12,9 @@ namespace SoFunny.FunnyDB.Bridge
         private static bool sIsInit = false;
         
         private static readonly object lockObject = new object();
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
         private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBAndroidAgent();
-#elif UNITY_IOS || UNITY_IPHONE
+#elif UNITY_IOS && !UNITY_EDITOR
         private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBIOSAgent();
 #elif UNITY_STANDALONE || UNITY_EDITOR
         private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBPCAgent();

@@ -1,3 +1,4 @@
+#if UNITY_ANDROID && !UNITY_EDITOR
 using System;
 using UnityEngine;
 
@@ -243,3 +244,4 @@ namespace SoFunny.FunnyDB.Bridge
  
     }
 }
+#endif
