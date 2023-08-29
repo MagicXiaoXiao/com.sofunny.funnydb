@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using SoFunny.FunnyDB.PC;
 using UnityEngine;
 using static SoFunny.FunnyDB.PC.Constants;
@@ -89,3 +90,4 @@ namespace SoFunny.FunnyDB.Bridge
         }
     }
 }
+#endif
