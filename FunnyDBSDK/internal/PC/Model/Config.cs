@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 using static SoFunny.FunnyDB.PC.EnumConstants;
 
 namespace SoFunny.FunnyDB.PC
@@ -78,3 +79,4 @@ namespace SoFunny.FunnyDB.PC
     }
 
 }
+#endif

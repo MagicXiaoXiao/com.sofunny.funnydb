@@ -1,78 +1,83 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
 using Newtonsoft.Json;
+using System.IO;
 
 namespace SoFunny.FunnyDB.PC
 {
     internal class AutoReportTimer
     {
         private static readonly AutoReportTimer instance = new AutoReportTimer();
-
-        private AutoReportTimer() { }
+        private StringWriter _stringWriter;
+        private JsonTextWriter _jsonWriter;
+        private bool _isFlushing = false;
+        private AutoReportTimer() {
+            _stringWriter = new StringWriter();
+            _jsonWriter = new JsonTextWriter(_stringWriter);
+        }
 
         internal static AutoReportTimer Instance => instance;
 
-        internal static readonly int REAPEAT_RATE = 1000;
-        internal static bool isFlushing = false;
-
         internal void Init()
         {
-     
-        }
+
+    }
     
- 
         /// <summary>
         /// 发送失败直接回写，失败情况完善放在后面处理
         /// </summary>
         internal void DoCheckDataSource(bool isFlush = false)
         {
-            if(!isFlush && isFlushing)
+            if(_isFlushing)
             {
-                Logger.LogVerbose("flushing data, skip timing report");
+                Logger.Log("flushing data, skip timing report or flush");
                 return;
             }
-            var accessKeyHashtable = FunnyDBPCInstance.instance.AccessKeyHashTable;
-            var accessKeySet = accessKeyHashtable.Keys;
-            foreach (var channel in accessKeySet)
+            _isFlushing = isFlush;
+            var accessKeyHashtable = FunnyDBPCInstance.Instance.AccessKeyHashTable;
+            var accessChannelSet = accessKeyHashtable.Keys;
+            foreach (var channel in accessChannelSet)
             {
                 AccessInfo accessInfo = (AccessInfo)accessKeyHashtable[channel];
-                Report(accessInfo, isFlush);
+                while (DataSource.GetCountByAcKID(accessInfo.AccessKeyId) != 0)
+                {
+                    Report(accessInfo);
+                }
             }
-
-            if(isFlushing)
-            {
-                isFlushing = false;
-            }
+            _isFlushing = false;
         }
 
 
-        internal void Report(AccessInfo accessInfo, bool isFlush)
+        private void Report(AccessInfo accessInfo)
         {
             if (!ReportSettings.CanSend())
             {
                 return;
             }
-            int savedCnt = DataSource.GetCountByAcKID(accessInfo.AccessKeyId);
-            if (savedCnt == 0)
-            {
-                Logger.LogVerbose(accessInfo.AccessKeyId + " save cnt size is zero do not report");
-                return;
-            }
             var messageArr = DataSource.Read(accessInfo.AccessKeyId, ReportSettings.ReportSizeLimit);
 
             // 数据库中删除掉
-            DataSource.Delete(accessInfo.AccessKeyId, ReportSettings.ReportSizeLimit);
+            DataSource.Delete(accessInfo.AccessKeyId, messageArr.Count);
 
-            Hashtable sendObj = new Hashtable()
+
+            _jsonWriter.WriteStartObject();
+
+            _jsonWriter.WritePropertyName(Constants.KEY_MESSAGES);
+            _jsonWriter.WriteStartArray();
+            foreach (string json in messageArr)
             {
-                { Constants.KEY_MESSAGES, messageArr }
-            };
-            string sendData = JsonConvert.SerializeObject(sendObj);
+                _jsonWriter.WriteRawValue(json);
+            }
+            _jsonWriter.WriteEndArray();
+            _jsonWriter.WriteEndObject();
 
+            string sendData = _stringWriter.ToString();
+            _stringWriter.GetStringBuilder().Clear();
+
+            Logger.Log("Auto Report: " + sendData);
             IngestSignature ingestSignature = new IngestSignature(accessInfo)
             {
-                Nonce = new System.Random().Next() + "",
-                Timestamp = FunnyDBPCInstance.instance.CalibratedTime.GetInMills() + "",
+                Nonce = new System.Random().Next().ToString(),
+                Timestamp = FunnyDBPCInstance.Instance.CalibratedTime.GetInMills().ToString(),
                 Body = sendData
             };
 
@@ -81,8 +86,6 @@ namespace SoFunny.FunnyDB.PC
             ingestSignature.OriginEvents = messageArr;
             EventUpload.PostIngest(ingestSignature);
         }
-
-
     }
 }
-
+#endif

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 
 namespace SoFunny.FunnyDB.PC
 {
@@ -30,4 +31,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
-
+#endif

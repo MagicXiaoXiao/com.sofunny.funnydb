@@ -1,8 +1,7 @@
-using System.Collections;
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using UnityEngine.XR;
 
 /// <summary>
 /// Ingest Signature
@@ -20,7 +19,8 @@ namespace SoFunny.FunnyDB.PC
         private string _body;
         private string _getEndPoint;
         private string _sign;
-        private List<Dictionary<string, object>> _originEvents;
+        private List<string> _originEvents;
+        private string _originEvent;
 
 
         internal AccessInfo AccessInfo
@@ -80,10 +80,16 @@ namespace SoFunny.FunnyDB.PC
             }
         }
 
-        internal List<Dictionary<string, object>> OriginEvents
+        internal List<string> OriginEvents
         {
             get { return _originEvents; }
             set { _originEvents = value; }
+        }
+
+        internal string OriginEvent
+        {
+            get { return _originEvent; }
+            set { _originEvent = value; }
         }
 
         internal IngestSignature(AccessInfo info)
@@ -99,5 +105,18 @@ namespace SoFunny.FunnyDB.PC
             sb.Append(Method).Append(Url).Append(AccessInfo.AccessKeyId).Append(Nonce).Append(Timestamp).Append(Body);
             return sb.ToString();
         }
+
+        internal string GetEventsStr()
+        {
+            if(_originEvent != null)
+            {
+                return _originEvent.ToString();
+            } else if (_originEvent != null)
+            {
+                return _originEvents.ToString();
+            }
+            return null;
+        }
     }
 }
+#endif

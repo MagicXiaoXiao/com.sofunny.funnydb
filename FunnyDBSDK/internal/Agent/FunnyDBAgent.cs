@@ -1,5 +1,3 @@
-using SoFunny.FunnyDB.PC;
-using UnityEngine;
 using static SoFunny.FunnyDB.PC.EnumConstants;
 
 /// <summary>
@@ -8,21 +6,26 @@ using static SoFunny.FunnyDB.PC.EnumConstants;
 namespace SoFunny.FunnyDB.Bridge
 {
       internal sealed partial class FunnyDBAgent {
-        private const string sFunnyVersion = "0.1.0";
         private static bool sIsInit = false;
         
         private static readonly object lockObject = new object();
-#if UNITY_ANDROID && !UNITY_EDITOR
-        private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBAndroidAgent();
-#elif UNITY_IOS && !UNITY_EDITOR
-        private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBIOSAgent();
-#elif UNITY_STANDALONE || UNITY_EDITOR
-        private static IFunnyDBAgent _iFunnyDBAgent = new FunnyDBPCAgent();
+        private static IFunnyDBAgent _iFunnyDBAgent = null;
+
+        static FunnyDBAgent()
+        {
+#if UNITY_STANDALONE || UNITY_EDITOR
+        _iFunnyDBAgent = new FunnyDBPCAgent();
+#elif UNITY_IOS
+        _iFunnyDBAgent = new FunnyDBIOSAgent();
+#elif UNITY_ANDROID
+        _iFunnyDBAgent = new FunnyDBAndroidAgent();
 #endif
-        /// <summary> 
-        /// FunnyDB Initialize
-        /// </summary>
-        internal static void Initialize(FunnyDBConfig config) {
+        }
+
+    /// <summary> 
+    /// FunnyDB Initialize
+    /// </summary>
+    internal static void Initialize(FunnyDBConfig config) {
             lock (lockObject)
             {
 #if ENABLE_FUNNYDB_DEBUG || ENABLE_FUNNYDB_DEBUG_LOTS_LOGS

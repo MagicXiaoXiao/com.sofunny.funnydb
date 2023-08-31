@@ -1,4 +1,4 @@
-#if UNITY_IOS && !UNITY_EDITOR
+#if UNITY_IOS
 using System.Runtime.InteropServices;
 namespace SoFunny.FunnyDB.Bridge
 {

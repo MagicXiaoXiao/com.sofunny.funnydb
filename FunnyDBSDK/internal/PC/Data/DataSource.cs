@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace SoFunny.FunnyDB.PC
@@ -56,61 +57,69 @@ namespace SoFunny.FunnyDB.PC
         /// <returns></returns>
         internal static bool Create(string evenJson, string accessKeyID)
         {
-            lock (dataLock)
+            if (!IsInit)
             {
-                if (!IsInit)
-                {
-                    return false;
-                }
-                MinMaxData data = _curIndexDictionary[accessKeyID];
-                Logger.LogVerbose("Create start cnt: " + " data" + JsonConvert.SerializeObject(data));
-                string saveKey = GetKey(accessKeyID, data.Max);
-                PlayerPfsUtils.Save(saveKey, evenJson);
-                data.Max += 1;
-                if(data.Max == int.MaxValue)
-                {
-
-                }
-                Logger.LogVerbose("Create end cnt: " + " data" + JsonConvert.SerializeObject(data));
-                SaveAccessKeyIdMappings();
+                return false;
             }
+            MinMaxData data = _curIndexDictionary[accessKeyID];
+            Logger.Log("Create start cnt: " + " data" + JsonConvert.SerializeObject(data));
+            string saveKey = GetKey(accessKeyID, data.Max);
+            PlayerPfsUtils.Save(saveKey, evenJson);
+            data.Max += 1;
+            if(data.Max == int.MaxValue)
+            {
+
+            }
+            Logger.Log("Create end cnt: " + " data" + JsonConvert.SerializeObject(data));
+            SaveAccessKeyIdMappings();
+            
             return true;
         }
+
+        internal static void Creates(List<string> message, AccessInfo accessInfo)
+        {
+            if (message == null)
+            {
+                return;
+            }
+            message.ForEach((msg) =>
+            {
+                Create(msg, accessInfo.AccessKeyId);
+            });
+        }
+
         /// <summary>
         /// 从 min 开始往后读取 count 个数据
         /// </summary>
         /// <param name="ackId">accessKeyID</param>
         /// <param name="count">读取条数</param>
         /// <returns></returns>
-        internal static List<Dictionary<string, object>> Read(string ackId, int count)
+        internal static List<string> Read(string ackId, int count)
         {
-            lock (dataLock)
+            if (!IsInit)
             {
-                if (!IsInit)
-                {
-                    return null;
-                }
-                List<Dictionary<string, object>> pairs = new List<Dictionary<string, object>>();
-                MinMaxData data = _curIndexDictionary[ackId];
-                int expectEndIndex = data.Min + count;
-                //大于 Max 的时候可以考虑归零
-                int realEndIndex = expectEndIndex > data.Max ? data.Max : expectEndIndex;
-                for (int i = data.Min; i < realEndIndex; i++)
-                {
-                    string key = GetKey(ackId, i);
-                    if (PlayerPfsUtils.Exist(key))
-                    {
-                        string value = PlayerPfsUtils.Get<string>(key);
-                        if (!string.IsNullOrEmpty(value))
-                        {
-                            pairs.Add(JsonConvert.DeserializeObject<Dictionary<string, object>>(value));
-                        }
-                    }
-
-                }
-                Logger.LogVerbose("Read: " + JsonConvert.SerializeObject(pairs));
-                return pairs;
+                return null;
             }
+            List<string> pairs = new List<string>();
+            MinMaxData data = _curIndexDictionary[ackId];
+            int expectEndIndex = data.Min + count;
+            //大于 Max 的时候可以考虑归零
+            int realEndIndex = expectEndIndex > data.Max ? data.Max : expectEndIndex;
+            for (int i = data.Min; i < realEndIndex; i++)
+            {
+                string key = GetKey(ackId, i);
+                if (PlayerPfsUtils.Exist(key))
+                {
+                    string value = PlayerPfsUtils.Get<string>(key);
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        pairs.Add(value);
+                    }
+                }
+
+            }
+            Logger.Log("Read: " + pairs.ToArray().ToString());
+            return pairs;
         }
         /// <summary>
         /// 从 min 往后删除 count 个数据
@@ -119,42 +128,29 @@ namespace SoFunny.FunnyDB.PC
         /// <param name="count"></param>
         internal static void Delete(string ackId, int count)
         {
-            lock (dataLock)
+            if (!IsInit)
             {
-                if (!IsInit)
-                {
-                    return;
-                }
-                MinMaxData data = _curIndexDictionary[ackId];
-                int delCnt = 0;
-                int expectEndIndex = data.Min + count;
-                int realMinIndex = expectEndIndex >= data.Max ? data.Max : expectEndIndex;
-                for (int i = data.Min; i < realMinIndex; i++)
-                {
-                    string key = GetKey(ackId, i);
-                    PlayerPfsUtils.Delete(key);
-                    delCnt++;
-                }
-                data.Min = realMinIndex;
-                Logger.LogVerbose("del cnt: " + delCnt + " data" + JsonConvert.SerializeObject(data));
-                SaveAccessKeyIdMappings();
+                return;
             }
+            MinMaxData data = _curIndexDictionary[ackId];
+            int delCnt = 0;
+            int expectEndIndex = data.Min + count;
+            int realMinIndex = expectEndIndex >= data.Max ? data.Max : expectEndIndex;
+            for (int i = data.Min; i < realMinIndex; i++)
+            {
+                string key = GetKey(ackId, i);
+                PlayerPfsUtils.Delete(key);
+                delCnt++;
+            }
+            data.Min = realMinIndex;
+            Logger.Log("del cnt: " + delCnt + " data" + JsonConvert.SerializeObject(data));
+            SaveAccessKeyIdMappings();
         }
 
         internal static int GetCountByAcKID(string ackId)
         {
-            lock (dataLock)
-            {
-                var data = _curIndexDictionary[ackId];
-                return data.Max - data.Min;
-            }
-        }
-        internal static void SaveAgain(List<Dictionary<string, object>> messageArr, AccessInfo accessInfo)
-        {
-            messageArr.ForEach((msg) =>
-            {
-                Create(JsonConvert.SerializeObject(msg), accessInfo.AccessKeyId);
-            });
+            var data = _curIndexDictionary[ackId];
+            return data.Max - data.Min;
         }
     }
 
@@ -174,7 +170,7 @@ namespace SoFunny.FunnyDB.PC
         private static void SaveAccessKeyIdMappings()
         {
             var mappingJsonStr = JsonConvert.SerializeObject(_curIndexDictionary);
-            Logger.LogVerbose("SaveAccessKeyIdMappings: " + mappingJsonStr);
+            Logger.Log("SaveAccessKeyIdMappings: " + mappingJsonStr);
             PlayerPfsUtils.Save(KEY_ALL_ACCESS_KEYS, mappingJsonStr);
         }
         private static string GetKey(string ackId, int index)
@@ -237,3 +233,4 @@ namespace SoFunny.FunnyDB.PC
     }
 
 }
+#endif

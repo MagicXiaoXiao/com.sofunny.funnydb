@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System;
 using System.Text;
 using System.Security.Cryptography;
@@ -18,3 +19,4 @@ namespace SoFunny.FunnyDB.PC {
         }
     }
 }
+#endif

@@ -1,5 +1,5 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using static SoFunny.FunnyDB.PC.EnumConstants;
 
 namespace SoFunny.FunnyDB.PC
@@ -17,8 +17,9 @@ namespace SoFunny.FunnyDB.PC
                 return;
             }
             crashEvent.appCrashReason = reportReason;
+            string reportInfoStr = JsonWriterUtils.ConvertDictionaryToJson(crashEvent.GetReport());
             // 先入库，等合适的时机再上报
-            FunnyDBPCInstance.instance.ReportEvent(crashEvent.GetEventName(), crashEvent.GetReport(), sendType: ((int)DBSDK_SEND_TYPE_ENUM.DELAY));
+            FunnyDBPCInstance.Instance.ReportEvent(crashEvent.GetEventName(), reportInfoStr, sendType: ((int)DBSDK_SEND_TYPE_ENUM.DELAY));
         }
 
         public string GetEventName()
@@ -26,11 +27,11 @@ namespace SoFunny.FunnyDB.PC
             return Constants.REPORT_EVENT_CRASH_NAME;
         }
 
-        public string GetReport()
+        public Dictionary<string, object> GetReport()
         {
-            Dictionary<string, string> appCrashProperties = new Dictionary<string, string>();
+            Dictionary<string, object> appCrashProperties = new Dictionary<string, object>();
             appCrashProperties[Constants.KEY_APP_CRASH_REASON] = appCrashReason;
-            return JsonConvert.SerializeObject(appCrashProperties);
+            return appCrashProperties;
         }
 
         public bool IsNeedReport()
@@ -39,3 +40,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif

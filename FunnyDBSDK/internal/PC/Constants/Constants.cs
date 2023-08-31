@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 namespace SoFunny.FunnyDB.PC
 {
     internal sealed class Constants {
@@ -96,3 +97,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif

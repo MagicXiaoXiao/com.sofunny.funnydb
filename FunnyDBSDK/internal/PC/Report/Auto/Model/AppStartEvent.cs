@@ -1,5 +1,5 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace SoFunny.FunnyDB.PC
 {
@@ -7,11 +7,11 @@ namespace SoFunny.FunnyDB.PC
     {
         private string startReason = Constants.VALUE_UNKNOWN;
 
-        public string GetReport()
+        public Dictionary<string, object> GetReport()
         {
-            Dictionary<string, string> appStartProperties = new Dictionary<string, string>();
+            Dictionary<string, object> appStartProperties = new Dictionary<string, object>();
             appStartProperties[Constants.KEY_APP_START_REASON] = startReason;
-            return JsonConvert.SerializeObject(appStartProperties);
+            return appStartProperties;
         }
 
         public string GetEventName()
@@ -26,3 +26,4 @@ namespace SoFunny.FunnyDB.PC
 
     }
 }
+#endif
