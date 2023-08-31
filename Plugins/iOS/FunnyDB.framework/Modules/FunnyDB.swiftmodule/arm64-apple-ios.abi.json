@@ -97361,21 +97361,28 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Internal\/InternalService.swift",
       "kind": "StringLiteral",
-      "offset": 995,
+      "offset": 732,
+      "length": 10,
+      "value": "\"endPoint\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Internal\/InternalService.swift",
+      "kind": "StringLiteral",
+      "offset": 1176,
       "length": 11,
       "value": "\"eventName\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Internal\/InternalService.swift",
       "kind": "StringLiteral",
-      "offset": 1050,
+      "offset": 1231,
       "length": 54,
       "value": "\"FunnySDK 埋点无效 -> 无事件名，无法上报\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Internal\/InternalService.swift",
       "kind": "StringLiteral",
-      "offset": 1165,
+      "offset": 1346,
       "length": 6,
       "value": "\"prop\""
     },
