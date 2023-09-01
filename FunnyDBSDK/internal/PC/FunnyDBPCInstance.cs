@@ -21,7 +21,7 @@ namespace SoFunny.FunnyDB.PC
         private void Awake()
         {
             Instance = this;
-            originalContext = SynchronizationContext.Current;
+            _originalContext = SynchronizationContext.Current;
             _mainThreadId = Thread.CurrentThread.ManagedThreadId;
             Logger.Log("FunnyDBPC Instance Awake");
             DontDestroyOnLoad(gameObject);
@@ -178,7 +178,7 @@ namespace SoFunny.FunnyDB.PC
                 ReportEventInternal(eventName, customProperty, reportChannelType, sendType);
                 return;
             }
-            originalContext.Post(_ =>
+            _originalContext.Post(_ =>
             {
                 ReportEventInternal(eventName, customProperty, reportChannelType, sendType);
             }, null);
@@ -192,7 +192,7 @@ namespace SoFunny.FunnyDB.PC
                 ReportCustomInternal(customType, operateType, customStr);
                 return;
             }
-            originalContext.Post(_ =>
+            _originalContext.Post(_ =>
             {
                 ReportCustomInternal(customType, operateType, customStr);
             }, null);
@@ -203,11 +203,15 @@ namespace SoFunny.FunnyDB.PC
         /// </summary>
         internal void Flush()
         {
-            if (!ReportSettings.CanSend())
+            if (Thread.CurrentThread.ManagedThreadId == _mainThreadId)
             {
+                FlushInternal();
                 return;
             }
-            AutoReportTimer.Instance.DoCheckDataSource(true);
+            _originalContext.Post(_ =>
+            {
+                FlushInternal();
+            }, null);
         }
 
         internal void EnableDebug()
@@ -222,7 +226,7 @@ namespace SoFunny.FunnyDB.PC
                 ReportInternal(evenObj, reportChannelType, sendType);
                 return;
             }
-            originalContext.Post(_ =>
+            _originalContext.Post(_ =>
             {
                 ReportInternal(evenObj, reportChannelType, sendType);
             }, null);
@@ -232,7 +236,7 @@ namespace SoFunny.FunnyDB.PC
 
     internal sealed partial class FunnyDBPCInstance : MonoBehaviour
     {
-        private SynchronizationContext originalContext;
+        private SynchronizationContext _originalContext;
         private int _mainThreadId = int.MinValue;
         private int _curSendType = (int)DBSDK_SEND_TYPE_ENUM.NOW;
         private int _lastReportInterval = ReportSettings.ReportInterval;
@@ -299,6 +303,15 @@ namespace SoFunny.FunnyDB.PC
         {
             _JsonStringWriter = new StringWriter();
             _jsonWriter = new JsonTextWriter(_JsonStringWriter);
+        }
+
+        private void FlushInternal()
+        {
+            if (!ReportSettings.CanSend())
+            {
+                return;
+            }
+            AutoReportTimer.Instance.DoCheckDataSource(true);
         }
 
         /// <summary>
