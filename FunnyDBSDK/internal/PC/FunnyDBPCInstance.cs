@@ -45,6 +45,7 @@ namespace SoFunny.FunnyDB.PC
                 }
                 yield return _waitForSeconds;
                 Logger.LogVerbose("Loop Timer: " + Time.time);
+                GCSuppressProcess(null);
                 AutoReportTimer.Instance.DoCheckDataSource();
             }
         }
@@ -240,6 +241,29 @@ namespace SoFunny.FunnyDB.PC
         private static bool _isInit = false; // 是否初始化
         private StringWriter _JsonStringWriter = null;
         private JsonWriter _jsonWriter = null;
+        /// <summary>
+        /// 字符串 GC 抑制数组
+        /// </summary>
+        private List<string> _strsSuppressList = new List<string>();
+        private const int RELEASE_CNT = 20;
+
+        /// <summary>
+        /// 处理字符串 GC 抑制过程控制
+        /// </summary>
+        /// <param name="suppressStr"></param>
+        private void GCSuppressProcess(string suppressStr)
+        {
+            if (string.IsNullOrEmpty(suppressStr))
+            {
+                _strsSuppressList.Clear();
+                return;
+            }
+            _strsSuppressList.Add(suppressStr);
+            if (_strsSuppressList.Count >= RELEASE_CNT)
+            {
+                _strsSuppressList.Clear();
+            }
+        }
 
         /// <summary>
         /// 去掉左右两边的花括号，直接进行拼接
@@ -310,6 +334,7 @@ namespace SoFunny.FunnyDB.PC
 
                         string sendData = _JsonStringWriter.ToString();
                         _JsonStringWriter.GetStringBuilder().Clear();
+                        GCSuppressProcess(sendData);
                         Logger.LogVerbose("ReportEvent Str: " + sendData);
                         IngestSignature ingestSignature = new IngestSignature(accessInfo)
                         {
@@ -434,6 +459,7 @@ namespace SoFunny.FunnyDB.PC
 
                 string reportJson = _JsonStringWriter.ToString();
                 _JsonStringWriter.GetStringBuilder().Clear();
+                GCSuppressProcess(reportJson);
                 ReportInternal(reportJson, (int)Constants.ReportChannel.ChannelTypePrj, Constants.FUNNY_DB_SEND_TYPE_NONE);
             }
             catch (Exception e)
@@ -533,6 +559,7 @@ namespace SoFunny.FunnyDB.PC
                 string finalStr = _JsonStringWriter.ToString();
                 Logger.LogVerbose("ReportEvent Str: " + finalStr);
                 _JsonStringWriter.GetStringBuilder().Clear();
+                GCSuppressProcess(finalStr);
                 Report(finalStr, reportChannelType, sendType);
             }
             catch (Exception e)
