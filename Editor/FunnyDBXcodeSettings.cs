@@ -54,8 +54,13 @@ namespace SoFunny.FunnyDB.Editor
             //    proj.SetBuildProperty(projectTargetGUID, "OTHER_LDFLAGS", "-ObjC");
             //}
 
+#if UNITY_2021_2_OR_NEWER
             if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSXcodeBuildConfig == XcodeBuildConfig.Debug)
             {
+#else
+            if (EditorUserBuildSettings.development || EditorUserBuildSettings.iOSBuildConfigType == iOSBuildType.Debug)
+            {             
+#endif
                 proj.AddBuildProperty(projectTargetGUID, "FRAMEWORK_SEARCH_PATHS", $"$(PROJECT_DIR)/{FRAMEWORK_TARGET_PATH}");
 
                 foreach (var framework in SDKNames)
