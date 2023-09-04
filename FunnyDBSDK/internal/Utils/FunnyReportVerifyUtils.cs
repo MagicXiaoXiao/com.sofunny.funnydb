@@ -27,7 +27,7 @@ namespace SoFunny.FunnyDB
         /// 检查上报的参数
         /// </summary>
         /// <param name="customProperties"></param>
-        internal static bool VerifyDictionaryValue(this Dictionary<string, object> customProperties)
+        internal static bool VerifyDictionaryValue(Dictionary<string, object> customProperties)
         {
 
             if (customProperties == null)

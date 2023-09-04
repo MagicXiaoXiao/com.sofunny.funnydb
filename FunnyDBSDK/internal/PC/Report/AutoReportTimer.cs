@@ -1,5 +1,6 @@
 ﻿#if UNITY_STANDALONE || UNITY_EDITOR
 using Newtonsoft.Json;
+using System;
 using System.IO;
 
 namespace SoFunny.FunnyDB.PC
@@ -58,33 +59,40 @@ namespace SoFunny.FunnyDB.PC
             // 数据库中删除掉
             DataSource.Delete(accessInfo.AccessKeyId, messageArr.Count);
 
-
-            _jsonWriter.WriteStartObject();
-
-            _jsonWriter.WritePropertyName(Constants.KEY_MESSAGES);
-            _jsonWriter.WriteStartArray();
-            foreach (string json in messageArr)
+            try
             {
-                _jsonWriter.WriteRawValue(json);
+                _jsonWriter.WriteStartObject();
+
+                _jsonWriter.WritePropertyName(Constants.KEY_MESSAGES);
+                _jsonWriter.WriteStartArray();
+                foreach (string json in messageArr)
+                {
+                    _jsonWriter.WriteRawValue(json);
+                }
+                _jsonWriter.WriteEndArray();
+                _jsonWriter.WriteEndObject();
+
+                string sendData = _stringWriter.ToString();
+                _stringWriter.GetStringBuilder().Clear();
+
+                Logger.Log("Auto Report: " + sendData);
+                IngestSignature ingestSignature = new IngestSignature(accessInfo)
+                {
+                    Nonce = new Random().Next().ToString(),
+                    Timestamp = FunnyDBPCInstance.Instance.CalibratedTime.GetInMills().ToString(),
+                    Body = sendData
+                };
+
+                string sign = EncryptUtils.GetEncryptSign(accessInfo.AccessSecret, ingestSignature.GetToEncryptContent());
+                ingestSignature.Sign = sign;
+                ingestSignature.OriginEvents = messageArr;
+                EventUpload.PostIngest(ingestSignature);
             }
-            _jsonWriter.WriteEndArray();
-            _jsonWriter.WriteEndObject();
-
-            string sendData = _stringWriter.ToString();
-            _stringWriter.GetStringBuilder().Clear();
-
-            Logger.Log("Auto Report: " + sendData);
-            IngestSignature ingestSignature = new IngestSignature(accessInfo)
+            catch (Exception)
             {
-                Nonce = new System.Random().Next().ToString(),
-                Timestamp = FunnyDBPCInstance.Instance.CalibratedTime.GetInMills().ToString(),
-                Body = sendData
-            };
-
-            string sign = EncryptUtils.GetEncryptSign(accessInfo.AccessSecret, ingestSignature.GetToEncryptContent());
-            ingestSignature.Sign = sign;
-            ingestSignature.OriginEvents = messageArr;
-            EventUpload.PostIngest(ingestSignature);
+                _stringWriter = new StringWriter();
+                _jsonWriter = new JsonTextWriter(_stringWriter);
+            }
         }
     }
 }
