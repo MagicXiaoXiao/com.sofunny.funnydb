@@ -29,16 +29,16 @@ namespace SoFunny.FunnyDB.PC
         /// <param name="ackId"></param>
         internal static void Init(string ackId)
         {
-            lock (dataLock)
+            lock (_dataLock)
             {
-                if (!IsInit)
+                if (!_isInit)
                 {
                     string allAkIdJson = PlayerPfsUtils.Get<string>(KEY_ALL_ACCESS_KEYS);
                     if (!string.IsNullOrEmpty(allAkIdJson))
                     {
                         _curIndexDictionary = JsonConvert.DeserializeObject<Dictionary<string, MinMaxData>>(allAkIdJson);
                     }
-                    IsInit = true;
+                    _isInit = true;
                 }
                 if (!_curIndexDictionary.ContainsKey(ackId))
                 {
@@ -57,7 +57,7 @@ namespace SoFunny.FunnyDB.PC
         /// <returns></returns>
         internal static bool Create(string evenJson, string accessKeyID)
         {
-            if (!IsInit)
+            if (!_isInit)
             {
                 return false;
             }
@@ -66,10 +66,6 @@ namespace SoFunny.FunnyDB.PC
             string saveKey = GetKey(accessKeyID, data.Max);
             PlayerPfsUtils.Save(saveKey, evenJson);
             data.Max += 1;
-            if(data.Max == int.MaxValue)
-            {
-
-            }
             Logger.Log("Create end cnt: " + " data" + JsonConvert.SerializeObject(data));
             SaveAccessKeyIdMappings();
             
@@ -96,7 +92,7 @@ namespace SoFunny.FunnyDB.PC
         /// <returns></returns>
         internal static List<string> Read(string ackId, int count)
         {
-            if (!IsInit)
+            if (!_isInit)
             {
                 return null;
             }
@@ -128,7 +124,7 @@ namespace SoFunny.FunnyDB.PC
         /// <param name="count"></param>
         internal static void Delete(string ackId, int count)
         {
-            if (!IsInit)
+            if (!_isInit)
             {
                 return;
             }
@@ -157,15 +153,15 @@ namespace SoFunny.FunnyDB.PC
 
     internal static partial class DataSource
     {
-        private static readonly object dataLock = new object();
+        private static readonly object _dataLock = new object();
         private static readonly string KEY_ALL_ACCESS_KEYS = "Key_All_Access_Keys";
         /// <summary>
         /// 第一个是 accessKeyID，第二个为第一个对于事件的自增 ID 数值
         /// </summary>
         private static Dictionary<string, MinMaxData> _curIndexDictionary = new Dictionary<string, MinMaxData>();
-        private static bool IsInit = false;
-        private const int _DelWhenOverCnt = 100;
-        private const int _MaxCacheCnt = 20000;
+        private static bool _isInit = false;
+        private const int _delWhenOverCnt = 100;
+        private const int _maxCacheCnt = 20000;
 
         private static void SaveAccessKeyIdMappings()
         {

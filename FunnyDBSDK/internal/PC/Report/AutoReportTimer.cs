@@ -11,7 +11,8 @@ namespace SoFunny.FunnyDB.PC
         private StringWriter _stringWriter;
         private JsonTextWriter _jsonWriter;
         private bool _isFlushing = false;
-        private AutoReportTimer() {
+        private AutoReportTimer()
+        {
             _stringWriter = new StringWriter();
             _jsonWriter = new JsonTextWriter(_stringWriter);
         }
@@ -21,14 +22,18 @@ namespace SoFunny.FunnyDB.PC
         internal void Init()
         {
 
-    }
-    
+        }
+
         /// <summary>
         /// 发送失败直接回写，失败情况完善放在后面处理
         /// </summary>
         internal void DoCheckDataSource(bool isFlush = false)
         {
-            if(_isFlushing)
+            if (!ReportSettings.CanSend())
+            {
+                return;
+            }
+            if (_isFlushing)
             {
                 Logger.Log("flushing data, skip timing report or flush");
                 return;
@@ -39,9 +44,15 @@ namespace SoFunny.FunnyDB.PC
             foreach (var channel in accessChannelSet)
             {
                 AccessInfo accessInfo = (AccessInfo)accessKeyHashtable[channel];
+
                 while (DataSource.GetCountByAcKID(accessInfo.AccessKeyId) != 0)
                 {
                     Report(accessInfo);
+                    if (!isFlush)
+                    {
+                        Logger.Log("not flush do once!");
+                        break;
+                    }
                 }
             }
             _isFlushing = false;
@@ -50,10 +61,6 @@ namespace SoFunny.FunnyDB.PC
 
         private void Report(AccessInfo accessInfo)
         {
-            if (!ReportSettings.CanSend())
-            {
-                return;
-            }
             var messageArr = DataSource.Read(accessInfo.AccessKeyId, ReportSettings.ReportSizeLimit);
 
             // 数据库中删除掉
