@@ -20,7 +20,7 @@ namespace SoFunny.FunnyDB.PC
                 return;
             }
             AppForgroundEvent e = new AppForgroundEvent();
-            e.backgroundDuration = Environment.TickCount - EnterBackgroundInMills;
+            e.backgroundDuration = (Environment.TickCount - EnterBackgroundInMills) / 1000;
             if (!e.IsNeedReport())
             {
                 return;
