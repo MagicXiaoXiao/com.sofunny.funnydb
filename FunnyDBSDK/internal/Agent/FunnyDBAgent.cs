@@ -27,7 +27,7 @@ namespace SoFunny.FunnyDB.Bridge
             {
 #if ENABLE_FUNNYDB_DEBUG
                 EnableDebug();
-                Logger.Log("EnableDebug");
+                Logger.LogVerbose("EnableDebug");
 #endif
                 if (sIsInit)
                 {

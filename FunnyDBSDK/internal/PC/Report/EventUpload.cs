@@ -69,7 +69,7 @@ namespace SoFunny.FunnyDB.PC
 
         private static async Task SendRequestAsync(IngestSignature ingestSignature)
         {
-            Logger.LogVerbose("sending: " + ingestSignature.Timestamp + JsonConvert.SerializeObject(ingestSignature.OriginEvents));
+            Logger.LogVerbose("sending: " + ingestSignature.Timestamp + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
             try
             {
                 var url = string.Format("{0}{1}", ingestSignature.GetEndPoint, ingestSignature.Url);
@@ -91,11 +91,11 @@ namespace SoFunny.FunnyDB.PC
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    Logger.Log($"上报成功 {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents)}");
+                    Logger.Log($"上报成功 {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
                 }
                 else if (((int)response.StatusCode) >= 500 && ((int)response.StatusCode) <= 599)
                 {
-                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} Response: {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents)}");
+                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} Response: {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
                     FunnyDBPCInstance.instance.StartCoroutinWithAciton(() =>
                     {
                         Logger.LogVerbose("restore messages: " + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
@@ -104,12 +104,12 @@ namespace SoFunny.FunnyDB.PC
                 }
                 else
                 {
-                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} - Response: {responseBody} 数据直接丢弃！- data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents)}");
+                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} - Response: {responseBody} 数据直接丢弃！- data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
                 }
             }
             catch (Exception e)
             {
-                Logger.LogError("PostIngest exception: " + e.Message + $" - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents)}");
+                Logger.LogError("PostIngest exception: " + e.Message + $" - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
                 FunnyDBPCInstance.instance.StartCoroutinWithAciton(() =>
                 {
                     Logger.LogVerbose("restore messages: " + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
