@@ -28,7 +28,7 @@ namespace SoFunny.FunnyDB.PC
         {
             if(!isFlush && isFlushing)
             {
-                Logger.Log("flushing data, skip timing report");
+                Logger.LogVerbose("flushing data, skip timing report");
                 return;
             }
             var accessKeyHashtable = FunnyDBPCInstance.instance.AccessKeyHashTable;
