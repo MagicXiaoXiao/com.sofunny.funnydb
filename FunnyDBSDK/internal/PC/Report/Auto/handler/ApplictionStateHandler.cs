@@ -14,7 +14,7 @@ namespace SoFunny.FunnyDB.PC
 
         private void onAppQuit()
         {
-            Logger.Log("App Quit !!!");
+            Logger.LogVerbose("App Quit !!!");
         }
 
         private void onAppFocusChanged(bool hasFocus)

@@ -21,7 +21,7 @@ namespace SoFunny.FunnyDB.PC
             instance = this;
             originalContext = SynchronizationContext.Current;
             mainThreadId = Thread.CurrentThread.ManagedThreadId;
-            Logger.Log("FunnyDBPC Instance Awake");
+            Logger.LogVerbose("FunnyDBPC Instance Awake");
             DontDestroyOnLoad(gameObject);
             _waitForSeconds = new WaitForSeconds(_lastReportInterval);
         }
@@ -39,7 +39,7 @@ namespace SoFunny.FunnyDB.PC
                 {
                     _lastReportInterval = ReportSettings.ReportInterval;
                     _waitForSeconds = new WaitForSeconds(_lastReportInterval);
-                    Logger.Log("Report Interval changed, Take Effect Now! ");
+                    Logger.LogVerbose("Report Interval changed, Take Effect Now! ");
                 }
                 yield return _waitForSeconds;
                 Logger.LogVerbose("Loop Timer: " + Time.time);
@@ -74,7 +74,7 @@ namespace SoFunny.FunnyDB.PC
             {
                 return;
             }
-            Logger.Log("setSDKStatus: " + status);
+            Logger.LogVerbose("setSDKStatus: " + status);
             if (status > ((int)DBSDK_STATUS_ENUM.ONLY_COLLECT) || status < ((int)DBSDK_STATUS_ENUM.DEFAULT))
             {
                 Logger.LogWarning("status illegal");
@@ -89,7 +89,7 @@ namespace SoFunny.FunnyDB.PC
             {
                 return;
             }
-            Logger.Log("setSDKSendType: " + sendType);
+            Logger.LogVerbose("setSDKSendType: " + sendType);
             if (sendType > ((int)DBSDK_SEND_TYPE_ENUM.DELAY) || sendType < ((int)DBSDK_SEND_TYPE_ENUM.NOW))
             {
                 Logger.LogWarning("sendType illegal");
@@ -100,7 +100,7 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetUserId(string userId)
         {
-            Logger.Log(string.Format("SetUserId: {0}", userId));
+            Logger.LogVerbose(string.Format("SetUserId: {0}", userId));
             DevicesInfo.UserId = userId;
             // auto setUser
             Dictionary<string, object> properties = new Dictionary<string, object>();
@@ -110,7 +110,7 @@ namespace SoFunny.FunnyDB.PC
 
         internal static void SetChannel(string channel)
         {
-            Logger.Log(string.Format("SetChannel: {0}", channel));
+            Logger.LogVerbose(string.Format("SetChannel: {0}", channel));
             DevicesInfo.Channel = channel;
         }
 
@@ -120,7 +120,7 @@ namespace SoFunny.FunnyDB.PC
             if (string.IsNullOrEmpty(deviceId)) { return; }
 
 
-            Logger.Log(string.Format("SetDeviceId: {0}", deviceId));
+            Logger.LogVerbose(string.Format("SetDeviceId: {0}", deviceId));
             DevicesInfo.DeviceId = deviceId;
             // auto setDevice
             //Hashtable properties = new Hashtable();
@@ -139,7 +139,7 @@ namespace SoFunny.FunnyDB.PC
             {
                 return;
             }
-            Logger.Log("setReportInterval: " + reportInterval);
+            Logger.LogVerbose("setReportInterval: " + reportInterval);
             if (reportInterval < 1000)
             {
                 Logger.LogWarning("reportInterval can't < 1000");
@@ -155,7 +155,7 @@ namespace SoFunny.FunnyDB.PC
                 return;
             }
 
-            Logger.Log("setReportLimit: " + reportSizeLimit);
+            Logger.LogVerbose("setReportLimit: " + reportSizeLimit);
             if (reportSizeLimit < 1)
             {
                 Logger.LogWarning("reportSizeLimit can't < 1");
@@ -177,7 +177,7 @@ namespace SoFunny.FunnyDB.PC
             }
             if (!ReportSettings.CanCollect())
             {
-                Logger.Log("cur status can not collect");
+                Logger.LogVerbose("cur status can not collect");
                 return;
             }
             Logger.LogVerbose(string.Format("ReportEvent eventName: {0} customProperty: {1}", eventName, customProperty));
@@ -282,11 +282,11 @@ namespace SoFunny.FunnyDB.PC
 
             if (!ReportSettings.CanCollect())
             {
-                Logger.Log("cur status can not collect");
+                Logger.LogVerbose("cur status can not collect");
                 return;
             }
 
-            Logger.Log(string.Format("ReportCustom customType: {0} customStr: {1}", customType, customStr));
+            Logger.LogVerbose(string.Format("ReportCustom customType: {0} customStr: {1}", customType, customStr));
             try
             {
                 Dictionary<string, object> customeObj = new Dictionary<string, object>();

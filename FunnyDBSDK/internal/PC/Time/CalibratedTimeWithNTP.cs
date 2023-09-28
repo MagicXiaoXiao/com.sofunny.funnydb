@@ -25,7 +25,7 @@ namespace SoFunny.FunnyDB.PC
                         DateTime startTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                         _startTime = (long)(dataTime - startTime).TotalMilliseconds;
                         _systemElapsedRealtime = Environment.TickCount;
-                        Logger.Log($"ntpTime Success {host}, {dataTime}");
+                        Logger.LogVerbose($"ntpTime Success {host}, {dataTime}");
                         break;
                     }
                     catch (Exception e)
@@ -40,10 +40,10 @@ namespace SoFunny.FunnyDB.PC
         {
             if (_systemElapsedRealtime == 0)
             {
-                Logger.Log("DateTime From Default");
+                Logger.LogVerbose("DateTime From Default");
                 return DateTime.UtcNow;
             }
-            Logger.Log("DateTime From ntp");
+            Logger.LogVerbose("DateTime From ntp");
             long nowTickCount = Environment.TickCount;
             long timestamp = nowTickCount - _systemElapsedRealtime + _startTime;
             DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
@@ -54,7 +54,7 @@ namespace SoFunny.FunnyDB.PC
         {
             if (_systemElapsedRealtime == 0)
             {
-                Logger.Log("DateTime From Default");
+                Logger.LogVerbose("DateTime From Default");
                 TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
                 return (long)ts.TotalMilliseconds;
             }

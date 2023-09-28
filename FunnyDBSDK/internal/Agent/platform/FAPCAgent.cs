@@ -86,7 +86,7 @@ namespace SoFunny.FunnyDB.Bridge
 
         public void ShowToast(string msg)
         {
-            Logger.Log($"Toast Message - {msg}");
+            Logger.LogVerbose($"Toast Message - {msg}");
         }
     }
 }

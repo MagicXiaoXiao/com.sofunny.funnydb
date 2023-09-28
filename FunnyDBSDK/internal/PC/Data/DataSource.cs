@@ -63,7 +63,7 @@ namespace SoFunny.FunnyDB.PC
                     return false;
                 }
                 MinMaxData data = _curIndexDictionary[accessKeyID];
-                Logger.Log("Create start cnt: " + " data" + JsonConvert.SerializeObject(data));
+                Logger.LogVerbose("Create start cnt: " + " data" + JsonConvert.SerializeObject(data));
                 string saveKey = GetKey(accessKeyID, data.Max);
                 PlayerPfsUtils.Save(saveKey, evenJson);
                 data.Max += 1;
@@ -71,7 +71,7 @@ namespace SoFunny.FunnyDB.PC
                 {
 
                 }
-                Logger.Log("Create end cnt: " + " data" + JsonConvert.SerializeObject(data));
+                Logger.LogVerbose("Create end cnt: " + " data" + JsonConvert.SerializeObject(data));
                 SaveAccessKeyIdMappings();
             }
             return true;
@@ -108,7 +108,7 @@ namespace SoFunny.FunnyDB.PC
                     }
 
                 }
-                Logger.Log("Read: " + JsonConvert.SerializeObject(pairs));
+                Logger.LogVerbose("Read: " + JsonConvert.SerializeObject(pairs));
                 return pairs;
             }
         }
@@ -136,7 +136,7 @@ namespace SoFunny.FunnyDB.PC
                     delCnt++;
                 }
                 data.Min = realMinIndex;
-                Logger.Log("del cnt: " + delCnt + " data" + JsonConvert.SerializeObject(data));
+                Logger.LogVerbose("del cnt: " + delCnt + " data" + JsonConvert.SerializeObject(data));
                 SaveAccessKeyIdMappings();
             }
         }
@@ -174,7 +174,7 @@ namespace SoFunny.FunnyDB.PC
         private static void SaveAccessKeyIdMappings()
         {
             var mappingJsonStr = JsonConvert.SerializeObject(_curIndexDictionary);
-            Logger.Log("SaveAccessKeyIdMappings: " + mappingJsonStr);
+            Logger.LogVerbose("SaveAccessKeyIdMappings: " + mappingJsonStr);
             PlayerPfsUtils.Save(KEY_ALL_ACCESS_KEYS, mappingJsonStr);
         }
         private static string GetKey(string ackId, int index)
