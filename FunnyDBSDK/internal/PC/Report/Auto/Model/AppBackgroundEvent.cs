@@ -22,7 +22,7 @@ namespace SoFunny.FunnyDB.PC
             AppBackgroundEvent e = new AppBackgroundEvent();
             if (e.IsNeedReport())
             {
-                e.duration = Environment.TickCount - EnterForgroundInMills;
+                e.duration = (Environment.TickCount - EnterForgroundInMills) / 1000;
                 EnterForgroundInMills = 0;
                 FunnyDBPCInstance.instance.ReportEvent(e.GetEventName(), e.GetReport());
             }
