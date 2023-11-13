@@ -25,7 +25,7 @@ namespace SoFunny.FunnyDB.Bridge
         internal static void Initialize(FunnyDBConfig config) {
             lock (lockObject)
             {
-#if ENABLE_FUNNYDB_DEBUG
+#if ENABLE_FUNNYDB_DEBUG || ENABLE_FUNNYDB_DEBUG_LOTS_LOGS
                 EnableDebug();
                 Logger.LogVerbose("EnableDebug");
 #endif

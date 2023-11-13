@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using SoFunny.FunnyDB;
 using Newtonsoft.Json;
 using System;
+using SoFunny.FunnySDK.UIModule;
 
 public enum FDBExampleReportType {
     Event,
@@ -69,24 +70,31 @@ public class ReportUICell : MonoBehaviour
                     case FDBExampleReportType.Event:
                         //FDBEvent.ReportEvent(nameLabel.text, contentLabel.text);
                         FDBEvent.ReportEvent(nameLabel.text, customProperties);
+                        Toast.Show("发送事件 - " + nameLabel.text);
                         break;
                     case FDBExampleReportType.AddUser:
                         FDBEvent.ReportAddUser(customProperties);
+                        Toast.Show("发送 AddUser");
                         break;
                     case FDBExampleReportType.AddDevice:
                         FDBEvent.ReportAddDevice(customProperties);
+                        Toast.Show("发送 AddDevice");
                         break;
                     case FDBExampleReportType.SetUser:
                         FDBEvent.ReportSetUser(customProperties);
+                        Toast.Show("发送 SetUser");
                         break;
                     case FDBExampleReportType.SetDevice:
                         FDBEvent.ReportSetDevice(customProperties);
+                        Toast.Show("发送 SetDevice");
                         break;
                     case FDBExampleReportType.SetOnceUser:
                         FDBEvent.ReportSetOnceUser(customProperties);
+                        Toast.Show("发送 SetOnceUser");
                         break;
                     case FDBExampleReportType.SetOnceDevice:
                         FDBEvent.ReportSetOnceDevice(customProperties);
+                        Toast.Show("发送 SetOnceDevice");
                         break;
                     default:
                         break;
@@ -121,6 +129,7 @@ public class ReportUICell : MonoBehaviour
         properties["arr"] = new List<object>() { "value" };
         string reportStr = JsonConvert.SerializeObject(properties);
         FDBEvent.ReportEvent("many_types_event", reportStr);
+        Toast.Show("发送事件 - many_types_event");
     }
 
 }
