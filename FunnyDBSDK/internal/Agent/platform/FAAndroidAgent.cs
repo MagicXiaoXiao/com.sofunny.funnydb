@@ -10,7 +10,9 @@ namespace SoFunny.FunnyDB.Bridge
         // Get FunnyBri
         private static readonly string FUNNY_BRIDGE_CLASS = "com.sofunny.eventAnalyzer.FunnyBridge";
         private static AndroidJavaObject mFunnyBridge;
-        internal static AndroidJavaObject FunnyBridge{
+        private static long _sOnSubSystemInitInTimeMills = 0L;
+        internal static AndroidJavaObject FunnyBridge
+        {
             get
             {
                 if (mFunnyBridge == null)
@@ -64,7 +66,7 @@ namespace SoFunny.FunnyDB.Bridge
             int flag = 0;
             try
             {
-                flag = FunnyInstance.Call<int>("initialize", UnityActivity, accessKeyId, accessKeySecret, endPoint);
+                flag = FunnyInstance.Call<int>("initialize", UnityActivity, accessKeyId, accessKeySecret, endPoint, _sOnSubSystemInitInTimeMills);
             }
             catch (Exception e)
             {
@@ -241,7 +243,14 @@ namespace SoFunny.FunnyDB.Bridge
         {
             FunnyInstance.Call("showToast", UnityActivity, msg);
         }
- 
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+        static void OnSubSystemInit()
+        {
+            AndroidJavaClass javaClass = new AndroidJavaClass("android.os.SystemClock");
+            _sOnSubSystemInitInTimeMills = javaClass.CallStatic<long>("elapsedRealtime");
+        }
+
     }
 }
 #endif

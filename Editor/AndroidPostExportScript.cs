@@ -8,48 +8,35 @@ using UnityEditor;
 using UnityEngine;
 
 namespace SoFunny.FunnyDB.Editor {
-
-
-
     partial class AndroidGradleProcess : IPostGenerateGradleAndroidProject
     {
         private const string AAR_ORIGIN_PATH = "Packages/com.sofunny.funnydb/Plugins/Android";
-
         private const string AAR_TARGET_PATH = "libs";
-
-        public int callbackOrder
-        {
+        private bool _isDebug = false;
+        public int callbackOrder {
             get
             {
                 return 680;
             }
         }
 
-        public void OnPostGenerateGradleAndroidProject(string path)
-        {
-
-            Start(path);
-        }
-    }
-
-    partial class AndroidGradleProcess {
-
-        internal static void Start(string projectPath) {
-            SetupGradleProperties(projectPath);
-            SetupBuildGradle(projectPath);
-            SetOptionalAARFile(projectPath);
+        public void OnPostGenerateGradleAndroidProject(string path) {
+            _isDebug = EditorUserBuildSettings.development || EditorUserBuildSettings.androidBuildType == AndroidBuildType.Debug;
+            SetupGradleProperties(path);
+            SetupBuildGradle(path);
+            SetOptionalAARFile(path);
         }
 
-        private static void SetOptionalAARFile(string projectPath) {
+        private void SetOptionalAARFile(string projectPath) {
             DirectoryInfo androidPath = new DirectoryInfo(projectPath);
             var files = androidPath.GetFiles("build.gradle");
             var file = files.First();
 
             var gradle = new GradleConfig(file.FullName);
             var depNode = gradle.ROOT.FindChildNodeByName("dependencies");
-            var isDebug = EditorUserBuildSettings.development || EditorUserBuildSettings.androidBuildType == AndroidBuildType.Debug;
+
             var allAARFiles = Directory.GetFiles(AAR_ORIGIN_PATH).Where((dirPath) => {
-                return isDebug ? dirPath.EndsWith("-debug.aar") : (!dirPath.EndsWith("-debug.aar") && dirPath.EndsWith(".aar"));
+                return _isDebug ? dirPath.EndsWith("-debug.aar") : (!dirPath.EndsWith("-debug.aar") && dirPath.EndsWith(".aar"));
             }).Select((dirPath) => {
                 return new FileInfo(dirPath);
             });
@@ -73,7 +60,7 @@ namespace SoFunny.FunnyDB.Editor {
             gradle.Save();
         }
 
-        private static void SetupGradleProperties(string projectPath) {
+        private void SetupGradleProperties(string projectPath) {
             DirectoryInfo androidPath = new DirectoryInfo(projectPath);
             // 获取 gradle.properties 文件
             var files = androidPath.Parent.GetFiles("gradle.properties");
@@ -123,7 +110,7 @@ namespace SoFunny.FunnyDB.Editor {
 
         }
 
-        private static void SetupBuildGradle(string projectPath) {
+        private void SetupBuildGradle(string projectPath) {
             DirectoryInfo androidPath = new DirectoryInfo(projectPath);
             var files = androidPath.GetFiles("build.gradle");
             var file = files.First();
@@ -142,11 +129,14 @@ namespace SoFunny.FunnyDB.Editor {
                         sw.WriteLine("        exclude group: 'androidx.fragment'");
                         sw.WriteLine("        exclude group: 'androidx.collection'");
                         sw.WriteLine("    }");
-                        sw.WriteLine("    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'");
-                        sw.WriteLine("    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10'");
-                        sw.WriteLine("    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'");
-                        sw.WriteLine("    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'");
-                        sw.WriteLine("    implementation 'com.google.android.material:material:1.1.0'");
+
+                        if (_isDebug) {
+                            sw.WriteLine("    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'");
+                            sw.WriteLine("    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.10'");
+                            sw.WriteLine("    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9'");
+                            sw.WriteLine("    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'");
+                            sw.WriteLine("    implementation 'com.google.android.material:material:1.1.0'");
+                        }
                         sw.WriteLine();
                     }
                     else {

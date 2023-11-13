@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using SoFunny.FunnyDB;
+using SoFunny.FunnySDK.UIModule;
 
 public class SetUserIDCell : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class SetUserIDCell : MonoBehaviour
 
     public void SetUserID() {
         FunnyDBSDK.SetUserId(inputField.text);
-        FunnyDBSDK.ShowFDBToast("用户 ID 设置完毕");
+        Toast.Show("用户 ID 设置完毕");
     }
 
     public void RandomValue() {
