@@ -95051,7 +95051,7 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/FunnyDBSettings.swift",
       "kind": "Dictionary",
-      "offset": 3918,
+      "offset": 4006,
       "length": 3,
       "value": "[]"
     },
@@ -95961,126 +95961,154 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 7477,
+      "offset": 7457,
+      "length": 11,
+      "value": "\"#sdk_type\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 7500,
+      "length": 14,
+      "value": "\"#sdk_version\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 7569,
       "length": 11,
       "value": "\"#identify\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 7632,
+      "offset": 7724,
       "length": 7,
       "value": "\"#time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 7693,
+      "offset": 7785,
       "length": 9,
       "value": "\"#log_id\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 7821,
+      "offset": 7831,
+      "length": 11,
+      "value": "\"#sdk_type\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 7874,
+      "length": 14,
+      "value": "\"#sdk_version\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8005,
       "length": 11,
       "value": "\"#identify\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 7890,
+      "offset": 8074,
       "length": 11,
       "value": "\"#identify\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 8178,
+      "offset": 8362,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8226,
+      "offset": 8410,
       "length": 5,
       "value": "\"GET\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8317,
+      "offset": 8501,
       "length": 67,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8327,
+      "offset": 8511,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8349,
+      "offset": 8533,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8363,
+      "offset": 8547,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8371,
+      "offset": 8555,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8383,
+      "offset": 8567,
       "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 8724,
+      "offset": 8908,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8783,
+      "offset": 8967,
       "length": 13,
       "value": "\"X-Timestamp\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8850,
+      "offset": 9034,
       "length": 9,
       "value": "\"X-Nonce\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8919,
+      "offset": 9103,
       "length": 15,
       "value": "\"X-AccessKeyID\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/FunnyDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8992,
+      "offset": 9176,
       "length": 13,
       "value": "\"X-Signature\""
     },
@@ -96598,35 +96626,98 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8160,
-      "length": 11,
-      "value": "\"#identify\""
+      "offset": 8265,
+      "length": 12,
+      "value": "\"#device_id\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8386,
+      "offset": 8322,
+      "length": 15,
+      "value": "\"#manufacturer\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8370,
+      "length": 15,
+      "value": "\"#ram_capacity\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8416,
+      "length": 12,
+      "value": "\"#cpu_model\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8429,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8445,
+      "length": 17,
+      "value": "\"#cpu_core_count\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8495,
+      "length": 16,
+      "value": "\"#cpu_frequency\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8513,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8528,
+      "length": 15,
+      "value": "\"#screen_width\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8575,
+      "length": 16,
+      "value": "\"#screen_height\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
+      "kind": "StringLiteral",
+      "offset": 8778,
       "length": 7,
       "value": "\"#time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8443,
+      "offset": 8835,
       "length": 9,
       "value": "\"#log_id\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8559,
+      "offset": 8951,
       "length": 11,
       "value": "\"#identify\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Config\/CoreDBConfig.swift",
       "kind": "StringLiteral",
-      "offset": 8620,
+      "offset": 9012,
       "length": 11,
       "value": "\"#identify\""
     },
@@ -96999,7 +97090,7 @@
       "kind": "StringLiteral",
       "offset": 171,
       "length": 7,
-      "value": "\"0.8.3\""
+      "value": "\"0.8.5\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Constant.swift",
@@ -100000,7 +100091,7 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "BooleanLiteral",
-      "offset": 2421,
+      "offset": 2494,
       "length": 4,
       "value": "true"
     },

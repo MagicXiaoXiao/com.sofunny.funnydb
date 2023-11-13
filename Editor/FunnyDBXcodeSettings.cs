@@ -46,9 +46,6 @@ namespace SoFunny.FunnyDB.Editor
             proj.SetBuildProperty(unityPackageTargetGUID, "CLANG_MODULES_AUTOLINK", "YES");
             proj.SetBuildProperty(projectTargetGUID, "CLANG_MODULES_AUTOLINK", "YES");
 
-            proj.SetBuildProperty(unityPackageTargetGUID, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
-            proj.SetBuildProperty(projectTargetGUID, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
-
             //string otherFlag = proj.GetBuildPropertyForConfig(projectTargetGUID, "OTHER_LDFLAGS");
             //if (otherFlag == null || !otherFlag.Contains("ObjC")) {
             //    proj.SetBuildProperty(projectTargetGUID, "OTHER_LDFLAGS", "-ObjC");
