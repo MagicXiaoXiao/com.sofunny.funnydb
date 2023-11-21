@@ -100069,64 +100069,71 @@
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
+      "kind": "Array",
+      "offset": 540,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 1263,
+      "offset": 1316,
       "length": 6,
       "value": "\"http\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 1358,
+      "offset": 1411,
       "length": 32,
       "value": "\"endPoint 地址格式不正确\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 1966,
+      "offset": 2019,
       "length": 9,
       "value": "\"FunnyDB\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 2108,
+      "offset": 2161,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 2148,
+      "offset": 2201,
       "length": 12,
       "value": "\"#app_start\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 2169,
+      "offset": 2222,
       "length": 15,
       "value": "\"#start_reason\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "StringLiteral",
-      "offset": 2238,
+      "offset": 2291,
       "length": 15,
       "value": "\"#device_login\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "Dictionary",
-      "offset": 2307,
+      "offset": 2360,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/FDBService.swift",
       "kind": "BooleanLiteral",
-      "offset": 2468,
+      "offset": 2521,
       "length": 4,
       "value": "true"
     },
