@@ -1,11 +1,59 @@
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID
 using System;
+using System.Threading;
 using UnityEngine;
 
 namespace SoFunny.FunnyDB.Bridge
 {
+    internal class AndroidNotificationMessage : AndroidJavaProxy
+    {
+        private readonly SynchronizationContext OriginalContext;
+
+        public AndroidNotificationMessage() : base("java 层接口映射路径") //TODO: 需填写 java 映射接口路径
+        {
+            OriginalContext = SynchronizationContext.Current;
+        }
+
+
+        internal void Post(string identifier)
+        {
+            OriginalContext.Post(_ =>
+            {
+                FunnyDBNotificationCenter.Default.Post(identifier);
+            }, null);
+
+        }
+
+        internal void Post(string identifier, string jsonValue)
+        {
+            OriginalContext.Post(_ =>
+            {
+                FunnyDBNotificationCenter.Default.Post(identifier, FunnyDBNotificationValue.Create(jsonValue));
+            }, null);
+
+        }
+
+
+    }
+
     internal class FunnyDBAndroidAgent : IFunnyDBAgent
     {
+
+        internal FunnyDBAndroidAgent()
+        {
+            // 下发通知对象到 Android 层
+            FunnyBridge.CallStatic("registerNotification", new AndroidNotificationMessage());
+
+            // 监听 funnydb.init.complete 通知
+            // 该通知接收数据 JSON 格式为：{ "code":0, "message":"初始化成功" }
+            FunnyDBNotificationCenter.Default.AddObserver(this, "funnydb.init.complete", (value) =>
+            {
+                int code = value.TryGetValue<int>("code"); // 0 = 成功，其他统一为失败
+                string message = value.TryGetValue<string>("message"); // 结果消息
+
+                FunnyDBSDK.AttackInitEvent(code == 0, message);
+            });
+        }
 
         // Get FunnyBri
         private static readonly string FUNNY_BRIDGE_CLASS = "com.sofunny.eventAnalyzer.FunnyBridge";

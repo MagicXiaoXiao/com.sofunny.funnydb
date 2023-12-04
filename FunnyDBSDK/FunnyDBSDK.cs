@@ -8,16 +8,32 @@ using static SoFunny.FunnyDB.PC.EnumConstants;
 namespace SoFunny.FunnyDB
 {
 
-    public class FunnyDBSDK {
+    public static class FunnyDBSDK
+    {
+
+        /// <summary>
+        /// 初始化完成事件(bool = 是否成功，string = 消息信息)
+        /// </summary>
+        public static event Action<bool, string> OnInitCompleted;
+
         /// <summary>
         /// 初始化方法，需要传入 FunnyFBConfig
         /// </summary>
         /// <param name="config"></param>
-        public static void Initialize(FunnyDBConfig config) {
+        public static void Initialize(FunnyDBConfig config)
+        {
             // 调用初始化方法
             FunnyDBAgent.Initialize(config);
+
+#if UNITY_IOS || UNITY_STANDALONE || UNITY_EDITOR
+            AttackInitEvent(true, "初始化成功");
+#endif
         }
 
+        internal static void AttackInitEvent(bool isSuccess, string message)
+        {
+            OnInitCompleted?.Invoke(isSuccess, message);
+        }
 
         /// <summary>
         /// FunnyDB 初始化方法
