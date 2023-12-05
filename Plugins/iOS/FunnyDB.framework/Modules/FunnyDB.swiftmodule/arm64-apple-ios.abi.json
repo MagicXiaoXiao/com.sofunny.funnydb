@@ -79553,294 +79553,392 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 308,
+      "offset": 307,
       "length": 10,
       "value": "\"event_id\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 379,
+      "offset": 380,
       "length": 12,
       "value": "\"event_data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 452,
+      "offset": 453,
       "length": 12,
       "value": "\"event_time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 533,
+      "offset": 534,
       "length": 12,
       "value": "\"event_from\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 613,
+      "length": 13,
+      "value": "\"event_state\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "BooleanLiteral",
-      "offset": 751,
+      "offset": 890,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 790,
-      "length": 25,
+      "offset": 929,
+      "length": 28,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 798,
+      "offset": 937,
       "length": 1,
-      "value": "\"\/funnydb.sqlite3\""
+      "value": "\"\/funnydb_v1.sqlite3\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1170,
+      "offset": 1312,
       "length": 26,
       "value": "\"数据库连接成功！\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1224,
+      "offset": 1366,
       "length": 27,
       "value": "\"数据库路径 = \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1250,
+      "offset": 1392,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1331,
+      "offset": 1473,
       "length": 52,
       "value": "\"未找到沙盒目录，无法创建 SQLite 连接\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1466,
+      "offset": 1608,
       "length": 60,
       "value": "\"建立 SQLite 连接出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 1525,
+      "offset": 1667,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "BooleanLiteral",
-      "offset": 1793,
+      "offset": 2070,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2126,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2319,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2113,
+      "offset": 2431,
       "length": 51,
       "value": "\"创建表出错! -> \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2163,
+      "offset": 2481,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2511,
+      "offset": 2829,
       "length": 57,
       "value": "\"数据文件上次修改的时间 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2567,
+      "offset": 2885,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "IntegerLiteral",
-      "offset": 2650,
+      "offset": 2968,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "IntegerLiteral",
-      "offset": 2692,
+      "offset": 3010,
       "length": 4,
       "value": "1024"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "IntegerLiteral",
-      "offset": 2699,
+      "offset": 3017,
       "length": 4,
       "value": "1024"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2730,
+      "offset": 3048,
       "length": 47,
       "value": "\"当前数据库文件大小为 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2773,
+      "offset": 3091,
       "length": 2,
       "value": "\" MB\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 2967,
+      "offset": 3285,
       "length": 74,
       "value": "\"检查当前 数据库文件大小出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 3040,
+      "offset": 3358,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 3390,
-      "length": 52,
-      "value": "\"插入数据出错 - \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
-      "kind": "StringLiteral",
-      "offset": 3441,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
-      "kind": "StringLiteral",
-      "offset": 3989,
+      "offset": 4066,
       "length": 58,
       "value": "\"批量插入数据出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 4046,
+      "offset": 4123,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "IntegerLiteral",
-      "offset": 4472,
-      "length": 3,
-      "value": "-15"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4795,
+      "offset": 4229,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 4829,
+      "offset": 4783,
+      "length": 58,
+      "value": "\"更新数据状态出错 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 4840,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 5248,
+      "length": 61,
+      "value": "\"更新数据组状态出错 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 5308,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5739,
+      "length": 3,
+      "value": "-15"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6062,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 6096,
       "length": 43,
       "value": "\"已删除 \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 4848,
+      "offset": 6115,
       "length": 3,
       "value": "\" 条 15 天前的数据\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 4946,
+      "offset": 6213,
       "length": 61,
       "value": "\"获取旧数据发生错误 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 5006,
+      "offset": 6273,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 5418,
+      "offset": 6685,
       "length": 34,
       "value": "\"删除旧数据数量 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 5451,
+      "offset": 6718,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 5508,
+      "offset": 6775,
       "length": 61,
       "value": "\"获取旧数据发生错误 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 5568,
+      "offset": 6835,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
-      "kind": "Array",
-      "offset": 5833,
-      "length": 2,
-      "value": "[]"
+      "kind": "IntegerLiteral",
+      "offset": 7124,
+      "length": 1,
+      "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 6823,
+      "offset": 7241,
+      "length": 67,
+      "value": "\"删除已上报状态数据出错 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 7307,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "Dictionary",
+      "offset": 7597,
+      "length": 3,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7713,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 8450,
       "length": 52,
       "value": "\"获取数据出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
       "kind": "StringLiteral",
-      "offset": 6874,
+      "offset": 8501,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8798,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8844,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 8965,
+      "length": 55,
+      "value": "\"重置表状态出错 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/DataBase\/EventsDataBase.swift",
+      "kind": "StringLiteral",
+      "offset": 9019,
       "length": 2,
       "value": "\"\""
     },
@@ -97125,7 +97223,7 @@
       "kind": "StringLiteral",
       "offset": 171,
       "length": 7,
-      "value": "\"0.8.5\""
+      "value": "\"0.8.6\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Constant.swift",
@@ -98802,302 +98900,302 @@
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2224,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
-      "kind": "Array",
-      "offset": 2295,
-      "length": 2,
+      "kind": "Dictionary",
+      "offset": 2018,
+      "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 2417,
+      "offset": 2386,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2543,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 2924,
+      "offset": 3178,
       "length": 23,
       "value": "\"com.funnydb.app.setup\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 3420,
+      "offset": 3674,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3462,
+      "offset": 3716,
       "length": 14,
       "value": "\"#app_install\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3485,
+      "offset": 3739,
       "length": 15,
       "value": "\"#install_time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3560,
+      "offset": 3814,
       "length": 53,
       "value": "\"已上报应用安装 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3612,
+      "offset": 3866,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3681,
+      "offset": 3935,
       "length": 14,
       "value": "\"#app_install\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3704,
+      "offset": 3958,
       "length": 15,
       "value": "\"#install_time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 3721,
+      "offset": 3975,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3756,
+      "offset": 4010,
       "length": 29,
       "value": "\"获取安装时间出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 3899,
+      "offset": 4153,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "Dictionary",
-      "offset": 4055,
+      "offset": 4309,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4288,
+      "offset": 4542,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 4429,
+      "offset": 4683,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4525,
+      "offset": 4779,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "Dictionary",
-      "offset": 4589,
+      "offset": 4843,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5037,
+      "offset": 5291,
       "length": 16,
       "value": "\"DeviceMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5210,
+      "offset": 5464,
       "length": 14,
       "value": "\"UserMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5438,
+      "offset": 5692,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5569,
+      "offset": 5823,
       "length": 16,
       "value": "\"DeviceMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5637,
+      "offset": 5891,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5764,
+      "offset": 6018,
       "length": 14,
       "value": "\"UserMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5830,
+      "offset": 6084,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5957,
+      "offset": 6211,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6196,
+      "offset": 6450,
       "length": 38,
       "value": "\"事件名称为空，不处理上报\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6345,
+      "offset": 6599,
       "length": 8,
       "value": "\"#event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6665,
+      "offset": 6919,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6673,
+      "offset": 6927,
       "length": 7,
       "value": "\"Event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6698,
+      "offset": 6952,
       "length": 6,
       "value": "\"data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 7237,
+      "offset": 7843,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 7412,
+      "offset": 8018,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 7627,
+      "offset": 8233,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 7641,
+      "offset": 8247,
       "length": 5,
       "value": "\"add\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 7837,
+      "offset": 8443,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 7851,
+      "offset": 8457,
       "length": 5,
       "value": "\"set\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8051,
+      "offset": 8657,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8065,
+      "offset": 8671,
       "length": 9,
       "value": "\"setOnce\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8283,
+      "offset": 8889,
       "length": 12,
       "value": "\"properties\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8332,
+      "offset": 8938,
       "length": 6,
       "value": "\"data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 8827,
+      "offset": 9446,
       "length": 4,
       "value": "true"
     },
@@ -100189,329 +100287,329 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "BooleanLiteral",
-      "offset": 1195,
+      "offset": 1201,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1472,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 1540,
-      "length": 54,
-      "value": "\"当前上报类型为 delay 执行数据入库操作\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 1830,
-      "length": 56,
-      "value": "\"当前 SDK 状态为 saveOnly 执行数据入库操作\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2051,
-      "length": 10,
-      "value": "\"messages\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2283,
-      "length": 59,
-      "value": "\"上报请求 body 数据出现异常，跳过该条上报\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 2500,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2552,
-      "length": 6,
-      "value": "\"POST\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2659,
-      "length": 78,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2669,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2688,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2703,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2711,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2723,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2736,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3136,
-      "length": 18,
-      "value": "\"application\/json\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3176,
-      "length": 14,
-      "value": "\"Content-Type\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3252,
-      "length": 13,
-      "value": "\"X-Timestamp\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3323,
-      "length": 9,
-      "value": "\"X-Nonce\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3397,
-      "length": 15,
-      "value": "\"X-AccessKeyID\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3474,
-      "length": 13,
-      "value": "\"X-Signature\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3626,
-      "length": 111,
-      "value": "\"开始上报 = \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3661,
-      "length": 3,
-      "value": "\" 条, 归属 -> \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3692,
-      "length": 2,
-      "value": "\" -> \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3729,
-      "length": 6,
-      "value": "\"null\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 3736,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3965,
-      "length": 1,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 4329,
-      "length": 53,
-      "value": "\"当前设备无法连接网络，数据暂存本地\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4680,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 4803,
-      "length": 77,
-      "value": "\"当前设备网络不佳，重试完毕也未能上报，数据暂存本地\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 5128,
+      "offset": 1365,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5278,
-      "length": 108,
-      "value": "\"请求发生网络错误 \n错误码:\""
+      "offset": 1654,
+      "length": 10,
+      "value": "\"messages\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5337,
+      "offset": 1889,
+      "length": 59,
+      "value": "\"上报请求 body 数据出现异常，跳过该条上报\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2106,
       "length": 1,
-      "value": "\" \n错误信息:\""
+      "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5385,
-      "length": 2,
+      "offset": 2158,
+      "length": 6,
+      "value": "\"POST\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2265,
+      "length": 78,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5418,
-      "length": 80,
-      "value": "\"请求发生其他错误 - \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 5462,
+      "offset": 2275,
       "length": 1,
-      "value": "\" - \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 5497,
-      "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5697,
-      "length": 62,
-      "value": "\"无法转换为 - HTTPURLResponse，丢弃本次上报数据\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 5787,
-      "length": 56,
-      "value": "\"无法转换为 - HTTPURLResponse，跳过本次上报\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 6052,
-      "length": 43,
-      "value": "\"处理结果 - \""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 6094,
-      "length": 2,
+      "offset": 2294,
+      "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6159,
-      "length": 3,
-      "value": "200"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6204,
-      "length": 3,
-      "value": "500"
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "IntegerLiteral",
-      "offset": 6212,
-      "length": 3,
-      "value": "599"
+      "kind": "StringLiteral",
+      "offset": 2309,
+      "length": 1,
+      "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6557,
+      "offset": 2317,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2329,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2342,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2742,
+      "length": 18,
+      "value": "\"application\/json\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2782,
+      "length": 14,
+      "value": "\"Content-Type\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2858,
+      "length": 13,
+      "value": "\"X-Timestamp\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 2929,
+      "length": 9,
+      "value": "\"X-Nonce\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3003,
+      "length": 15,
+      "value": "\"X-AccessKeyID\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3080,
+      "length": 13,
+      "value": "\"X-Signature\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3232,
+      "length": 111,
+      "value": "\"开始上报 = \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3267,
+      "length": 3,
+      "value": "\" 条, 归属 -> \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3298,
+      "length": 2,
+      "value": "\" -> \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3335,
       "length": 6,
       "value": "\"null\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6594,
+      "offset": 3342,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3577,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3976,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4056,
+      "length": 77,
+      "value": "\"当前设备网络不佳，重试完毕也未能上报，数据暂存本地\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4292,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4455,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4649,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4724,
+      "length": 108,
+      "value": "\"请求发生网络错误 \n错误码:\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4783,
+      "length": 1,
+      "value": "\" \n错误信息:\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4831,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4864,
+      "length": 80,
+      "value": "\"请求发生其他错误 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4908,
+      "length": 1,
+      "value": "\" - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 4943,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 5143,
+      "length": 62,
+      "value": "\"无法转换为 - HTTPURLResponse，丢弃本次上报数据\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 5233,
+      "length": 56,
+      "value": "\"无法转换为 - HTTPURLResponse，跳过本次上报\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 5498,
+      "length": 43,
+      "value": "\"处理结果 - \""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 5540,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5605,
+      "length": 3,
+      "value": "500"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5613,
+      "length": 3,
+      "value": "599"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5794,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5963,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 6099,
+      "length": 6,
+      "value": "\"null\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 6136,
       "length": 34,
       "value": "\"responseBody = \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6627,
+      "offset": 6169,
       "length": 2,
       "value": "\"\""
     },
