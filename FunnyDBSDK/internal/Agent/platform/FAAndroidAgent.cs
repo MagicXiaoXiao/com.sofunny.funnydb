@@ -9,7 +9,7 @@ namespace SoFunny.FunnyDB.Bridge
     {
         private readonly SynchronizationContext OriginalContext;
 
-        public AndroidNotificationMessage() : base("java 层接口映射路径") //TODO: 需填写 java 映射接口路径
+        public AndroidNotificationMessage() : base("com.sofunny.eventAnalyzer.callBack.FunnySdkListener")
         {
             OriginalContext = SynchronizationContext.Current;
         }
