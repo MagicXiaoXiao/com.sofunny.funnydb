@@ -69066,6 +69066,902 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FunnyDB",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "zlib",
+        "printedName": "zlib",
+        "declKind": "Import",
+        "moduleName": "FunnyDB"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Gzip",
+        "printedName": "Gzip",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "maxWindowBits",
+            "printedName": "maxWindowBits",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB4GzipO13maxWindowBitss5Int32VvpZ",
+            "mangledName": "$s7FunnyDB4GzipO13maxWindowBitss5Int32VvpZ",
+            "moduleName": "FunnyDB",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int32",
+                    "printedName": "Swift.Int32",
+                    "usr": "s:s5Int32V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB4GzipO13maxWindowBitss5Int32VvgZ",
+                "mangledName": "$s7FunnyDB4GzipO13maxWindowBitss5Int32VvgZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:7FunnyDB4GzipO",
+        "mangledName": "$s7FunnyDB4GzipO",
+        "moduleName": "FunnyDB",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CompressionLevel",
+        "printedName": "CompressionLevel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB16CompressionLevelV8rawValues5Int32Vvp",
+            "mangledName": "$s7FunnyDB16CompressionLevelV8rawValues5Int32Vvp",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int32",
+                    "printedName": "Swift.Int32",
+                    "usr": "s:s5Int32V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB16CompressionLevelV8rawValues5Int32Vvg",
+                "mangledName": "$s7FunnyDB16CompressionLevelV8rawValues5Int32Vvg",
+                "moduleName": "FunnyDB",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "noCompression",
+            "printedName": "noCompression",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB16CompressionLevelV02noC0ACvpZ",
+            "mangledName": "$s7FunnyDB16CompressionLevelV02noC0ACvpZ",
+            "moduleName": "FunnyDB",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompressionLevel",
+                    "printedName": "FunnyDB.CompressionLevel",
+                    "usr": "s:7FunnyDB16CompressionLevelV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB16CompressionLevelV02noC0ACvgZ",
+                "mangledName": "$s7FunnyDB16CompressionLevelV02noC0ACvgZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bestSpeed",
+            "printedName": "bestSpeed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB16CompressionLevelV9bestSpeedACvpZ",
+            "mangledName": "$s7FunnyDB16CompressionLevelV9bestSpeedACvpZ",
+            "moduleName": "FunnyDB",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompressionLevel",
+                    "printedName": "FunnyDB.CompressionLevel",
+                    "usr": "s:7FunnyDB16CompressionLevelV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB16CompressionLevelV9bestSpeedACvgZ",
+                "mangledName": "$s7FunnyDB16CompressionLevelV9bestSpeedACvgZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bestCompression",
+            "printedName": "bestCompression",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB16CompressionLevelV04bestC0ACvpZ",
+            "mangledName": "$s7FunnyDB16CompressionLevelV04bestC0ACvpZ",
+            "moduleName": "FunnyDB",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompressionLevel",
+                    "printedName": "FunnyDB.CompressionLevel",
+                    "usr": "s:7FunnyDB16CompressionLevelV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB16CompressionLevelV04bestC0ACvgZ",
+                "mangledName": "$s7FunnyDB16CompressionLevelV04bestC0ACvgZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultCompression",
+            "printedName": "defaultCompression",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB16CompressionLevelV07defaultC0ACvpZ",
+            "mangledName": "$s7FunnyDB16CompressionLevelV07defaultC0ACvpZ",
+            "moduleName": "FunnyDB",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompressionLevel",
+                    "printedName": "FunnyDB.CompressionLevel",
+                    "usr": "s:7FunnyDB16CompressionLevelV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB16CompressionLevelV07defaultC0ACvgZ",
+                "mangledName": "$s7FunnyDB16CompressionLevelV07defaultC0ACvgZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:7FunnyDB16CompressionLevelV8rawValueACs5Int32V_tcfc",
+            "mangledName": "$s7FunnyDB16CompressionLevelV8rawValueACs5Int32V_tcfc",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:7FunnyDB16CompressionLevelVyACs5Int32Vcfc",
+            "mangledName": "$s7FunnyDB16CompressionLevelVyACs5Int32Vcfc",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7FunnyDB16CompressionLevelV",
+        "mangledName": "$s7FunnyDB16CompressionLevelV",
+        "moduleName": "FunnyDB",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int32",
+                    "printedName": "Swift.Int32",
+                    "usr": "s:s5Int32V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GzipError",
+        "printedName": "GzipError",
+        "children": [
+          {
+            "kind": "TypeDecl",
+            "name": "Kind",
+            "printedName": "Kind",
+            "children": [
+              {
+                "kind": "Var",
+                "name": "stream",
+                "printedName": "stream",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "FunnyDB.GzipError.Kind",
+                        "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO6streamyA2EmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO6streamyA2EmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "data",
+                "printedName": "data",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "FunnyDB.GzipError.Kind",
+                        "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO4datayA2EmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO4datayA2EmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "memory",
+                "printedName": "memory",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "FunnyDB.GzipError.Kind",
+                        "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO6memoryyA2EmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO6memoryyA2EmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "buffer",
+                "printedName": "buffer",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "FunnyDB.GzipError.Kind",
+                        "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO6bufferyA2EmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO6bufferyA2EmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "version",
+                "printedName": "version",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Kind",
+                        "printedName": "FunnyDB.GzipError.Kind",
+                        "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO7versionyA2EmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO7versionyA2EmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Var",
+                "name": "unknown",
+                "printedName": "unknown",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(FunnyDB.GzipError.Kind.Type) -> (Swift.Int) -> FunnyDB.GzipError.Kind",
+                    "children": [
+                      {
+                        "kind": "TypeFunc",
+                        "name": "Function",
+                        "printedName": "(Swift.Int) -> FunnyDB.GzipError.Kind",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Tuple",
+                            "printedName": "(code: Swift.Int)",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Int",
+                                "printedName": "Swift.Int",
+                                "usr": "s:Si"
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Metatype",
+                        "printedName": "FunnyDB.GzipError.Kind.Type",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Kind",
+                            "printedName": "FunnyDB.GzipError.Kind",
+                            "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "EnumElement",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO7unknownyAESi_tcAEmF",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO7unknownyAESi_tcAEmF",
+                "moduleName": "FunnyDB",
+                "declAttributes": [
+                  "RawDocComment"
+                ]
+              },
+              {
+                "kind": "Function",
+                "name": "==",
+                "printedName": "==(_:_:)",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Kind",
+                    "printedName": "FunnyDB.GzipError.Kind",
+                    "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Kind",
+                    "printedName": "FunnyDB.GzipError.Kind",
+                    "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                  }
+                ],
+                "declKind": "Func",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO2eeoiySbAE_AEtFZ",
+                "mangledName": "$s7FunnyDB9GzipErrorV4KindO2eeoiySbAE_AEtFZ",
+                "moduleName": "FunnyDB",
+                "static": true,
+                "implicit": true,
+                "funcSelfKind": "NonMutating"
+              }
+            ],
+            "declKind": "Enum",
+            "usr": "s:7FunnyDB9GzipErrorV4KindO",
+            "mangledName": "$s7FunnyDB9GzipErrorV4KindO",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "conformances": [
+              {
+                "kind": "Conformance",
+                "name": "Equatable",
+                "printedName": "Equatable",
+                "usr": "s:SQ",
+                "mangledName": "$sSQ"
+              },
+              {
+                "kind": "Conformance",
+                "name": "Sendable",
+                "printedName": "Sendable",
+                "usr": "s:s8SendableP",
+                "mangledName": "$ss8SendableP"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "kind",
+            "printedName": "kind",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Kind",
+                "printedName": "FunnyDB.GzipError.Kind",
+                "usr": "s:7FunnyDB9GzipErrorV4KindO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB9GzipErrorV4kindAC4KindOvp",
+            "mangledName": "$s7FunnyDB9GzipErrorV4kindAC4KindOvp",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Kind",
+                    "printedName": "FunnyDB.GzipError.Kind",
+                    "usr": "s:7FunnyDB9GzipErrorV4KindO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB9GzipErrorV4kindAC4KindOvg",
+                "mangledName": "$s7FunnyDB9GzipErrorV4kindAC4KindOvg",
+                "moduleName": "FunnyDB",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "message",
+            "printedName": "message",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB9GzipErrorV7messageSSvp",
+            "mangledName": "$s7FunnyDB9GzipErrorV7messageSSvp",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB9GzipErrorV7messageSSvg",
+                "mangledName": "$s7FunnyDB9GzipErrorV7messageSSvg",
+                "moduleName": "FunnyDB",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "localizedDescription",
+            "printedName": "localizedDescription",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7FunnyDB9GzipErrorV20localizedDescriptionSSvp",
+            "mangledName": "$s7FunnyDB9GzipErrorV20localizedDescriptionSSvp",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7FunnyDB9GzipErrorV20localizedDescriptionSSvg",
+                "mangledName": "$s7FunnyDB9GzipErrorV20localizedDescriptionSSvg",
+                "moduleName": "FunnyDB",
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:7FunnyDB9GzipErrorV",
+        "mangledName": "$s7FunnyDB9GzipErrorV",
+        "moduleName": "FunnyDB",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Error",
+            "printedName": "Error",
+            "usr": "s:s5ErrorP",
+            "mangledName": "$ss5ErrorP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "SystemConfiguration",
         "printedName": "SystemConfiguration",
         "declKind": "Import",
@@ -75371,6 +76267,118 @@
         "name": "Data",
         "printedName": "Data",
         "children": [
+          {
+            "kind": "Var",
+            "name": "isGzipped",
+            "printedName": "isGzipped",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10Foundation4DataV7FunnyDBE9isGzippedSbvp",
+            "mangledName": "$s10Foundation4DataV7FunnyDBE9isGzippedSbvp",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10Foundation4DataV7FunnyDBE9isGzippedSbvg",
+                "mangledName": "$s10Foundation4DataV7FunnyDBE9isGzippedSbvg",
+                "moduleName": "FunnyDB",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "gzipped",
+            "printedName": "gzipped(level:wBits:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompressionLevel",
+                "printedName": "FunnyDB.CompressionLevel",
+                "hasDefaultArg": true,
+                "usr": "s:7FunnyDB16CompressionLevelV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "hasDefaultArg": true,
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10Foundation4DataV7FunnyDBE7gzipped5level5wBitsAcD16CompressionLevelV_s5Int32VtKF",
+            "mangledName": "$s10Foundation4DataV7FunnyDBE7gzipped5level5wBitsAcD16CompressionLevelV_s5Int32VtKF",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "gunzipped",
+            "printedName": "gunzipped(wBits:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int32",
+                "printedName": "Swift.Int32",
+                "hasDefaultArg": true,
+                "usr": "s:s5Int32V"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10Foundation4DataV7FunnyDBE9gunzipped5wBitsACs5Int32V_tKF",
+            "mangledName": "$s10Foundation4DataV7FunnyDBE9gunzipped5wBitsACs5Int32V_tKF",
+            "moduleName": "FunnyDB",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
           {
             "kind": "Var",
             "name": "declaredDatatype",
@@ -95218,6 +96226,13 @@
       "value": "0"
     },
     {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Crypto\/HMAC.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1984,
+      "length": 1,
+      "value": "0"
+    },
+    {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/NTP\/NTPClient.swift",
       "kind": "FloatLiteral",
       "offset": 49,
@@ -97252,7 +98267,7 @@
       "kind": "StringLiteral",
       "offset": 171,
       "length": 7,
-      "value": "\"0.8.7\""
+      "value": "\"0.8.8\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Constant.swift",
@@ -98909,322 +99924,322 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 1035,
-      "length": 3,
-      "value": "500"
+      "offset": 1030,
+      "length": 1,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1094,
+      "offset": 1087,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 1279,
+      "offset": 1272,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "Dictionary",
-      "offset": 2018,
+      "offset": 2011,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 2386,
+      "offset": 2379,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 2543,
+      "offset": 2536,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3178,
+      "offset": 3171,
       "length": 23,
       "value": "\"com.funnydb.app.setup\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 3674,
+      "offset": 3667,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3716,
+      "offset": 3709,
       "length": 14,
       "value": "\"#app_install\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3739,
+      "offset": 3732,
       "length": 15,
       "value": "\"#install_time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3814,
+      "offset": 3807,
       "length": 53,
       "value": "\"已上报应用安装 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3866,
+      "offset": 3859,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3935,
+      "offset": 3928,
       "length": 14,
       "value": "\"#app_install\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 3958,
+      "offset": 3951,
       "length": 15,
       "value": "\"#install_time\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 3975,
+      "offset": 3968,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 4010,
+      "offset": 4003,
       "length": 29,
       "value": "\"获取安装时间出错 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4153,
+      "offset": 4146,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "Dictionary",
-      "offset": 4309,
+      "offset": 4302,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4542,
+      "offset": 4535,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "IntegerLiteral",
-      "offset": 4683,
+      "offset": 4676,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 4779,
+      "offset": 4772,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "Dictionary",
-      "offset": 4843,
+      "offset": 4836,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5291,
+      "offset": 5284,
       "length": 16,
       "value": "\"DeviceMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5464,
+      "offset": 5457,
       "length": 14,
       "value": "\"UserMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5692,
+      "offset": 5685,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 5823,
+      "offset": 5816,
       "length": 16,
       "value": "\"DeviceMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 5891,
+      "offset": 5884,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6018,
+      "offset": 6011,
       "length": 14,
       "value": "\"UserMutation\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 6084,
+      "offset": 6077,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 6211,
+      "offset": 6204,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6450,
+      "offset": 6443,
       "length": 38,
       "value": "\"事件名称为空，不处理上报\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6599,
+      "offset": 6592,
       "length": 8,
       "value": "\"#event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6919,
+      "offset": 6912,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6927,
+      "offset": 6920,
       "length": 7,
       "value": "\"Event\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 6952,
+      "offset": 6945,
       "length": 6,
       "value": "\"data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 7843,
+      "offset": 7836,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8018,
+      "offset": 8011,
       "length": 6,
       "value": "\"type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8233,
+      "offset": 8226,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8247,
+      "offset": 8240,
       "length": 5,
       "value": "\"add\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8443,
+      "offset": 8436,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8457,
+      "offset": 8450,
       "length": 5,
       "value": "\"set\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8657,
+      "offset": 8650,
       "length": 10,
       "value": "\"#operate\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8671,
+      "offset": 8664,
       "length": 9,
       "value": "\"setOnce\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8889,
+      "offset": 8882,
       "length": 12,
       "value": "\"properties\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "StringLiteral",
-      "offset": 8938,
+      "offset": 8931,
       "length": 6,
       "value": "\"data\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Events\/EventCore.swift",
       "kind": "BooleanLiteral",
-      "offset": 9446,
+      "offset": 9439,
       "length": 4,
       "value": "true"
     },
@@ -99780,6 +100795,83 @@
       "offset": 26378,
       "length": 6,
       "value": "\" ESCAPE ?)\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "StringLiteral",
+      "offset": 3582,
+      "length": 20,
+      "value": "\"Unknown gzip error\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "Array",
+      "offset": 4354,
+      "length": 12,
+      "value": "[0x1f, 0x8b]"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5263,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7187,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8394,
+      "length": 2,
+      "value": "32"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8551,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8583,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8615,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9395,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11608,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Gzip\/Data+Gzip.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11613,
+      "length": 2,
+      "value": "14"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Reachability.swift",
@@ -100358,287 +101450,252 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 2267,
-      "length": 78,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2277,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2296,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2311,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2319,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2331,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2344,
-      "length": 1,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
-      "kind": "StringLiteral",
-      "offset": 2744,
+      "offset": 3090,
       "length": 18,
       "value": "\"application\/json\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 2784,
+      "offset": 3130,
       "length": 14,
       "value": "\"Content-Type\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 2860,
+      "offset": 3206,
       "length": 13,
       "value": "\"X-Timestamp\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 2931,
+      "offset": 3277,
       "length": 9,
       "value": "\"X-Nonce\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3005,
+      "offset": 3351,
       "length": 15,
       "value": "\"X-AccessKeyID\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3082,
+      "offset": 3428,
       "length": 13,
       "value": "\"X-Signature\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3234,
+      "offset": 3472,
+      "length": 6,
+      "value": "\"gzip\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3500,
+      "length": 18,
+      "value": "\"Content-Encoding\""
+    },
+    {
+      "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
+      "kind": "StringLiteral",
+      "offset": 3682,
       "length": 111,
       "value": "\"开始上报 = \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3269,
+      "offset": 3717,
       "length": 3,
       "value": "\" 条, 归属 -> \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3300,
+      "offset": 3748,
       "length": 2,
       "value": "\" -> \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3337,
+      "offset": 3785,
       "length": 6,
       "value": "\"null\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 3344,
+      "offset": 3792,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 3579,
+      "offset": 4027,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 3978,
+      "offset": 4426,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4058,
+      "offset": 4506,
       "length": 77,
       "value": "\"当前设备网络不佳，重试完毕也未能上报，数据暂存本地\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 4294,
+      "offset": 4742,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 4457,
+      "offset": 4905,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 4651,
+      "offset": 5099,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4726,
+      "offset": 5174,
       "length": 108,
       "value": "\"请求发生网络错误 \n错误码:\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4785,
+      "offset": 5233,
       "length": 1,
       "value": "\" \n错误信息:\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4833,
+      "offset": 5281,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4866,
+      "offset": 5314,
       "length": 80,
       "value": "\"请求发生其他错误 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4910,
+      "offset": 5358,
       "length": 1,
       "value": "\" - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 4945,
+      "offset": 5393,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5145,
+      "offset": 5593,
       "length": 62,
       "value": "\"无法转换为 - HTTPURLResponse，丢弃本次上报数据\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5235,
+      "offset": 5683,
       "length": 56,
       "value": "\"无法转换为 - HTTPURLResponse，跳过本次上报\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5500,
+      "offset": 5948,
       "length": 43,
       "value": "\"处理结果 - \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 5542,
+      "offset": 5990,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 5607,
+      "offset": 6055,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 5615,
+      "offset": 6063,
       "length": 3,
       "value": "599"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 5796,
+      "offset": 6244,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "IntegerLiteral",
-      "offset": 5965,
+      "offset": 6413,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6101,
+      "offset": 6549,
       "length": 6,
       "value": "\"null\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6138,
+      "offset": 6586,
       "length": 34,
       "value": "\"responseBody = \""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Core\/Queues\/ReportQueue.swift",
       "kind": "StringLiteral",
-      "offset": 6171,
+      "offset": 6619,
       "length": 2,
       "value": "\"\""
     },
