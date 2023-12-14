@@ -6,6 +6,7 @@ import CommonCrypto
 import CoreTelephony
 import Dispatch
 import Foundation
+import Foundation/*.Data*/
 @_exported import FunnyDB
 import LocalAuthentication
 import SQLite3
@@ -16,6 +17,7 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+import zlib
 @_hasMissingDesignatedInitializers public class DateFunctions {
   public static func date(_ timestring: Swift.String, _ modifiers: Swift.String...) -> FunnyDB.Expression<Foundation.Date?>
   public static func time(_ timestring: Swift.String, _ modifiers: Swift.String...) -> FunnyDB.Expression<Foundation.Date?>
@@ -2092,6 +2094,42 @@ public func ?? <V>(optional: FunnyDB.Expression<V?>, defaultValue: FunnyDB.Expre
     set
   }
   public init(key: Swift.String)
+}
+public enum Gzip {
+  public static let maxWindowBits: Swift.Int32
+}
+public struct CompressionLevel : Swift.RawRepresentable, Swift.Sendable {
+  public let rawValue: Swift.Int32
+  public static let noCompression: FunnyDB.CompressionLevel
+  public static let bestSpeed: FunnyDB.CompressionLevel
+  public static let bestCompression: FunnyDB.CompressionLevel
+  public static let defaultCompression: FunnyDB.CompressionLevel
+  public init(rawValue: Swift.Int32)
+  public init(_ rawValue: Swift.Int32)
+  public typealias RawValue = Swift.Int32
+}
+public struct GzipError : Swift.Error, Swift.Sendable {
+  public enum Kind : Swift.Equatable, Swift.Sendable {
+    case stream
+    case data
+    case memory
+    case buffer
+    case version
+    case unknown(code: Swift.Int)
+    public static func == (a: FunnyDB.GzipError.Kind, b: FunnyDB.GzipError.Kind) -> Swift.Bool
+  }
+  public let kind: FunnyDB.GzipError.Kind
+  public let message: Swift.String
+  public var localizedDescription: Swift.String {
+    get
+  }
+}
+extension Foundation.Data {
+  public var isGzipped: Swift.Bool {
+    get
+  }
+  public func gzipped(level: FunnyDB.CompressionLevel = .defaultCompression, wBits: Swift.Int32 = Gzip.maxWindowBits + 16) throws -> Foundation.Data
+  public func gunzipped(wBits: Swift.Int32 = Gzip.maxWindowBits + 32) throws -> Foundation.Data
 }
 public enum ReachabilityError : Swift.Error {
   case failedToCreateWithAddress(Darwin.sockaddr, Swift.Int32)
