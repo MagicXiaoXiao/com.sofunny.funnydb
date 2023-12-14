@@ -1,6 +1,6 @@
 {
   "name": "com.sofunny.funnydb",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "displayName": "FunnyDB",
   "description": "This is SoFunny FunnyDB",
   "unity": "2019.3",
@@ -21,11 +21,11 @@
   "samples": [
     {
       "displayName": "FunnyDBSample",
-      "description": "真有趣数据采集演示 Demo",
+      "description": "\u771f\u6709\u8da3\u6570\u636e\u91c7\u96c6\u6f14\u793a Demo",
       "path": "Samples~/FunnyDBSample"
     }
   ],
   "dependencies": {
-      "com.unity.nuget.newtonsoft-json": "3.0.2"
+    "com.unity.nuget.newtonsoft-json": "3.0.2"
   }
 }
