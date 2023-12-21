@@ -76,10 +76,6 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetSDKStatus(int status)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setSDKStatus: " + status);
             if (status > ((int)DBSDK_STATUS_ENUM.ONLY_COLLECT) || status < ((int)DBSDK_STATUS_ENUM.DEFAULT))
             {
@@ -91,17 +87,13 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetSDKSendType(int sendType)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setSDKSendType: " + sendType);
             if (sendType > ((int)DBSDK_SEND_TYPE_ENUM.DELAY) || sendType < ((int)DBSDK_SEND_TYPE_ENUM.NOW))
             {
                 Logger.LogWarning("sendType illegal");
                 return;
             }
-            _curSendType = sendType;
+            ReportSettings.SendType = sendType;
         }
 
         internal void SetUserId(string userId)
@@ -137,12 +129,8 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetReportInterval(int reportInterval)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setReportInterval: " + reportInterval);
-            if (reportInterval < 1000)
+            if (reportInterval < 1000 || reportInterval > Constants.MAX_REPORT_INTERVAL_LIMIT)
             {
                 Logger.LogWarning("reportInterval can't < 1000");
                 return;
@@ -152,11 +140,6 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetReportLimit(int reportSizeLimit)
         {
-            if (!_isInit)
-            {
-                return;
-            }
-
             Logger.Log("setReportLimit: " + reportSizeLimit);
             if (reportSizeLimit < 1)
             {
@@ -238,7 +221,6 @@ namespace SoFunny.FunnyDB.PC
     {
         private SynchronizationContext _originalContext;
         private int _mainThreadId = int.MinValue;
-        private int _curSendType = (int)DBSDK_SEND_TYPE_ENUM.NOW;
         private int _lastReportInterval = ReportSettings.ReportInterval;
         private WaitForSeconds _waitForSeconds = null;
         private readonly System.Random _random = new System.Random();
@@ -324,7 +306,7 @@ namespace SoFunny.FunnyDB.PC
         {
             try
             {
-                int finalSendType = sendType == Constants.FUNNY_DB_SEND_TYPE_NONE ? _curSendType : sendType;
+                int finalSendType = sendType == Constants.FUNNY_DB_SEND_TYPE_NONE ? ReportSettings.SendType : sendType;
 
                 AccessInfo accessInfo = (AccessInfo)AccessKeyHashTable[reportChannelType];
 
