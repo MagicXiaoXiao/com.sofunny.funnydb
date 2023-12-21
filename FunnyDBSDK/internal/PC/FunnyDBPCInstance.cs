@@ -93,7 +93,7 @@ namespace SoFunny.FunnyDB.PC
                 Logger.LogWarning("sendType illegal");
                 return;
             }
-            _curSendType = sendType;
+            ReportSettings.SendType = sendType;
         }
 
         internal void SetUserId(string userId)
@@ -221,7 +221,6 @@ namespace SoFunny.FunnyDB.PC
     {
         private SynchronizationContext _originalContext;
         private int _mainThreadId = int.MinValue;
-        private int _curSendType = (int)DBSDK_SEND_TYPE_ENUM.NOW;
         private int _lastReportInterval = ReportSettings.ReportInterval;
         private WaitForSeconds _waitForSeconds = null;
         private readonly System.Random _random = new System.Random();
@@ -307,7 +306,7 @@ namespace SoFunny.FunnyDB.PC
         {
             try
             {
-                int finalSendType = sendType == Constants.FUNNY_DB_SEND_TYPE_NONE ? _curSendType : sendType;
+                int finalSendType = sendType == Constants.FUNNY_DB_SEND_TYPE_NONE ? ReportSettings.SendType : sendType;
 
                 AccessInfo accessInfo = (AccessInfo)AccessKeyHashTable[reportChannelType];
 

@@ -38,18 +38,18 @@ namespace SoFunny.FunnyDB.PC
     internal static class ReportSettings
     {
         private static int _sdkStatus;
-
-        public static int SdkStatus
-        {
-            private get { return _sdkStatus; }
-            set { _sdkStatus = value; }
-        }
+        public static int SendType = (int)DBSDK_SEND_TYPE_ENUM.NOW;
         /// <summary>
         /// 单位: 秒
         /// </summary>
         public static int ReportInterval = Constants.DEFAULT_REPORT_INTERVAL / 1000;
         public static int ReportSizeLimit = Constants.DEFAULT_REPORT_SIZE_LIMIT;
 
+        public static int SdkStatus
+        {
+            private get { return _sdkStatus; }
+            set { _sdkStatus = value; }
+        }
 
         static ReportSettings()
         {
