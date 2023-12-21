@@ -1,8 +1,6 @@
-
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace SoFunny.FunnyDB.PC
 {
@@ -25,7 +23,8 @@ namespace SoFunny.FunnyDB.PC
             {
                 return;
             }
-            FunnyDBPCInstance.instance.ReportEvent(e.GetEventName(), e.GetReport());
+            string reportInfoStr = JsonWriterUtils.ConvertDictionaryToJson(e.GetReport());
+            FunnyDBPCInstance.Instance.ReportEvent(e.GetEventName(), reportInfoStr);
         }
 
         public string GetEventName()
@@ -33,12 +32,12 @@ namespace SoFunny.FunnyDB.PC
             return Constants.REPORT_EVENT_FOREGROUND_NAME;
         }
 
-        public string GetReport()
+        public Dictionary<string, object> GetReport()
         {
             Dictionary<string, object> appForgroundProperties = new Dictionary<string, object>();
             appForgroundProperties[Constants.KEY_APP_START_REASON] = startReason;
             appForgroundProperties[Constants.KEY_APP_START_BACKGROUND_DURATION] = backgroundDuration;
-            return JsonConvert.SerializeObject(appForgroundProperties);
+            return appForgroundProperties;
         }
 
         public bool IsNeedReport()
@@ -47,3 +46,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif

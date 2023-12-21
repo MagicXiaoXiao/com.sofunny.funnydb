@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System;
 using System.IO;
 using System.Net.NetworkInformation;
@@ -284,3 +285,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif

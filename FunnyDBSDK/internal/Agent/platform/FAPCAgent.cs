@@ -10,7 +10,7 @@ namespace SoFunny.FunnyDB.Bridge
         public int Initialize(string accessKeyId, string accessKeySecret, string endPoint)
         {
             new GameObject("FunnyDBPCInstance", typeof(FunnyDBPCInstance));
-            FunnyDBPCInstance.instance.Initialize(accessKeyId, accessKeySecret, endPoint, (int)ReportChannel.ChannelTypePrj);
+            FunnyDBPCInstance.Instance.Initialize(accessKeyId, accessKeySecret, endPoint, (int)ReportChannel.ChannelTypePrj);
             return 1;
         }
 
@@ -26,17 +26,17 @@ namespace SoFunny.FunnyDB.Bridge
 
         public void SetSDKStatus(int status)
         {
-            FunnyDBPCInstance.instance.SetSDKStatus(status);
+            FunnyDBPCInstance.Instance.SetSDKStatus(status);
         }
 
         public void SetSDKSendType(int sendType)
         {
-            FunnyDBPCInstance.instance.SetSDKSendType(sendType);
+            FunnyDBPCInstance.Instance.SetSDKSendType(sendType);
         }
 
         public void SetUserId(string userId)
         {
-            FunnyDBPCInstance.instance.SetUserId(userId);
+            FunnyDBPCInstance.Instance.SetUserId(userId);
         }
 
         public void SetChannel(string channel)
@@ -56,27 +56,27 @@ namespace SoFunny.FunnyDB.Bridge
 
         public void ReportEvent(string eventName, string customProperty = "")
         {
-            FunnyDBPCInstance.instance.ReportEvent(eventName, customProperty);
+            FunnyDBPCInstance.Instance.ReportEvent(eventName, customProperty);
         }
 
         public void SetReportInterval(int pingNum)
         {
-            FunnyDBPCInstance.instance.SetReportInterval(pingNum);
+            FunnyDBPCInstance.Instance.SetReportInterval(pingNum);
         }
 
         public void SetReportLimit(int limit)
         {
-            FunnyDBPCInstance.instance.SetReportLimit(limit);
+            FunnyDBPCInstance.Instance.SetReportLimit(limit);
         }
 
         public void Flush()
         {
-            FunnyDBPCInstance.instance.Flush();
+            FunnyDBPCInstance.Instance.Flush();
         }
 
         public void ReportCustom(int customType, int operateType, string jsonStr)
         {
-            FunnyDBPCInstance.instance.ReportCustom(customType, operateType, jsonStr);
+            FunnyDBPCInstance.Instance.ReportCustom(customType, operateType, jsonStr);
         }
 
         public void EnableDebug()

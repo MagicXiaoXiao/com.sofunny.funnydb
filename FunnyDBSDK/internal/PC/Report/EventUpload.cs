@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -6,7 +7,6 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 /// <summary>
 /// Upload To Server
@@ -15,8 +15,6 @@ namespace SoFunny.FunnyDB.PC
 {
     internal sealed class EventUpload
     {
-
-        #region 高级 API 实现
         private static SemaphoreSlim semaphore = new SemaphoreSlim(2); // 控制并发数为 2
         private static HttpClient httpClient = new HttpClient();
         private static Queue<IngestSignature> requestQueue = new Queue<IngestSignature>();
@@ -59,6 +57,10 @@ namespace SoFunny.FunnyDB.PC
                 {
                     await SendRequestAsync(ingestSignature);
                 }
+                catch(Exception e)
+                {
+                    Logger.LogError(e.ToString());
+                }
                 finally
                 {
                     semaphore.Release();
@@ -69,7 +71,7 @@ namespace SoFunny.FunnyDB.PC
 
         private static async Task SendRequestAsync(IngestSignature ingestSignature)
         {
-            Logger.LogVerbose("sending: " + ingestSignature.Timestamp + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
+            Logger.Log("sending: " + ingestSignature.Timestamp + " content: " + ingestSignature.GetEventsStr());
             try
             {
                 var url = string.Format("{0}{1}", ingestSignature.GetEndPoint, ingestSignature.Url);
@@ -91,91 +93,38 @@ namespace SoFunny.FunnyDB.PC
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    Logger.Log($"上报成功 {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
+                    Logger.Log($"上报成功 {responseBody} {ingestSignature.Timestamp}");
                 }
                 else if (((int)response.StatusCode) >= 500 && ((int)response.StatusCode) <= 599)
                 {
-                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} Response: {responseBody} - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
-                    FunnyDBPCInstance.instance.StartCoroutinWithAciton(() =>
-                    {
-                        Logger.LogVerbose("restore messages: " + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
-                        DataSource.SaveAgain(ingestSignature.OriginEvents, ingestSignature.AccessInfo);
-                    });
+                    Logger.LogVerbose("restore messages: " + ingestSignature.GetEventsStr());
+                    Logger.Log($"上报失败！StatusCode: {(int)response.StatusCode} Response: {responseBody}");
+                    ProccessSendFailedEvents(ingestSignature);
                 }
                 else
                 {
-                    Logger.Log($"上报失败！- StatusCode: {(int)response.StatusCode} - Response: {responseBody} 数据直接丢弃！- data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
+                    Logger.LogVerbose("restore messages: " + ingestSignature.GetEventsStr());
+                    Logger.Log($"上报失败！StatusCode: {(int)response.StatusCode} Response: {responseBody} 数据直接丢弃！");
                 }
             }
             catch (Exception e)
             {
-                Logger.LogError("PostIngest exception: " + e.Message + $" - data: {JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented)}");
-                FunnyDBPCInstance.instance.StartCoroutinWithAciton(() =>
-                {
-                    Logger.LogVerbose("restore messages: " + JsonConvert.SerializeObject(ingestSignature.OriginEvents, Formatting.Indented));
-                    DataSource.SaveAgain(ingestSignature.OriginEvents, ingestSignature.AccessInfo);
-                });
+                Logger.LogError("PostIngest exception: " + e.Message);
+                ProccessSendFailedEvents(ingestSignature);
             }
         }
-        #endregion
 
-        #region 旧 API 实现
-        //private static readonly SemaphoreSlim Semaphore = new SemaphoreSlim(Constants.MAX_CONCURRENCY);
-
-        //internal static void PostIngestOld(IngestSignature ingestSignature)
-        //{
-
-        //    ThreadPool.QueueUserWorkItem(state =>
-        //    {
-        //        try
-        //        {
-        //            Semaphore.Wait();
-
-        //            //Logger.Log("send_now" + ingestSignature.Body);
-        //            //Thread.Sleep(1500);
-        //            //Logger.Log("send_end" + ingestSignature.Body);
-        //            #region 发起上报请求
-        //            var url = string.Format("{0}{1}", ingestSignature.GetEndPoint, ingestSignature.Url);
-        //            Logger.Log("PostIngest url: " + url);
-        //            var request = WebRequest.Create(url) as HttpWebRequest;
-        //            var sendData = Encoding.UTF8.GetBytes(ingestSignature.Body);
-        //            request.Method = ingestSignature.Method.Method;
-        //            request.ContentType = "application/json";
-        //            request.Headers.Add("X-Timestamp", ingestSignature.Timestamp);
-        //            request.Headers.Add("X-Nonce", ingestSignature.Nonce);
-        //            request.Headers.Add("X-AccessKeyID", ingestSignature.AccessInfo.AccessKeyId);
-        //            request.Headers.Add("X-Signature", ingestSignature.Sign);
-        //            request.ContentLength = sendData.Length;
-        //            request.Timeout = 3000;
-
-        //            var stream = request.GetRequestStream();
-        //            stream.Write(sendData, 0, sendData.Length);
-        //            stream.Close();
-        //            var res = request.GetResponse() as HttpWebResponse;
-        //            if (res.StatusCode == HttpStatusCode.OK)
-        //            {
-        //                var myStreamReader = new StreamReader(res.GetResponseStream(), Encoding.UTF8);
-        //                var retString = myStreamReader.ReadToEnd();
-        //                Logger.Log("now responseStr: " + retString);
-        //                Logger.Log("send success");
-        //            }
-        //            else
-        //            {
-        //                Logger.LogError("send fail: " + res.StatusCode);
-        //            }
-        //            res.Close();
-        //            #endregion
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Logger.LogError("PostIngest exception: " + e.Message);
-        //        }
-        //        finally
-        //        {
-        //            Semaphore.Release();
-        //        }
-        //    });
-        //}
-        #endregion
+        private static void ProccessSendFailedEvents(IngestSignature ingestSignature)
+        {
+            if(ingestSignature.OriginEvent != null)
+            {
+                DataSource.Create(ingestSignature.OriginEvent, ingestSignature.AccessInfo.AccessKeyId);
+            }
+            else if (ingestSignature.OriginEvents != null)
+            {
+                DataSource.Creates(ingestSignature.OriginEvents, ingestSignature.AccessInfo);
+            }
+        }
     }
 }
+#endif

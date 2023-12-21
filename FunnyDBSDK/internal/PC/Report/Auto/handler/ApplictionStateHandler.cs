@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 using UnityEngine;
 
 namespace SoFunny.FunnyDB.PC
@@ -32,4 +33,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
-
+#endif

@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -50,4 +51,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
-
+#endif

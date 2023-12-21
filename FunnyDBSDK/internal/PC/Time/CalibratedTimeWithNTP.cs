@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 using System.Threading.Tasks;
 
 namespace SoFunny.FunnyDB.PC
@@ -63,4 +64,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
-
+#endif

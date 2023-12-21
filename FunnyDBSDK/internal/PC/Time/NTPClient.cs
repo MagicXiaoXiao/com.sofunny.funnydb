@@ -1,9 +1,10 @@
-﻿using System;
+﻿#if UNITY_STANDALONE || UNITY_EDITOR
+using System;
 using System.Net;
 using System.Net.Sockets;
 namespace SoFunny.FunnyDB.PC
 {
-    public class NTPClient
+    internal class NTPClient
     {
         internal DateTime RequestTime(string host, int timeout)
         {
@@ -38,4 +39,4 @@ namespace SoFunny.FunnyDB.PC
 
     }
 }
-
+#endif

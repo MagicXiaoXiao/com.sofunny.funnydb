@@ -1,3 +1,4 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 namespace SoFunny.FunnyDB.PC
 {
     internal class AutoEventCollectManager
@@ -21,7 +22,8 @@ namespace SoFunny.FunnyDB.PC
             AppInstallEvent appInstallEvent = new AppInstallEvent();
             if (appInstallEvent.IsNeedReport())
             {
-                FunnyDBPCInstance.instance.ReportEvent(appInstallEvent.GetEventName(), appInstallEvent.GetReport());
+                string reportInfoStr = JsonWriterUtils.ConvertDictionaryToJson(appInstallEvent.GetReport());
+                FunnyDBPCInstance.Instance.ReportEvent(appInstallEvent.GetEventName(), reportInfoStr);
             }
         }
 
@@ -35,7 +37,8 @@ namespace SoFunny.FunnyDB.PC
             AppStartEvent startEvent = new AppStartEvent();
             if (startEvent.IsNeedReport())
             {
-                FunnyDBPCInstance.instance.ReportEvent(startEvent.GetEventName(), startEvent.GetReport());
+                string reportInfoStr = JsonWriterUtils.ConvertDictionaryToJson(startEvent.GetReport());
+                FunnyDBPCInstance.Instance.ReportEvent(startEvent.GetEventName(), reportInfoStr);
             }
             ReportAutoCollectEvents();
             _crashCollectHandler =  new CrashCollectHandler();
@@ -46,3 +49,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif

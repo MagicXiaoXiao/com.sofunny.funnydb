@@ -1,5 +1,5 @@
+#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace SoFunny.FunnyDB.PC
 {
@@ -11,13 +11,13 @@ namespace SoFunny.FunnyDB.PC
             return Constants.REPORT_EVENT_INSTALL_NAME;
         }
 
-        public string GetReport()
+        public Dictionary<string, object> GetReport()
         {
             Dictionary<string, object> appInstallProperties = new Dictionary<string, object>();
-            long installTimeInMillSecs = FunnyDBPCInstance.instance.CalibratedTime.GetInMills();
+            long installTimeInMillSecs = FunnyDBPCInstance.Instance.CalibratedTime.GetInMills();
             appInstallProperties[Constants.KEY_INSTALL_TIME] = installTimeInMillSecs;
             PlayerPfsUtils.Save(Constants.SP_KEY_FIRST_INSTALL_TIME, installTimeInMillSecs.ToString());
-            return JsonConvert.SerializeObject(appInstallProperties);
+            return appInstallProperties;
         }
 
         public bool IsNeedReport()
@@ -26,3 +26,4 @@ namespace SoFunny.FunnyDB.PC
         }
     }
 }
+#endif
