@@ -76,10 +76,6 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetSDKStatus(int status)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setSDKStatus: " + status);
             if (status > ((int)DBSDK_STATUS_ENUM.ONLY_COLLECT) || status < ((int)DBSDK_STATUS_ENUM.DEFAULT))
             {
@@ -91,10 +87,6 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetSDKSendType(int sendType)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setSDKSendType: " + sendType);
             if (sendType > ((int)DBSDK_SEND_TYPE_ENUM.DELAY) || sendType < ((int)DBSDK_SEND_TYPE_ENUM.NOW))
             {
@@ -137,12 +129,8 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetReportInterval(int reportInterval)
         {
-            if (!_isInit)
-            {
-                return;
-            }
             Logger.Log("setReportInterval: " + reportInterval);
-            if (reportInterval < 1000)
+            if (reportInterval < 1000 || reportInterval > Constants.MAX_REPORT_INTERVAL_LIMIT)
             {
                 Logger.LogWarning("reportInterval can't < 1000");
                 return;
@@ -152,11 +140,6 @@ namespace SoFunny.FunnyDB.PC
 
         internal void SetReportLimit(int reportSizeLimit)
         {
-            if (!_isInit)
-            {
-                return;
-            }
-
             Logger.Log("setReportLimit: " + reportSizeLimit);
             if (reportSizeLimit < 1)
             {
