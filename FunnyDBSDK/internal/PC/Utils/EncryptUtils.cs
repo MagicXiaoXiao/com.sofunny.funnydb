@@ -8,11 +8,12 @@ using System.Security.Cryptography;
 /// </summary>
 namespace SoFunny.FunnyDB.PC {
     internal sealed class EncryptUtils {
-        public static string GetEncryptSign(string KeySecret, string content) {
+
+        public static string GetEncryptSign(string KeySecret, byte[] content) {
             string base64Str = string.Empty;
             using (HMACSHA256 mac = new HMACSHA256(Encoding.UTF8.GetBytes(KeySecret)))
             {
-                byte[] hash = mac.ComputeHash(Encoding.UTF8.GetBytes(content));
+                byte[] hash = mac.ComputeHash(content);
                 base64Str = Convert.ToBase64String(hash);
             }
             return base64Str;
