@@ -1,6 +1,8 @@
 #if UNITY_STANDALONE || UNITY_EDITOR
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -75,19 +77,32 @@ namespace SoFunny.FunnyDB.PC
             try
             {
                 var url = string.Format("{0}{1}", ingestSignature.GetEndPoint, ingestSignature.Url);
-                HttpRequestMessage request = new HttpRequestMessage();
+                var compressData = GzipUtils.Compress(Encoding.UTF8.GetBytes(ingestSignature.Body));
+                
+                string sign = EncryptUtils.GetEncryptSign(ingestSignature.AccessInfo.AccessSecret,
+                    GetToEncryptContent(
+                        ingestSignature.Method.ToString(),
+                        ingestSignature.Url,
+                        ingestSignature.AccessInfo._accessKeyId,
+                        ingestSignature.Nonce,
+                        ingestSignature.Timestamp,
+                        compressData));
+                ingestSignature.Sign = sign;
 
+                HttpRequestMessage request = new HttpRequestMessage();
                 request.Headers.Add("X-Timestamp", ingestSignature.Timestamp);
                 request.Headers.Add("X-Nonce", ingestSignature.Nonce);
                 request.Headers.Add("X-AccessKeyID", ingestSignature.AccessInfo.AccessKeyId);
                 request.Headers.Add("X-Signature", ingestSignature.Sign);
+                request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
 
-                request.Content = new StringContent(ingestSignature.Body, Encoding.UTF8);
-
+                ByteArrayContent content = new ByteArrayContent(compressData);
+                content.Headers.Add("Content-Encoding", "gzip");
+                request.Content = content;
                 request.Method = ingestSignature.Method;
                 request.RequestUri = new Uri(url);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                CancellationTokenSource timeOutToken = new CancellationTokenSource(TimeSpan.FromSeconds(3));
+                CancellationTokenSource timeOutToken = new CancellationTokenSource(TimeSpan.FromSeconds(Constants.CONNECTION_TIMEOUT));
                 var response = await httpClient.SendAsync(request, timeOutToken.Token);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
@@ -124,6 +139,22 @@ namespace SoFunny.FunnyDB.PC
             {
                 DataSource.Creates(ingestSignature.OriginEvents, ingestSignature.AccessInfo);
             }
+        }
+        private static byte[] GetToEncryptContent(string method, string url, string key, string nonce, string timestamp, byte[] compressBody)
+        {
+            byte[] all = Encoding.UTF8.GetBytes(method);
+
+            all = GzipUtils.AddAll(all, Encoding.UTF8.GetBytes(url));
+            all = GzipUtils.AddAll(all, Encoding.UTF8.GetBytes(key));
+            all = GzipUtils.AddAll(all, Encoding.UTF8.GetBytes(nonce));
+            all = GzipUtils.AddAll(all, Encoding.UTF8.GetBytes(timestamp));
+
+            if (compressBody != null)
+            {
+                all = GzipUtils.AddAll(all, compressBody);
+            }
+
+            return all;
         }
     }
 }

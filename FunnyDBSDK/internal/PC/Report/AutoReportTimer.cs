@@ -89,9 +89,6 @@ namespace SoFunny.FunnyDB.PC
                     Timestamp = FunnyDBPCInstance.Instance.CalibratedTime.GetInMills().ToString(),
                     Body = sendData
                 };
-
-                string sign = EncryptUtils.GetEncryptSign(accessInfo.AccessSecret, ingestSignature.GetToEncryptContent());
-                ingestSignature.Sign = sign;
                 ingestSignature.OriginEvents = messageArr;
                 EventUpload.PostIngest(ingestSignature);
             }
