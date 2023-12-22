@@ -71,6 +71,7 @@ namespace SoFunny.FunnyDB.PC
             if (reportChannelType == ((int)Constants.ReportChannel.ChannelTypePrj))
             {
                 ReportEvent("#device_login", null, reportChannelType);
+                CacheMethod.ReportCacheEvents();
             }
         }
 
@@ -156,6 +157,11 @@ namespace SoFunny.FunnyDB.PC
 
         internal void ReportEvent(string eventName, string customProperty, int reportChannelType = (int)Constants.ReportChannel.ChannelTypePrj, int sendType = Constants.FUNNY_DB_SEND_TYPE_NONE)
         {
+            if (!_isInit)
+            {
+                CacheMethod.AddEvent(new CacheMethod(Constants.CACHE_METHOD_NAME_REPORT_EVENT, new object[] { eventName, customProperty, reportChannelType, sendType }));
+                return;
+            }
             if (Thread.CurrentThread.ManagedThreadId == _mainThreadId)
             {
                 ReportEventInternal(eventName, customProperty, reportChannelType, sendType);
@@ -170,6 +176,11 @@ namespace SoFunny.FunnyDB.PC
 
         internal void ReportCustom(int customType, int operateType, string customStr)
         {
+            if (!_isInit)
+            {
+                CacheMethod.AddEvent(new CacheMethod(Constants.CACHE_METHOD_NAME_REPORT_CUSTOM, new object[] { customType, operateType, customStr }));
+                return;
+            }
             if (Thread.CurrentThread.ManagedThreadId == _mainThreadId)
             {
                 ReportCustomInternal(customType, operateType, customStr);

@@ -7,9 +7,13 @@ namespace SoFunny.FunnyDB.Bridge
 {
     internal class FunnyDBPCAgent: IFunnyDBAgent
     {
-        public int Initialize(string accessKeyId, string accessKeySecret, string endPoint)
+        internal FunnyDBPCAgent()
         {
             new GameObject("FunnyDBPCInstance", typeof(FunnyDBPCInstance));
+        }
+
+        public int Initialize(string accessKeyId, string accessKeySecret, string endPoint)
+        {
             FunnyDBPCInstance.Instance.Initialize(accessKeyId, accessKeySecret, endPoint, (int)ReportChannel.ChannelTypePrj);
             return 1;
         }
