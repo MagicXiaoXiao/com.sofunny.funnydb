@@ -1,6 +1,5 @@
 ﻿#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Concurrent;
-using Newtonsoft.Json;
 
 namespace SoFunny.FunnyDB.PC
 {
@@ -19,7 +18,6 @@ namespace SoFunny.FunnyDB.PC
         {
             foreach (var item in cacheMethods)
             {
-                Logger.Log($"zxx send cacheMethod {JsonConvert.SerializeObject(item)}");
                 switch (item.Method)
                 {
                     case Constants.CACHE_METHOD_NAME_REPORT_EVENT:
@@ -37,7 +35,6 @@ namespace SoFunny.FunnyDB.PC
         public static void AddEvent(CacheMethod cacheMethod)
         {
             cacheMethods.Add(cacheMethod);
-            Logger.Log($"zxx cacheMethod {JsonConvert.SerializeObject(cacheMethod)}");
         }
     }
 }
