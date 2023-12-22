@@ -85,9 +85,6 @@ namespace SoFunny.FunnyDB.Bridge
         /// </summary>
         /// <param name="status"></param>
         internal static void SetSDKStatus(int status) {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.SetSDKStatus(status);
         }
 
@@ -96,9 +93,6 @@ namespace SoFunny.FunnyDB.Bridge
         /// </summary>
         /// <param name="status"></param>
         internal static void SetSDKSendType(int sendType) {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.SetSDKSendType(sendType);
         }
 
@@ -135,9 +129,6 @@ namespace SoFunny.FunnyDB.Bridge
         /// </summary>
         /// <param name="interval">interval</param> // ms
         internal static void SetReportInterval(int interval) {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.SetReportInterval(interval);
         }
 
@@ -146,16 +137,10 @@ namespace SoFunny.FunnyDB.Bridge
         /// </summary>
         /// <param name="frameRate">limit</param>
         internal static void SetReportLimit(int limit) {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.SetReportLimit(limit);
         }
 
         internal static void ReportCustom(int customType, int operateType, string jsonStr) {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.ReportCustom(customType, operateType, jsonStr);
         }
 
@@ -165,9 +150,6 @@ namespace SoFunny.FunnyDB.Bridge
         /// <param name="eventName">event Name</param>
         /// <param name="customProperty">custom Property</param>
         internal static void ReportEvent(string eventName, string customProperty = "") {
-            if (!sIsInit) {
-                return;
-            }
             _iFunnyDBAgent.ReportEvent(eventName, customProperty);
         }
 

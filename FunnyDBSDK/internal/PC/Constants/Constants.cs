@@ -90,6 +90,9 @@ namespace SoFunny.FunnyDB.PC
 
         internal static string SP_KEY_FIRST_INSTALL_TIME = "app_first_install_time"; // 应用安装时间
 
+        internal const string CACHE_METHOD_NAME_REPORT_EVENT = "reportEvent";
+        internal const string CACHE_METHOD_NAME_REPORT_CUSTOM = "reportCustom";
+
         // 上报渠道
         internal enum ReportChannel
         {
