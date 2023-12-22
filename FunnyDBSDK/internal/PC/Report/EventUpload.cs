@@ -77,10 +77,8 @@ namespace SoFunny.FunnyDB.PC
             try
             {
                 var url = string.Format("{0}{1}", ingestSignature.GetEndPoint, ingestSignature.Url);
-                var orignData = Encoding.UTF8.GetBytes(ingestSignature.Body);
-                var compressData = GzipUtils.Compress(orignData);
-                Logger.Log($"origin size: {orignData.Length} compress size: {compressData.Length} diff: {orignData.Length - compressData.Length}");
-
+                var compressData = GzipUtils.Compress(Encoding.UTF8.GetBytes(ingestSignature.Body));
+                
                 string sign = EncryptUtils.GetEncryptSign(ingestSignature.AccessInfo.AccessSecret,
                     GetToEncryptContent(
                         ingestSignature.Method.ToString(),
@@ -104,7 +102,7 @@ namespace SoFunny.FunnyDB.PC
                 request.Method = ingestSignature.Method;
                 request.RequestUri = new Uri(url);
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                CancellationTokenSource timeOutToken = new CancellationTokenSource(TimeSpan.FromSeconds(3));
+                CancellationTokenSource timeOutToken = new CancellationTokenSource(TimeSpan.FromSeconds(Constants.CONNECTION_TIMEOUT));
                 var response = await httpClient.SendAsync(request, timeOutToken.Token);
                 var responseBody = await response.Content.ReadAsStringAsync();
 

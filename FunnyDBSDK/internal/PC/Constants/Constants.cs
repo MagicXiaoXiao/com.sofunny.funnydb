@@ -57,6 +57,7 @@ namespace SoFunny.FunnyDB.PC
         internal static int DEFAULT_REPORT_SIZE_LIMIT = 20;                     // 默认每次上报请求最多包含 20 条数据, 最大值不超过 50, 因为 Message 默认最大值为 50
         internal static int DEFAULT_REPORT_SIZE_MAX_LIMIT = 50;
         internal static int MAX_REPORT_INTERVAL_LIMIT = 60 * 1000;              // 上报间隔最大值为 60。超过该值则设置为 60
+        internal static int CONNECTION_TIMEOUT = 30;                         // 网络请求超时时间 30秒
 
         // Send Type
         /// <summary>
