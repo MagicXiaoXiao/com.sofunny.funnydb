@@ -80,6 +80,11 @@ namespace SoFunny.FunnyDB
         /// </summary>
         /// <param name="userId"></param>
         public static void SetUserId(string userId) {
+            if (userId is null)
+            {
+                ClearUserId();
+                return;
+            }
             FunnyDBAgent.SetUserId(userId);
         }
 
