@@ -30,13 +30,11 @@ namespace SoFunny.FunnyDB.PC
                         break;
                 }
             }
-            Debug.Log("ReportCacheEvents after: " + JsonConvert.SerializeObject(cacheMethods));
         }
 
         public static void AddEvent(CacheMethod cacheMethod)
         {
             cacheMethods.Enqueue(cacheMethod);
-            Debug.Log("addEvent: " + JsonConvert.SerializeObject(cacheMethod));
         }
     }
 }
