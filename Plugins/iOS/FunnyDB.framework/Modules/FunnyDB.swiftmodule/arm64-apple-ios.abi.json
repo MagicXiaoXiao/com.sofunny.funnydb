@@ -73672,22 +73672,30 @@
           },
           {
             "kind": "TypeNominal",
-            "name": "UnsafeMutablePointer",
-            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+            "name": "Optional",
+            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>?",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int8",
-                "printedName": "Swift.Int8",
-                "usr": "s:s4Int8V"
+                "name": "UnsafeMutablePointer",
+                "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int8",
+                    "printedName": "Swift.Int8",
+                    "usr": "s:s4Int8V"
+                  }
+                ],
+                "usr": "s:Sp"
               }
             ],
-            "usr": "s:Sp"
+            "usr": "s:Sq"
           }
         ],
         "declKind": "Func",
         "usr": "c:(cm)Unity_SetUserWithId:",
-        "mangledName": "$s7FunnyDB13Unity_SetUser2idySpys4Int8VG_tF",
+        "mangledName": "$s7FunnyDB13Unity_SetUser2idySpys4Int8VGSg_tF",
         "moduleName": "FunnyDB",
         "declAttributes": [
           "AccessControl",
@@ -73707,22 +73715,30 @@
           },
           {
             "kind": "TypeNominal",
-            "name": "UnsafeMutablePointer",
-            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+            "name": "Optional",
+            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>?",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int8",
-                "printedName": "Swift.Int8",
-                "usr": "s:s4Int8V"
+                "name": "UnsafeMutablePointer",
+                "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int8",
+                    "printedName": "Swift.Int8",
+                    "usr": "s:s4Int8V"
+                  }
+                ],
+                "usr": "s:Sp"
               }
             ],
-            "usr": "s:Sp"
+            "usr": "s:Sq"
           }
         ],
         "declKind": "Func",
         "usr": "c:(cm)Unity_SetChannelWithValue:",
-        "mangledName": "$s7FunnyDB16Unity_SetChannel5valueySpys4Int8VG_tF",
+        "mangledName": "$s7FunnyDB16Unity_SetChannel5valueySpys4Int8VGSg_tF",
         "moduleName": "FunnyDB",
         "declAttributes": [
           "AccessControl",
@@ -73742,22 +73758,30 @@
           },
           {
             "kind": "TypeNominal",
-            "name": "UnsafeMutablePointer",
-            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+            "name": "Optional",
+            "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>?",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Int8",
-                "printedName": "Swift.Int8",
-                "usr": "s:s4Int8V"
+                "name": "UnsafeMutablePointer",
+                "printedName": "Swift.UnsafeMutablePointer<Swift.Int8>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int8",
+                    "printedName": "Swift.Int8",
+                    "usr": "s:s4Int8V"
+                  }
+                ],
+                "usr": "s:Sp"
               }
             ],
-            "usr": "s:Sp"
+            "usr": "s:Sq"
           }
         ],
         "declKind": "Func",
         "usr": "c:(cm)Unity_SetDeviceWithId:",
-        "mangledName": "$s7FunnyDB15Unity_SetDevice2idySpys4Int8VG_tF",
+        "mangledName": "$s7FunnyDB15Unity_SetDevice2idySpys4Int8VGSg_tF",
         "moduleName": "FunnyDB",
         "declAttributes": [
           "AccessControl",
@@ -98267,7 +98291,7 @@
       "kind": "StringLiteral",
       "offset": 171,
       "length": 7,
-      "value": "\"0.8.8\""
+      "value": "\"0.8.9\""
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/Utils\/Constant.swift",
@@ -102192,98 +102216,98 @@
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 1675,
+      "offset": 1813,
       "length": 4,
       "value": "1000"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 1916,
+      "offset": 2054,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 1974,
+      "offset": 2112,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 2031,
+      "offset": 2169,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 2217,
+      "offset": 2355,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 2273,
+      "offset": 2411,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "Dictionary",
-      "offset": 3064,
+      "offset": 3202,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 3447,
+      "offset": 3585,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 3487,
+      "offset": 3625,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 3527,
+      "offset": 3665,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 3745,
+      "offset": 3883,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 3782,
+      "offset": 3920,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 4221,
+      "offset": 4359,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/cxb\/Desktop\/Work\/FunnyDB\/FunnyDB\/FunnyDB\/UnityBridge\/InternalUnityBridge.swift",
       "kind": "IntegerLiteral",
-      "offset": 4239,
+      "offset": 4377,
       "length": 1,
       "value": "1"
     }
