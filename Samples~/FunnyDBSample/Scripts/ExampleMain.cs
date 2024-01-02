@@ -132,11 +132,11 @@ public class ExampleMain : MonoBehaviour {
     }
 
     public void gotoReportView() {
-        if (isInit) {
+        //if (isInit) {
             initPanel.SetActive(false);
             eventPanel.SetActive(true);
             deviceIDText.text = FunnyDBSDK.GetDeviceId();
-        }
+        //}
     }
 
     public void CopyInputDeviceId() {

@@ -1,11 +1,13 @@
 ﻿#if UNITY_STANDALONE || UNITY_EDITOR
 using System.Collections.Concurrent;
+using Newtonsoft.Json;
+using UnityEngine;
 
 namespace SoFunny.FunnyDB.PC
 {
     internal sealed class CacheMethod
     {
-        private static ConcurrentBag<CacheMethod> cacheMethods = new ConcurrentBag<CacheMethod>();
+        private static ConcurrentQueue<CacheMethod> cacheMethods = new ConcurrentQueue<CacheMethod>();
         public string Method;
         public object[] MethodParams;
 
@@ -16,7 +18,7 @@ namespace SoFunny.FunnyDB.PC
         }
         public static void ReportCacheEvents()
         {
-            foreach (var item in cacheMethods)
+            while (cacheMethods.TryDequeue(out var item))
             {
                 switch (item.Method)
                 {
@@ -27,14 +29,12 @@ namespace SoFunny.FunnyDB.PC
                         FunnyDBPCInstance.Instance.ReportCustom((int)item.MethodParams[0], (int)item.MethodParams[1], (string)item.MethodParams[2]);
                         break;
                 }
-               
             }
-            cacheMethods.Clear();
         }
 
         public static void AddEvent(CacheMethod cacheMethod)
         {
-            cacheMethods.Add(cacheMethod);
+            cacheMethods.Enqueue(cacheMethod);
         }
     }
 }
