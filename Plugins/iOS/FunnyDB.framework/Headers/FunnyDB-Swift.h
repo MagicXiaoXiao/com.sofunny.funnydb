@@ -322,13 +322,13 @@ SWIFT_EXTERN char * _Nonnull FunnyDB_GetDeviceID(char * _Nonnull id) SWIFT_WARN_
 SWIFT_EXTERN NSInteger FunnyDB_InitializeSDK(char * _Nonnull aKeyID, char * _Nonnull aKeySecret, char * _Nonnull endPoint) SWIFT_WARN_UNUSED_RESULT;
 
 
-SWIFT_EXTERN void FunnyDB_SetChannel(char * _Nonnull value);
+SWIFT_EXTERN void FunnyDB_SetChannel(char * _Nullable value);
 
 
 SWIFT_EXTERN void FunnyDB_DebugLogEnable(void);
 
 
-SWIFT_EXTERN void FunnyDB_SetDeviceID(char * _Nonnull id);
+SWIFT_EXTERN void FunnyDB_SetDeviceID(char * _Nullable id);
 
 
 SWIFT_EXTERN void FunnyDB_SetReportInterval(NSInteger value);
@@ -343,7 +343,7 @@ SWIFT_EXTERN void FunnyDB_SetReportType(NSInteger value);
 SWIFT_EXTERN void FunnyDB_SetSDKStatus(NSInteger value);
 
 
-SWIFT_EXTERN void FunnyDB_SetUserID(char * _Nonnull id);
+SWIFT_EXTERN void FunnyDB_SetUserID(char * _Nullable id);
 
 #endif
 #if __has_attribute(external_source_symbol)

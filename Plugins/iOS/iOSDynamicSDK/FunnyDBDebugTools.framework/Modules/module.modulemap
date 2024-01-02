@@ -1,7 +1,7 @@
 framework module FunnyDBDebugTools {
   umbrella header "FunnyDBDebugTools.h"
-
   export *
+
   module * { export * }
 }
 
